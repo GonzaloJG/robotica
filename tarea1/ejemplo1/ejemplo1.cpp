@@ -51,7 +51,6 @@ void ejemplo1::resetear()
 
 void ejemplo1::cambioPeriodo(int valor)
 {
-    qDebug() << valor;
 	periodo=valor;
 }
 
