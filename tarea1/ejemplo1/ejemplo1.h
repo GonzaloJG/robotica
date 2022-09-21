@@ -15,7 +15,7 @@ class ejemplo1 : public QWidget, public Ui_Counter
         void fTimer();
         void reanudar();
         void resetear();
-        void cambioPeriodo();
+        void cambioPeriodo(int);
         
     private:
     	QTimer *cronometro;

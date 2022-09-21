@@ -6,6 +6,7 @@ ejemplo1::ejemplo1(): Ui_Counter()
 	show();
 	
 	count=0;
+    periodo=1;
 	cronometro = new QTimer(this);
 	//Conexion del cronometro para que se vaya incrementando su valor
 	connect(cronometro, SIGNAL(timeout()),this,SLOT(fTimer()));
@@ -16,13 +17,14 @@ ejemplo1::ejemplo1(): Ui_Counter()
 	//Conexion del boton Resetear
 	connect(reset, SIGNAL(clicked()), this, SLOT(resetear()) );
 	//Conexion de la barra horizontal
-	connect(cambiarPeriodo, SIGNAL(clicked()), this, SLOT(cambioPeriodo()) );
+	connect(cambiarPeriodo, SIGNAL(valueChanged(int)), this, SLOT(cambioPeriodo(int)) );
 	
 }
 
 void ejemplo1::doButton()
 {
 	qDebug() << "click on button STOP";
+
 	cronometro->stop();
 }
 
@@ -47,9 +49,10 @@ void ejemplo1::resetear()
 	cronometro->stop();
 }
 
-void ejemplo1::cambioPeriodo()
+void ejemplo1::cambioPeriodo(int valor)
 {
-	periodo=cambiarPeriodo->getValue();
+    qDebug() << valor;
+	periodo=valor;
 }
 
 
