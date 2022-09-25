@@ -35,6 +35,9 @@
      <height>91</height>
     </rect>
    </property>
+   <property name="intValue" stdset="0">
+    <number>99999</number>
+   </property>
   </widget>
   <widget class="QPushButton" name="start">
    <property name="geometry">

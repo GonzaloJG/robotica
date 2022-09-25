@@ -5,7 +5,7 @@ ejemplo1::ejemplo1(): Ui_Counter()
 	setupUi(this);
 	show();
 	
-	count=0;
+	count=99999;
     periodo=1;
 	cronometro = new QTimer(this);
 	//Conexion del cronometro para que se vaya incrementando su valor
@@ -32,7 +32,7 @@ void ejemplo1::doButton()
 void ejemplo1::fTimer()
 {
 	lcdNumber->display(count);
-	count++;
+	count--;
 }
 
 void ejemplo1::reanudar()
@@ -44,7 +44,7 @@ void ejemplo1::reanudar()
 void ejemplo1::resetear()
 {
 	qDebug() << "click on button Resetear";
-	count=0;
+	count=99999;
 	lcdNumber->display(count);
 	cronometro->stop();
 }
