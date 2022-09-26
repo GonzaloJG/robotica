@@ -1,0 +1,7 @@
+/home/gonzalo/robotica/tarea1/timersimple/CMakeFiles/ejemplo1.dir
+/home/gonzalo/robotica/tarea1/timersimple/CMakeFiles/edit_cache.dir
+/home/gonzalo/robotica/tarea1/timersimple/CMakeFiles/rebuild_cache.dir
+/home/gonzalo/robotica/tarea1/timersimple/CMakeFiles/list_install_components.dir
+/home/gonzalo/robotica/tarea1/timersimple/CMakeFiles/install.dir
+/home/gonzalo/robotica/tarea1/timersimple/CMakeFiles/install/local.dir
+/home/gonzalo/robotica/tarea1/timersimple/CMakeFiles/install/strip.dir
