@@ -76,30 +76,43 @@ void SpecificWorker::initialize(int period)
 void SpecificWorker::compute()
 {
     //robot control
-    try {
-
-        auto ldata = laser_proxy->getLaserData();
-//        for (const auto &l :ldata)
-//            qInfo() << l.angle << l.dist;
-//
-//        qInfo() << "--------------";
+    RoboCompLaser::TLaserData ldata;
+    try
+    {
+        ldata = laser_proxy->getLaserData();
     }
-    catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; }
-    //el robot pienso lo que va hacer
+    catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; return ;}
 
+    const int part = 3;
+    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+    //qInfo() << copy.front().dist;
+
+    //el robot pienso lo que va hacer
+    float addv = 700;
+    float rot = 0;
     //ordenar por disctancia la seccion central del laser
     //si el primero es menos que un umbral parar y girar random hasta qwue el primero sea mayor que el segundo
-
-    //robot actua
-	try
+    qInfo() << "antes" << copy.front().dist;
+    if(copy.front().dist < 1000)
     {
-        float addv = 600;
-        float rot = 0.5;
+        addv = 0;
+        rot = 0.9;
+        qInfo() << copy.front().dist;
+    }
+    /*else
+    {
+         addv = 700;
+         rot = 0;
+    }*/
+    //robot actua
+    try
+    {
         differentialrobot_proxy->setSpeedBase(addv,rot);
     }
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; }
 
-	
+
 }
 
 int SpecificWorker::startup_check()
