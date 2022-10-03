@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/ejemplo_vector.dir/main.cpp.o -o ejemplo_vector 
