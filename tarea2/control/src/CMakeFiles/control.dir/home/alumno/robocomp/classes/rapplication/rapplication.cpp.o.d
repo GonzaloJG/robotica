@@ -1,4 +1,4 @@
-src/CMakeFiles/control.dir/home/alumno/robocomp/classes/rapplication/rapplication.cpp.o: \
+CMakeFiles/control.dir/home/alumno/robocomp/classes/rapplication/rapplication.cpp.o: \
  /home/alumno/robocomp/classes/rapplication/rapplication.cpp \
  /usr/include/stdc-predef.h \
  /home/alumno/robocomp/classes/rapplication/rapplication.h \

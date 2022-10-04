@@ -1,4 +1,4 @@
-src/CMakeFiles/control.dir/home/alumno/robocomp/classes/qlog/qlog.cpp.o: \
+CMakeFiles/control.dir/home/alumno/robocomp/classes/qlog/qlog.cpp.o: \
  /home/alumno/robocomp/classes/qlog/qlog.cpp /usr/include/stdc-predef.h \
  /home/alumno/robocomp/classes/qlog/qlog.h \
  /home/alumno/robocomp/components/robotica/tarea2/control/src/config.h \

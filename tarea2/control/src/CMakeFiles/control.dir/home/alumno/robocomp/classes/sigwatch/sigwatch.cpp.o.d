@@ -1,4 +1,4 @@
-src/CMakeFiles/control.dir/home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.o: \
+CMakeFiles/control.dir/home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.o: \
  /home/alumno/robocomp/classes/sigwatch/sigwatch.cpp \
  /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/features.h /usr/include/features-time64.h \
