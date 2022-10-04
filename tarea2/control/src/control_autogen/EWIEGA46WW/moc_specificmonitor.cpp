@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../specificmonitor.h"
+#include "../../../../../../../../../robocomp/robocomp/components/robotica/tarea2/control/src/specificmonitor.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

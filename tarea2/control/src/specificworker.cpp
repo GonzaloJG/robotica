@@ -83,28 +83,28 @@ void SpecificWorker::compute()
     }
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; return ;}
 
-    const int part = 3;
+    const int part = 4;
     RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
     std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
     //qInfo() << copy.front().dist;
 
     //el robot pienso lo que va hacer
-    float addv = 700;
+    float addv = 600;
     float rot = 0;
     //ordenar por disctancia la seccion central del laser
     //si el primero es menos que un umbral parar y girar random hasta qwue el primero sea mayor que el segundo
     qInfo() << "antes" << copy.front().dist;
-    if(copy.front().dist < 1000)
+    if(copy.front().dist < 700)
     {
         addv = 0;
-        rot = 0.9;
+        rot = 0.7;
         qInfo() << copy.front().dist;
     }
-    /*else
+    else
     {
-         addv = 700;
+         addv = 600;
          rot = 0;
-    }*/
+    }
     //robot actua
     try
     {
