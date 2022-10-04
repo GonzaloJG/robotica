@@ -1,3 +1,0 @@
-/home/andrea/robotica/tarea1/ejemplo_vector/cmake-build-debug/CMakeFiles/ejemplo_vector.dir
-/home/andrea/robotica/tarea1/ejemplo_vector/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/andrea/robotica/tarea1/ejemplo_vector/cmake-build-debug/CMakeFiles/rebuild_cache.dir

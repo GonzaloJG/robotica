@@ -1,3 +1,0 @@
-/home/gonzalo/robotica/tarea1/ejemplo_tuple/cmake-build-debug/CMakeFiles/ejemplo_tuple.dir
-/home/gonzalo/robotica/tarea1/ejemplo_tuple/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/gonzalo/robotica/tarea1/ejemplo_tuple/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -28,8 +28,7 @@ int main() {
     //std::cout << numeros.front() << std::endl;
 
     //ordenamos el vector y realizamos el comparador con una funcion landa
-    std:
-    sort(numeros.begin(), numeros.end(), [](int a, int b) {
+    std:sort(numeros.begin(), numeros.end(), [](int a, int b) {
         return a < b;
     });
 
@@ -41,14 +40,21 @@ int main() {
     num = numeros;
 
     //mostramos si se ha realizado la copia correctamente
-    for (int i = 0; i < 6; i++)
-        std::cout << "Numeros:" << numeros[0] << " Num:" << num[0] << std::endl;
+    //for (int i = 0; i < 6; i++)
+     //   std::cout << "Numeros:" << numeros[0] << " Num:" << num[0] << std::endl;
 
     //copiar una parte del vector numeros en el vector n
-    std::vector<int> n(numeros.begin()+3, numeros.end()-10);
+    //std::vector<int> n(numeros.begin()+3, numeros.end()-10);
 
     //mostramos los tamaños de los vectores y vemos que tiene 13 posiciones menos
-    std::cout<<"Numeros:"<<numeros.size()<<" n:"<<n.size()<<std::endl;
+    //std::cout<<"Numeros:"<<numeros.size()<<" n:"<<n.size()<<std::endl;
+
+    //para recorrer un vector con auto
+    for (auto i: num)
+    {
+        std::cout << i << ","<<std::endl;
+    }
+    std::cout << "\n";
 
     return 0;
 }
