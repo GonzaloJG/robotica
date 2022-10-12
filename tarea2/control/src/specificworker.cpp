@@ -73,6 +73,41 @@ void SpecificWorker::initialize(int period)
 
 }
 
+std::tuple<float, float> SpecificWorker::fSTRAIGHT(RoboCompLaser::TLaserData *ldata){
+    const int part = 4;
+    RoboCompLaser::TLaserData copy(ldata->begin()+ldata->size()/part, ldata->end()-ldata->size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+    qInfo() <<"Recto:"<< copy.front().dist;
+
+    std::tuple<float, float> tuplaAux;
+    tuplaAux=make_tuple(1000, 0);
+
+    if(copy.front().dist < 1000)
+    {
+        state=TURN;
+    }
+
+    return tuplaAux;
+}
+
+std::tuple<float, float> SpecificWorker::fTURN(RoboCompLaser::TLaserData *ldata){
+    const int part = 4;
+    RoboCompLaser::TLaserData copy(ldata->begin()+ldata->size()/part, ldata->end()-ldata->size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+    qInfo() <<"Rotacion:"<< copy.front().dist;
+
+    std::tuple<float, float> tuplaAux;
+    tuplaAux=make_tuple(0, 0.7);
+
+    if(copy.front().dist >= 1000)
+    {
+        state=STRAIGHT;
+    }
+
+    return tuplaAux;
+}
+
+
 void SpecificWorker::compute()
 {
     //robot control
@@ -88,27 +123,50 @@ void SpecificWorker::compute()
     std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
     //qInfo() << copy.front().dist;
 
-    //el robot pienso lo que va hacer
-    float addv = 600;
-    float rot = 0;
-    //ordenar por disctancia la seccion central del laser
-    //si el primero es menos que un umbral parar y girar random hasta qwue el primero sea mayor que el segundo
-    qInfo() << "antes" << copy.front().dist;
-    if(copy.front().dist < 700)
-    {
-        addv = 0;
-        rot = 0.7;
-        qInfo() << copy.front().dist;
+//    //el robot pienso lo que va hacer
+//    float addv = 600;
+//    float rot = 0;
+//    //ordenar por disctancia la seccion central del laser
+//    //si el primero es menos que un umbral parar y girar random hasta qwue el primero sea mayor que el segundo
+//    qInfo() << "antes" << copy.front().dist;
+//    if(copy.front().dist < 700)
+//    {
+//        addv = 0;
+//        rot = 0.7;
+//        qInfo() << copy.front().dist;
+//    }
+//    else
+//    {
+//         addv = 600;
+//         rot = 0;
+//    }
+
+    std::tuple<float, float> tuplaAux;
+    switch(state){
+        case IDLE:
+            state=STRAIGHT;
+            break;
+
+        case STRAIGHT:
+            tuplaAux=fSTRAIGHT(&ldata);
+            break;
+
+        case TURN:
+            tuplaAux=fTURN(&ldata);
+            break;
+//        case FOLLOW_WALL:
+//
+//            break;
+//        case SPIRAL:
+//
+//            break;
+
     }
-    else
-    {
-         addv = 600;
-         rot = 0;
-    }
+
     //robot actua
     try
     {
-        differentialrobot_proxy->setSpeedBase(addv,rot);
+        differentialrobot_proxy->setSpeedBase(get<0>(tuplaAux),get<1>(tuplaAux));
     }
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; }
 

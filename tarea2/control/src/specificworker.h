@@ -39,7 +39,8 @@ public:
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 
-
+    std::tuple<float, float> fSTRAIGHT(RoboCompLaser::TLaserData *ldata);
+    std::tuple<float, float> fTURN(RoboCompLaser::TLaserData *ldata);
 
 public slots:
 	void compute();
@@ -48,6 +49,9 @@ public slots:
 private:
 	std::shared_ptr < InnerModel > innerModel;
 	bool startup_check_flag;
+
+    enum State {IDLE, STRAIGHT, TURN, FOLLOW_WALL, SPIRAL};
+    State state = IDLE;
 
 };
 
