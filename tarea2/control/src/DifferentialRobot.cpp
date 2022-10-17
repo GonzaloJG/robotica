@@ -48,34 +48,34 @@
 namespace
 {
 
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_ids[2] =
-{
-    "::Ice::Object",
-    "::RoboCompDifferentialRobot::DifferentialRobot"
-};
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_ops[] =
-{
-    "correctOdometer",
-    "getBasePose",
-    "getBaseState",
-    "ice_id",
-    "ice_ids",
-    "ice_isA",
-    "ice_ping",
-    "resetOdometer",
-    "setOdometer",
-    "setOdometerPose",
-    "setSpeedBase",
-    "stopBase"
-};
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_correctOdometer_name = "correctOdometer";
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_getBasePose_name = "getBasePose";
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_getBaseState_name = "getBaseState";
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_resetOdometer_name = "resetOdometer";
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_setOdometer_name = "setOdometer";
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_setOdometerPose_name = "setOdometerPose";
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_setSpeedBase_name = "setSpeedBase";
-const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_stopBase_name = "stopBase";
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_ids[2] =
+            {
+                    "::Ice::Object",
+                    "::RoboCompDifferentialRobot::DifferentialRobot"
+            };
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_ops[] =
+            {
+                    "correctOdometer",
+                    "getBasePose",
+                    "getBaseState",
+                    "ice_id",
+                    "ice_ids",
+                    "ice_isA",
+                    "ice_ping",
+                    "resetOdometer",
+                    "setOdometer",
+                    "setOdometerPose",
+                    "setSpeedBase",
+                    "stopBase"
+            };
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_correctOdometer_name = "correctOdometer";
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_getBasePose_name = "getBasePose";
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_getBaseState_name = "getBaseState";
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_resetOdometer_name = "resetOdometer";
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_setOdometer_name = "setOdometer";
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_setOdometerPose_name = "setOdometerPose";
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_setSpeedBase_name = "setSpeedBase";
+    const ::std::string iceC_RoboCompDifferentialRobot_DifferentialRobot_stopBase_name = "stopBase";
 
 }
 
@@ -300,24 +300,24 @@ RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_correctOdometer(const ::s
 {
     _checkTwowayOnly(iceC_RoboCompDifferentialRobot_DifferentialRobot_correctOdometer_name);
     outAsync->invoke(iceC_RoboCompDifferentialRobot_DifferentialRobot_correctOdometer_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        [&](::Ice::OutputStream* ostr)
-        {
-            ostr->writeAll(iceP_x, iceP_z, iceP_alpha);
-        },
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const ::RoboCompGenericBase::HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        });
+                     [&](::Ice::OutputStream* ostr)
+                     {
+                         ostr->writeAll(iceP_x, iceP_z, iceP_alpha);
+                     },
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const ::RoboCompGenericBase::HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     });
 }
 /// \endcond
 
@@ -327,27 +327,27 @@ RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_getBasePose(const ::std::
 {
     _checkTwowayOnly(iceC_RoboCompDifferentialRobot_DifferentialRobot_getBasePose_name);
     outAsync->invoke(iceC_RoboCompDifferentialRobot_DifferentialRobot_getBasePose_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const ::RoboCompGenericBase::HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        },
-        [](::Ice::InputStream* istr)
-        {
-            DifferentialRobot::GetBasePoseResult v;
-            istr->readAll(v.x, v.z, v.alpha);
-            return v;
-        });
+                     nullptr,
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const ::RoboCompGenericBase::HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     },
+                     [](::Ice::InputStream* istr)
+                     {
+                         DifferentialRobot::GetBasePoseResult v;
+                         istr->readAll(v.x, v.z, v.alpha);
+                         return v;
+                     });
 }
 /// \endcond
 
@@ -357,21 +357,21 @@ RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_getBaseState(const ::std:
 {
     _checkTwowayOnly(iceC_RoboCompDifferentialRobot_DifferentialRobot_getBaseState_name);
     outAsync->invoke(iceC_RoboCompDifferentialRobot_DifferentialRobot_getBaseState_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const ::RoboCompGenericBase::HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        });
+                     nullptr,
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const ::RoboCompGenericBase::HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     });
 }
 /// \endcond
 
@@ -381,21 +381,21 @@ RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_resetOdometer(const ::std
 {
     _checkTwowayOnly(iceC_RoboCompDifferentialRobot_DifferentialRobot_resetOdometer_name);
     outAsync->invoke(iceC_RoboCompDifferentialRobot_DifferentialRobot_resetOdometer_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const ::RoboCompGenericBase::HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        });
+                     nullptr,
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const ::RoboCompGenericBase::HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     });
 }
 /// \endcond
 
@@ -405,24 +405,24 @@ RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_setOdometer(const ::std::
 {
     _checkTwowayOnly(iceC_RoboCompDifferentialRobot_DifferentialRobot_setOdometer_name);
     outAsync->invoke(iceC_RoboCompDifferentialRobot_DifferentialRobot_setOdometer_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        [&](::Ice::OutputStream* ostr)
-        {
-            ostr->writeAll(iceP_state);
-        },
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const ::RoboCompGenericBase::HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        });
+                     [&](::Ice::OutputStream* ostr)
+                     {
+                         ostr->writeAll(iceP_state);
+                     },
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const ::RoboCompGenericBase::HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     });
 }
 /// \endcond
 
@@ -432,24 +432,24 @@ RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_setOdometerPose(const ::s
 {
     _checkTwowayOnly(iceC_RoboCompDifferentialRobot_DifferentialRobot_setOdometerPose_name);
     outAsync->invoke(iceC_RoboCompDifferentialRobot_DifferentialRobot_setOdometerPose_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        [&](::Ice::OutputStream* ostr)
-        {
-            ostr->writeAll(iceP_x, iceP_z, iceP_alpha);
-        },
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const ::RoboCompGenericBase::HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        });
+                     [&](::Ice::OutputStream* ostr)
+                     {
+                         ostr->writeAll(iceP_x, iceP_z, iceP_alpha);
+                     },
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const ::RoboCompGenericBase::HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     });
 }
 /// \endcond
 
@@ -459,24 +459,24 @@ RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_setSpeedBase(const ::std:
 {
     _checkTwowayOnly(iceC_RoboCompDifferentialRobot_DifferentialRobot_setSpeedBase_name);
     outAsync->invoke(iceC_RoboCompDifferentialRobot_DifferentialRobot_setSpeedBase_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        [&](::Ice::OutputStream* ostr)
-        {
-            ostr->writeAll(iceP_adv, iceP_rot);
-        },
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const ::RoboCompGenericBase::HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        });
+                     [&](::Ice::OutputStream* ostr)
+                     {
+                         ostr->writeAll(iceP_adv, iceP_rot);
+                     },
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const ::RoboCompGenericBase::HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     });
 }
 /// \endcond
 
@@ -486,21 +486,21 @@ RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_stopBase(const ::std::sha
 {
     _checkTwowayOnly(iceC_RoboCompDifferentialRobot_DifferentialRobot_stopBase_name);
     outAsync->invoke(iceC_RoboCompDifferentialRobot_DifferentialRobot_stopBase_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const ::RoboCompGenericBase::HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        });
+                     nullptr,
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const ::RoboCompGenericBase::HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     });
 }
 /// \endcond
 

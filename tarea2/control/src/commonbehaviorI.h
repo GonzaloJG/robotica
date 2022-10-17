@@ -34,19 +34,19 @@
 class CommonBehaviorI : public virtual RoboCompCommonBehavior::CommonBehavior
 {
 public:
-	CommonBehaviorI( GenericMonitor *_monitor );
+    CommonBehaviorI( GenericMonitor *_monitor );
 
-	int getPeriod( const Ice::Current & = Ice::Current());
-	void setPeriod(int period, const Ice::Current & = Ice::Current());
-	int timeAwake( const Ice::Current & = Ice::Current());
-	void killYourSelf( const Ice::Current & = Ice::Current());
-	RoboCompCommonBehavior::ParameterList getParameterList( const Ice::Current & = Ice::Current());
-	void setParameterList( RoboCompCommonBehavior::ParameterList l, const Ice::Current & = Ice::Current());
-	void reloadConfig( const Ice::Current& = Ice::Current());
-	RoboCompCommonBehavior::State getState(const Ice::Current& = Ice::Current());
+    int getPeriod( const Ice::Current & = Ice::Current());
+    void setPeriod(int period, const Ice::Current & = Ice::Current());
+    int timeAwake( const Ice::Current & = Ice::Current());
+    void killYourSelf( const Ice::Current & = Ice::Current());
+    RoboCompCommonBehavior::ParameterList getParameterList( const Ice::Current & = Ice::Current());
+    void setParameterList( RoboCompCommonBehavior::ParameterList l, const Ice::Current & = Ice::Current());
+    void reloadConfig( const Ice::Current& = Ice::Current());
+    RoboCompCommonBehavior::State getState(const Ice::Current& = Ice::Current());
 
 private:
-	GenericMonitor *monitor;	///*<monitor Pointer to access monitor methods. It's used to set or read component configuration.
+    GenericMonitor *monitor;	///*<monitor Pointer to access monitor methods. It's used to set or read component configuration.
 
 };
 

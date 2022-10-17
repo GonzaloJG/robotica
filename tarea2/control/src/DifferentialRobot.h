@@ -53,372 +53,372 @@
 namespace RoboCompDifferentialRobot
 {
 
-class DifferentialRobot;
-class DifferentialRobotPrx;
+    class DifferentialRobot;
+    class DifferentialRobotPrx;
 
 }
 
 namespace RoboCompDifferentialRobot
 {
 
-struct TMechParams
-{
-    int wheelRadius;
-    int axisLength;
-    int encoderSteps;
-    int gearRatio;
-    float temp;
-    ::std::string device;
-    ::std::string handler;
-    float maxVelAdv;
-    float maxVelRot;
-
-    /**
-     * Obtains a tuple containing all of the struct's data members.
-     * @return The data members in a tuple.
-     */
-    std::tuple<const int&, const int&, const int&, const int&, const float&, const ::std::string&, const ::std::string&, const float&, const float&> ice_tuple() const
+    struct TMechParams
     {
-        return std::tie(wheelRadius, axisLength, encoderSteps, gearRatio, temp, device, handler, maxVelAdv, maxVelRot);
-    }
-};
+        int wheelRadius;
+        int axisLength;
+        int encoderSteps;
+        int gearRatio;
+        float temp;
+        ::std::string device;
+        ::std::string handler;
+        float maxVelAdv;
+        float maxVelRot;
 
-using Ice::operator<;
-using Ice::operator<=;
-using Ice::operator>;
-using Ice::operator>=;
-using Ice::operator==;
-using Ice::operator!=;
-
-}
-
-namespace RoboCompDifferentialRobot
-{
-
-class DifferentialRobot : public virtual ::Ice::Object
-{
-public:
-
-    using ProxyType = DifferentialRobotPrx;
-
-    /**
-     * Determines whether this object supports an interface with the given Slice type ID.
-     * @param id The fully-scoped Slice type ID.
-     * @param current The Current object for the invocation.
-     * @return True if this object supports the interface, false, otherwise.
-     */
-    virtual bool ice_isA(::std::string id, const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains a list of the Slice type IDs representing the interfaces supported by this object.
-     * @param current The Current object for the invocation.
-     * @return A list of fully-scoped type IDs.
-     */
-    virtual ::std::vector<::std::string> ice_ids(const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains a Slice type ID representing the most-derived interface supported by this object.
-     * @param current The Current object for the invocation.
-     * @return A fully-scoped type ID.
-     */
-    virtual ::std::string ice_id(const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains the Slice type ID corresponding to this class.
-     * @return A fully-scoped type ID.
-     */
-    static const ::std::string& ice_staticId();
-
-    virtual void correctOdometer(int x, int z, float alpha, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_correctOdometer(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    /**
-     * Encapsulates the results of a call to getBasePose.
-     */
-    struct GetBasePoseResult
-    {
-        int x;
-        int z;
-        float alpha;
+        /**
+         * Obtains a tuple containing all of the struct's data members.
+         * @return The data members in a tuple.
+         */
+        std::tuple<const int&, const int&, const int&, const int&, const float&, const ::std::string&, const ::std::string&, const float&, const float&> ice_tuple() const
+        {
+            return std::tie(wheelRadius, axisLength, encoderSteps, gearRatio, temp, device, handler, maxVelAdv, maxVelRot);
+        }
     };
 
-    virtual void getBasePose(int& x, int& z, float& alpha, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getBasePose(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void getBaseState(::RoboCompGenericBase::TBaseState& state, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getBaseState(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void resetOdometer(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_resetOdometer(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void setOdometer(::RoboCompGenericBase::TBaseState state, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_setOdometer(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void setOdometerPose(int x, int z, float alpha, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_setOdometerPose(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void setSpeedBase(float adv, float rot, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_setSpeedBase(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void stopBase(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_stopBase(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    /// \cond INTERNAL
-    virtual bool _iceDispatch(::IceInternal::Incoming&, const ::Ice::Current&) override;
-    /// \endcond
-};
+    using Ice::operator<;
+    using Ice::operator<=;
+    using Ice::operator>;
+    using Ice::operator>=;
+    using Ice::operator==;
+    using Ice::operator!=;
 
 }
 
 namespace RoboCompDifferentialRobot
 {
 
-class DifferentialRobotPrx : public virtual ::Ice::Proxy<DifferentialRobotPrx, ::Ice::ObjectPrx>
-{
-public:
-
-    void correctOdometer(int x, int z, float alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
+    class DifferentialRobot : public virtual ::Ice::Object
     {
-        _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_correctOdometer, x, z, alpha, context).get();
-    }
+    public:
 
-    template<template<typename> class P = ::std::promise>
-    auto correctOdometerAsync(int x, int z, float alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
-        -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_correctOdometer, x, z, alpha, context);
-    }
+        using ProxyType = DifferentialRobotPrx;
 
-    ::std::function<void()>
-    correctOdometerAsync(int x, int z, float alpha,
-                         ::std::function<void()> response,
-                         ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                         ::std::function<void(bool)> sent = nullptr,
-                         const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_correctOdometer, x, z, alpha, context);
-    }
+        /**
+         * Determines whether this object supports an interface with the given Slice type ID.
+         * @param id The fully-scoped Slice type ID.
+         * @param current The Current object for the invocation.
+         * @return True if this object supports the interface, false, otherwise.
+         */
+        virtual bool ice_isA(::std::string id, const ::Ice::Current& current) const override;
 
-    /// \cond INTERNAL
-    void _iceI_correctOdometer(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, int, int, float, const ::Ice::Context&);
-    /// \endcond
+        /**
+         * Obtains a list of the Slice type IDs representing the interfaces supported by this object.
+         * @param current The Current object for the invocation.
+         * @return A list of fully-scoped type IDs.
+         */
+        virtual ::std::vector<::std::string> ice_ids(const ::Ice::Current& current) const override;
 
-    void getBasePose(int& x, int& z, float& alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        auto _result = _makePromiseOutgoing<DifferentialRobot::GetBasePoseResult>(true, this, &DifferentialRobotPrx::_iceI_getBasePose, context).get();
-        x = _result.x;
-        z = _result.z;
-        alpha = _result.alpha;
-    }
+        /**
+         * Obtains a Slice type ID representing the most-derived interface supported by this object.
+         * @param current The Current object for the invocation.
+         * @return A fully-scoped type ID.
+         */
+        virtual ::std::string ice_id(const ::Ice::Current& current) const override;
 
-    template<template<typename> class P = ::std::promise>
-    auto getBasePoseAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
-        -> decltype(::std::declval<P<DifferentialRobot::GetBasePoseResult>>().get_future())
-    {
-        return _makePromiseOutgoing<DifferentialRobot::GetBasePoseResult, P>(false, this, &DifferentialRobotPrx::_iceI_getBasePose, context);
-    }
+        /**
+         * Obtains the Slice type ID corresponding to this class.
+         * @return A fully-scoped type ID.
+         */
+        static const ::std::string& ice_staticId();
 
-    ::std::function<void()>
-    getBasePoseAsync(::std::function<void(int, int, float)> response,
-                     ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                     ::std::function<void(bool)> sent = nullptr,
-                     const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        auto _responseCb = [response](DifferentialRobot::GetBasePoseResult&& _result)
+        virtual void correctOdometer(int x, int z, float alpha, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_correctOdometer(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        /**
+         * Encapsulates the results of a call to getBasePose.
+         */
+        struct GetBasePoseResult
         {
-            response(_result.x, _result.z, _result.alpha);
+            int x;
+            int z;
+            float alpha;
         };
-        return _makeLamdaOutgoing<DifferentialRobot::GetBasePoseResult>(std::move(_responseCb), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_getBasePose, context);
-    }
 
-    /// \cond INTERNAL
-    void _iceI_getBasePose(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<DifferentialRobot::GetBasePoseResult>>&, const ::Ice::Context&);
-    /// \endcond
+        virtual void getBasePose(int& x, int& z, float& alpha, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getBasePose(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
 
-    void getBaseState(::RoboCompGenericBase::TBaseState& state, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        virtual void getBaseState(::RoboCompGenericBase::TBaseState& state, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getBaseState(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual void resetOdometer(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_resetOdometer(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual void setOdometer(::RoboCompGenericBase::TBaseState state, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_setOdometer(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual void setOdometerPose(int x, int z, float alpha, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_setOdometerPose(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual void setSpeedBase(float adv, float rot, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_setSpeedBase(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual void stopBase(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_stopBase(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        /// \cond INTERNAL
+        virtual bool _iceDispatch(::IceInternal::Incoming&, const ::Ice::Current&) override;
+        /// \endcond
+    };
+
+}
+
+namespace RoboCompDifferentialRobot
+{
+
+    class DifferentialRobotPrx : public virtual ::Ice::Proxy<DifferentialRobotPrx, ::Ice::ObjectPrx>
     {
-        state = _makePromiseOutgoing<::RoboCompGenericBase::TBaseState>(true, this, &DifferentialRobotPrx::_iceI_getBaseState, context).get();
-    }
+    public:
 
-    template<template<typename> class P = ::std::promise>
-    auto getBaseStateAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        void correctOdometer(int x, int z, float alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_correctOdometer, x, z, alpha, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto correctOdometerAsync(int x, int z, float alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        -> decltype(::std::declval<P<void>>().get_future())
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_correctOdometer, x, z, alpha, context);
+        }
+
+        ::std::function<void()>
+        correctOdometerAsync(int x, int z, float alpha,
+                             ::std::function<void()> response,
+                             ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                             ::std::function<void(bool)> sent = nullptr,
+                             const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_correctOdometer, x, z, alpha, context);
+        }
+
+        /// \cond INTERNAL
+        void _iceI_correctOdometer(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, int, int, float, const ::Ice::Context&);
+        /// \endcond
+
+        void getBasePose(int& x, int& z, float& alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            auto _result = _makePromiseOutgoing<DifferentialRobot::GetBasePoseResult>(true, this, &DifferentialRobotPrx::_iceI_getBasePose, context).get();
+            x = _result.x;
+            z = _result.z;
+            alpha = _result.alpha;
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto getBasePoseAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        -> decltype(::std::declval<P<DifferentialRobot::GetBasePoseResult>>().get_future())
+        {
+            return _makePromiseOutgoing<DifferentialRobot::GetBasePoseResult, P>(false, this, &DifferentialRobotPrx::_iceI_getBasePose, context);
+        }
+
+        ::std::function<void()>
+        getBasePoseAsync(::std::function<void(int, int, float)> response,
+                         ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                         ::std::function<void(bool)> sent = nullptr,
+                         const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            auto _responseCb = [response](DifferentialRobot::GetBasePoseResult&& _result)
+            {
+                response(_result.x, _result.z, _result.alpha);
+            };
+            return _makeLamdaOutgoing<DifferentialRobot::GetBasePoseResult>(std::move(_responseCb), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_getBasePose, context);
+        }
+
+        /// \cond INTERNAL
+        void _iceI_getBasePose(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<DifferentialRobot::GetBasePoseResult>>&, const ::Ice::Context&);
+        /// \endcond
+
+        void getBaseState(::RoboCompGenericBase::TBaseState& state, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            state = _makePromiseOutgoing<::RoboCompGenericBase::TBaseState>(true, this, &DifferentialRobotPrx::_iceI_getBaseState, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto getBaseStateAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<::RoboCompGenericBase::TBaseState>>().get_future())
-    {
-        return _makePromiseOutgoing<::RoboCompGenericBase::TBaseState, P>(false, this, &DifferentialRobotPrx::_iceI_getBaseState, context);
-    }
+        {
+            return _makePromiseOutgoing<::RoboCompGenericBase::TBaseState, P>(false, this, &DifferentialRobotPrx::_iceI_getBaseState, context);
+        }
 
-    ::std::function<void()>
-    getBaseStateAsync(::std::function<void(::RoboCompGenericBase::TBaseState)> response,
-                      ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                      ::std::function<void(bool)> sent = nullptr,
-                      const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<::RoboCompGenericBase::TBaseState>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_getBaseState, context);
-    }
+        ::std::function<void()>
+        getBaseStateAsync(::std::function<void(::RoboCompGenericBase::TBaseState)> response,
+                          ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                          ::std::function<void(bool)> sent = nullptr,
+                          const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<::RoboCompGenericBase::TBaseState>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_getBaseState, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_getBaseState(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompGenericBase::TBaseState>>&, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_getBaseState(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompGenericBase::TBaseState>>&, const ::Ice::Context&);
+        /// \endcond
 
-    void resetOdometer(const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_resetOdometer, context).get();
-    }
+        void resetOdometer(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_resetOdometer, context).get();
+        }
 
-    template<template<typename> class P = ::std::promise>
-    auto resetOdometerAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        template<template<typename> class P = ::std::promise>
+        auto resetOdometerAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_resetOdometer, context);
-    }
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_resetOdometer, context);
+        }
 
-    ::std::function<void()>
-    resetOdometerAsync(::std::function<void()> response,
-                       ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                       ::std::function<void(bool)> sent = nullptr,
-                       const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_resetOdometer, context);
-    }
+        ::std::function<void()>
+        resetOdometerAsync(::std::function<void()> response,
+                           ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                           ::std::function<void(bool)> sent = nullptr,
+                           const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_resetOdometer, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_resetOdometer(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_resetOdometer(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::Ice::Context&);
+        /// \endcond
 
-    void setOdometer(const ::RoboCompGenericBase::TBaseState& state, const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_setOdometer, state, context).get();
-    }
+        void setOdometer(const ::RoboCompGenericBase::TBaseState& state, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_setOdometer, state, context).get();
+        }
 
-    template<template<typename> class P = ::std::promise>
-    auto setOdometerAsync(const ::RoboCompGenericBase::TBaseState& state, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        template<template<typename> class P = ::std::promise>
+        auto setOdometerAsync(const ::RoboCompGenericBase::TBaseState& state, const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_setOdometer, state, context);
-    }
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_setOdometer, state, context);
+        }
 
-    ::std::function<void()>
-    setOdometerAsync(const ::RoboCompGenericBase::TBaseState& state,
-                     ::std::function<void()> response,
-                     ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                     ::std::function<void(bool)> sent = nullptr,
-                     const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_setOdometer, state, context);
-    }
-
-    /// \cond INTERNAL
-    void _iceI_setOdometer(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::RoboCompGenericBase::TBaseState&, const ::Ice::Context&);
-    /// \endcond
-
-    void setOdometerPose(int x, int z, float alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_setOdometerPose, x, z, alpha, context).get();
-    }
-
-    template<template<typename> class P = ::std::promise>
-    auto setOdometerPoseAsync(int x, int z, float alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
-        -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_setOdometerPose, x, z, alpha, context);
-    }
-
-    ::std::function<void()>
-    setOdometerPoseAsync(int x, int z, float alpha,
+        ::std::function<void()>
+        setOdometerAsync(const ::RoboCompGenericBase::TBaseState& state,
                          ::std::function<void()> response,
                          ::std::function<void(::std::exception_ptr)> ex = nullptr,
                          ::std::function<void(bool)> sent = nullptr,
                          const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_setOdometerPose, x, z, alpha, context);
-    }
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_setOdometer, state, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_setOdometerPose(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, int, int, float, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_setOdometer(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::RoboCompGenericBase::TBaseState&, const ::Ice::Context&);
+        /// \endcond
 
-    void setSpeedBase(float adv, float rot, const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_setSpeedBase, adv, rot, context).get();
-    }
+        void setOdometerPose(int x, int z, float alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_setOdometerPose, x, z, alpha, context).get();
+        }
 
-    template<template<typename> class P = ::std::promise>
-    auto setSpeedBaseAsync(float adv, float rot, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        template<template<typename> class P = ::std::promise>
+        auto setOdometerPoseAsync(int x, int z, float alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_setSpeedBase, adv, rot, context);
-    }
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_setOdometerPose, x, z, alpha, context);
+        }
 
-    ::std::function<void()>
-    setSpeedBaseAsync(float adv, float rot,
-                      ::std::function<void()> response,
+        ::std::function<void()>
+        setOdometerPoseAsync(int x, int z, float alpha,
+                             ::std::function<void()> response,
+                             ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                             ::std::function<void(bool)> sent = nullptr,
+                             const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_setOdometerPose, x, z, alpha, context);
+        }
+
+        /// \cond INTERNAL
+        void _iceI_setOdometerPose(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, int, int, float, const ::Ice::Context&);
+        /// \endcond
+
+        void setSpeedBase(float adv, float rot, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_setSpeedBase, adv, rot, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto setSpeedBaseAsync(float adv, float rot, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        -> decltype(::std::declval<P<void>>().get_future())
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_setSpeedBase, adv, rot, context);
+        }
+
+        ::std::function<void()>
+        setSpeedBaseAsync(float adv, float rot,
+                          ::std::function<void()> response,
+                          ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                          ::std::function<void(bool)> sent = nullptr,
+                          const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_setSpeedBase, adv, rot, context);
+        }
+
+        /// \cond INTERNAL
+        void _iceI_setSpeedBase(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, float, float, const ::Ice::Context&);
+        /// \endcond
+
+        void stopBase(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_stopBase, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto stopBaseAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        -> decltype(::std::declval<P<void>>().get_future())
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_stopBase, context);
+        }
+
+        ::std::function<void()>
+        stopBaseAsync(::std::function<void()> response,
                       ::std::function<void(::std::exception_ptr)> ex = nullptr,
                       ::std::function<void(bool)> sent = nullptr,
                       const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_setSpeedBase, adv, rot, context);
-    }
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_stopBase, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_setSpeedBase(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, float, float, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_stopBase(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::Ice::Context&);
+        /// \endcond
 
-    void stopBase(const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        _makePromiseOutgoing<void>(true, this, &DifferentialRobotPrx::_iceI_stopBase, context).get();
-    }
+        /**
+         * Obtains the Slice type ID of this interface.
+         * @return The fully-scoped type ID.
+         */
+        static const ::std::string& ice_staticId();
 
-    template<template<typename> class P = ::std::promise>
-    auto stopBaseAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
-        -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &DifferentialRobotPrx::_iceI_stopBase, context);
-    }
+    protected:
 
-    ::std::function<void()>
-    stopBaseAsync(::std::function<void()> response,
-                  ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                  ::std::function<void(bool)> sent = nullptr,
-                  const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompDifferentialRobot::DifferentialRobotPrx::_iceI_stopBase, context);
-    }
+        /// \cond INTERNAL
+        DifferentialRobotPrx() = default;
+        friend ::std::shared_ptr<DifferentialRobotPrx> IceInternal::createProxy<DifferentialRobotPrx>();
 
-    /// \cond INTERNAL
-    void _iceI_stopBase(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::Ice::Context&);
-    /// \endcond
-
-    /**
-     * Obtains the Slice type ID of this interface.
-     * @return The fully-scoped type ID.
-     */
-    static const ::std::string& ice_staticId();
-
-protected:
-
-    /// \cond INTERNAL
-    DifferentialRobotPrx() = default;
-    friend ::std::shared_ptr<DifferentialRobotPrx> IceInternal::createProxy<DifferentialRobotPrx>();
-
-    virtual ::std::shared_ptr<::Ice::ObjectPrx> _newInstance() const override;
-    /// \endcond
-};
+        virtual ::std::shared_ptr<::Ice::ObjectPrx> _newInstance() const override;
+        /// \endcond
+    };
 
 }
 
@@ -426,22 +426,22 @@ protected:
 namespace Ice
 {
 
-template<>
-struct StreamableTraits<::RoboCompDifferentialRobot::TMechParams>
-{
-    static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 30;
-    static const bool fixedLength = false;
-};
-
-template<typename S>
-struct StreamReader<::RoboCompDifferentialRobot::TMechParams, S>
-{
-    static void read(S* istr, ::RoboCompDifferentialRobot::TMechParams& v)
+    template<>
+    struct StreamableTraits<::RoboCompDifferentialRobot::TMechParams>
     {
-        istr->readAll(v.wheelRadius, v.axisLength, v.encoderSteps, v.gearRatio, v.temp, v.device, v.handler, v.maxVelAdv, v.maxVelRot);
-    }
-};
+        static const StreamHelperCategory helper = StreamHelperCategoryStruct;
+        static const int minWireSize = 30;
+        static const bool fixedLength = false;
+    };
+
+    template<typename S>
+    struct StreamReader<::RoboCompDifferentialRobot::TMechParams, S>
+    {
+        static void read(S* istr, ::RoboCompDifferentialRobot::TMechParams& v)
+        {
+            istr->readAll(v.wheelRadius, v.axisLength, v.encoderSteps, v.gearRatio, v.temp, v.device, v.handler, v.maxVelAdv, v.maxVelRot);
+        }
+    };
 
 }
 /// \endcond
@@ -450,8 +450,8 @@ struct StreamReader<::RoboCompDifferentialRobot::TMechParams, S>
 namespace RoboCompDifferentialRobot
 {
 
-using DifferentialRobotPtr = ::std::shared_ptr<DifferentialRobot>;
-using DifferentialRobotPrxPtr = ::std::shared_ptr<DifferentialRobotPrx>;
+    using DifferentialRobotPtr = ::std::shared_ptr<DifferentialRobot>;
+    using DifferentialRobotPrxPtr = ::std::shared_ptr<DifferentialRobotPrx>;
 
 }
 /// \endcond

@@ -1,4 +1,3 @@
-
 /*
  *    Copyright (C) 2022 by YOUR NAME HERE
  *
@@ -15,14 +14,13 @@
  *    GNU General Public License for more details.
  *
  *    You should have received a copy of the GNU General Public License
- *    along with RoboComp.  If not, see <http://www.gnu.org/licenses/>.
+ *    along with RoboComp.  If not, see http://www.gnu.org/licenses/.
  */
 
 /**
-	\brief
-	@author authorname
+    \brief
+    @author authorname
 */
-
 
 
 #ifndef SPECIFICWORKER_H
@@ -30,28 +28,46 @@
 
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
+#include <ranges>
+
+
+#define MAX_ADV_SPEED 1500
+#define MAX_ROT_SPPED 1.2
+#define MAX_DIST_PARADA 1200
 
 class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
 public:
-	SpecificWorker(TuplePrx tprx, bool startup_check);
-	~SpecificWorker();
-	bool setParams(RoboCompCommonBehavior::ParameterList params);
+    SpecificWorker(TuplePrx tprx, bool startup_check);
+    ~SpecificWorker();
+    bool setParams(RoboCompCommonBehavior::ParameterList params);
 
-    std::tuple<float, float> fSTRAIGHT(RoboCompLaser::TLaserData *ldata);
-    std::tuple<float, float> fTURN(RoboCompLaser::TLaserData *ldata);
+    float realizarMedia(RoboCompLaser::TLaserData &copy);
+    tuple<float, float> fIDLE(RoboCompLaser::TLaserData &ldata);
+    tuple<float, float> fFORWARD(RoboCompLaser::TLaserData &ldata);
+    tuple<float, float> fTURN(RoboCompLaser::TLaserData &ldata);
+    tuple<float, float> fFOLLOW_WALL(RoboCompLaser::TLaserData &ldata);
+    tuple<float, float> fSPIRAL(RoboCompLaser::TLaserData &ldata);
+
 
 public slots:
-	void compute();
-	int startup_check();
-	void initialize(int period);
-private:
-	std::shared_ptr < InnerModel > innerModel;
-	bool startup_check_flag;
+    void compute();
+    int startup_check();
+    void initialize(int period);
 
-    enum State {IDLE, STRAIGHT, TURN, FOLLOW_WALL, SPIRAL};
-    State state = IDLE;
+
+private:
+    std::shared_ptr < InnerModel > innerModel;
+    bool startup_check_flag;
+
+    enum class State {IDLE, FORWARD, TURN, FOLLOW_WALL, SPIRAL};
+    State state = State::IDLE;
+
+    bool objeto=false;
+    float addvSpiral = 1;
+    float rotSpiral = MAX_ROT_SPPED;
+
 
 };
 

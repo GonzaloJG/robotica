@@ -22,25 +22,25 @@
 */
 SpecificMonitor::SpecificMonitor(GenericWorker *_worker,Ice::CommunicatorPtr _communicator):GenericMonitor(_worker, _communicator)
 {
-	ready = false;
+    ready = false;
 }
 /**
 * \brief Default destructor
 */
 SpecificMonitor::~SpecificMonitor()
 {
-	std::cout << "Destroying SpecificMonitor" << std::endl;
+    std::cout << "Destroying SpecificMonitor" << std::endl;
 }
 
 void SpecificMonitor::run()
 {
-	initialize();
-	ready = true;
-	forever
-	{
-		//rDebug("specific monitor run");
-		this->sleep(period);
-	}
+    initialize();
+    ready = true;
+    forever
+    {
+        //rDebug("specific monitor run");
+        this->sleep(period);
+    }
 }
 
 /**
@@ -51,33 +51,33 @@ void SpecificMonitor::run()
  */
 void SpecificMonitor::initialize()
 {
-	rInfo("Starting monitor ...");
-	initialTime=QTime::currentTime();
-	RoboCompCommonBehavior::ParameterList params;
-	readPConfParams(params);
-	readConfig(params);
-	if(!sendParamsToWorker(params))
-	{
-		rError("Error reading config parameters. Exiting");
-		killYourSelf();
-	}
-	state = RoboCompCommonBehavior::State::Running;
-	emit initializeWorker(period);
+    rInfo("Starting monitor ...");
+    initialTime=QTime::currentTime();
+    RoboCompCommonBehavior::ParameterList params;
+    readPConfParams(params);
+    readConfig(params);
+    if(!sendParamsToWorker(params))
+    {
+        rError("Error reading config parameters. Exiting");
+        killYourSelf();
+    }
+    state = RoboCompCommonBehavior::State::Running;
+    emit initializeWorker(period);
 }
 
 bool SpecificMonitor::sendParamsToWorker(RoboCompCommonBehavior::ParameterList params)
 {
-	if(checkParams(params))
-	{
-		//Set params to worker
-		if(worker->setParams(params)) 
-			return true;
-	}
-	else
-	{
-		rError("Incorrect parameters");
-	}
-	return false;
+    if(checkParams(params))
+    {
+        //Set params to worker
+        if(worker->setParams(params))
+            return true;
+    }
+    else
+    {
+        rError("Incorrect parameters");
+    }
+    return false;
 
 }
 
@@ -95,7 +95,6 @@ void SpecificMonitor::readConfig(RoboCompCommonBehavior::ParameterList &params )
 //Check parameters and transform them to worker structure
 bool SpecificMonitor::checkParams(RoboCompCommonBehavior::ParameterList l)
 {
-	bool correct = true;
-	return correct;
+    bool correct = true;
+    return correct;
 }
-

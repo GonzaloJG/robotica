@@ -21,12 +21,13 @@
 /**
 * \brief Default constructor
 */
+
 SpecificWorker::SpecificWorker(TuplePrx tprx, bool startup_check) : GenericWorker(tprx)
 {
-	this->startup_check_flag = startup_check;
-	// Uncomment if there's too many debug messages
-	// but it removes the possibility to see the messages
-	// shown in the console with qDebug()
+    this->startup_check_flag = startup_check;
+    // Uncomment if there's too many debug messages
+    // but it removes the possibility to see the messages
+    // shown in the console with qDebug()
 //	QLoggingCategory::setFilterRules("*.debug=false\n");
 }
 
@@ -35,8 +36,9 @@ SpecificWorker::SpecificWorker(TuplePrx tprx, bool startup_check) : GenericWorke
 */
 SpecificWorker::~SpecificWorker()
 {
-	std::cout << "Destroying SpecificWorker" << std::endl;
+    std::cout << "Destroying SpecificWorker" << std::endl;
 }
+
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
@@ -50,63 +52,152 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 //	}
 //	catch(const std::exception &e) { qFatal("Error reading config params"); }
 
-
-
-
-
-
-	return true;
+    return true;
 }
+
 
 void SpecificWorker::initialize(int period)
 {
-	std::cout << "Initialize worker" << std::endl;
-	this->Period = period;
-	if(this->startup_check_flag)
-	{
-		this->startup_check();
-	}
-	else
-	{
-		timer.start(Period);
-	}
+    std::cout << "Initialize worker" << std::endl;
+    this->Period = period;
+    if(this->startup_check_flag)
+    {
+        this->startup_check();
+    }
+    else
+    {
+        timer.start(Period);
+    }
 
 }
 
-std::tuple<float, float> SpecificWorker::fSTRAIGHT(RoboCompLaser::TLaserData *ldata){
-    const int part = 4;
-    RoboCompLaser::TLaserData copy(ldata->begin()+ldata->size()/part, ldata->end()-ldata->size()/part);
+
+float SpecificWorker::realizarMedia(RoboCompLaser::TLaserData &copy){
+    float suma=0, media;
+    for (double i=0; i < copy.size(); i++){
+        suma+=copy[i].dist;
+    }
+
+    media=suma/copy.size();
+
+    return media;
+}
+
+tuple<float, float> SpecificWorker::fIDLE(RoboCompLaser::TLaserData &ldata){
+    const int part = 3;
+    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
     std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
-    qInfo() <<"Recto:"<< copy.front().dist;
 
-    std::tuple<float, float> tuplaAux;
-    tuplaAux=make_tuple(1000, 0);
+    RoboCompLaser::TLaserData copyAll(ldata.begin(), ldata.end());
+    std::ranges::sort(copyAll, {},&RoboCompLaser::TData::dist);
 
-    if(copy.front().dist < 1000)
-    {
-        state=TURN;
+    tuple<float, float> tuplaAux = make_tuple(0,0);
+
+    qInfo() <<"IDLE:"<< " distancia:" <<copyAll.front().dist;
+
+    if(copy.front().dist < MAX_DIST_PARADA){
+        state=State::TURN;
+    } else {
+        if (copyAll.front().dist > 2000){
+            state = State::SPIRAL;
+            addvSpiral = 1;
+            rotSpiral = MAX_ROT_SPPED;
+        } else {
+            state=State::FORWARD;
+        }
     }
 
     return tuplaAux;
 }
 
-std::tuple<float, float> SpecificWorker::fTURN(RoboCompLaser::TLaserData *ldata){
-    const int part = 4;
-    RoboCompLaser::TLaserData copy(ldata->begin()+ldata->size()/part, ldata->end()-ldata->size()/part);
+
+tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaser::TLaserData &ldata){
+    const int part = 3;
+    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
     std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
-    qInfo() <<"Rotacion:"<< copy.front().dist;
 
-    std::tuple<float, float> tuplaAux;
-    tuplaAux=make_tuple(0, 0.7);
+    RoboCompLaser::TLaserData copyAll(ldata.begin(), ldata.end());
+    std::ranges::sort(copyAll, {},&RoboCompLaser::TData::dist);
 
-    if(copy.front().dist >= 1000)
+    qInfo() <<"FORWARD:"<< " distancia:" <<copy.front().dist;
+
+    tuple<float, float> tuplaAux;
+
+
+    if(copy.front().dist < MAX_DIST_PARADA)
     {
-        state=STRAIGHT;
+        state=State::TURN;
+        tuplaAux = make_tuple(0, 0);
+    } else {
+        if (copyAll.front().dist > 2000){
+            state = State::SPIRAL;
+            addvSpiral = 1;
+            rotSpiral = MAX_ROT_SPPED;
+            tuplaAux = make_tuple(0, 0);
+        } else {
+            tuplaAux = make_tuple(MAX_ADV_SPEED, 0);
+        }
     }
 
     return tuplaAux;
 }
 
+
+tuple<float, float> SpecificWorker::fTURN(RoboCompLaser::TLaserData &ldata){
+    const int part = 3;
+    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+
+    RoboCompLaser::TLaserData copyAll(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copyAll, {},&RoboCompLaser::TData::dist);
+
+    qInfo() <<"TURN:"<< " distancia:" <<copy.front().dist;
+
+    tuple<float, float> tuplaAux;
+
+    tuplaAux = make_tuple(0, 0.5);
+
+    if(copy.front().dist >= MAX_DIST_PARADA) {
+        //Comprobar si hay una pared a su izquierda o derecha y ver a que distancia está, si esta a una cierta distancia hacer el seguir pared sino hacer el FORWARD
+
+        state = State::FORWARD;
+        tuplaAux = make_tuple(0, 0);
+    }
+
+    return tuplaAux;
+}
+
+
+tuple<float, float> SpecificWorker::fFOLLOW_WALL(RoboCompLaser::TLaserData &ldata){
+    tuple<float, float> tuplaAux;
+
+
+    return tuplaAux;
+}
+
+
+tuple<float, float> SpecificWorker::fSPIRAL(RoboCompLaser::TLaserData &ldata){
+    const int part = 3;
+    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+
+    qInfo() <<"SPIRAL:"<< " distancia:" <<copy.front().dist;
+
+    tuple<float, float> tuplaAux = make_tuple(addvSpiral, rotSpiral);
+
+    if(addvSpiral < MAX_ADV_SPEED && rotSpiral > 0){
+        sleep(1);
+        addvSpiral+=50;
+        rotSpiral-=0.03;
+    }
+
+    if(copy.front().dist < MAX_DIST_PARADA){
+        state = State::TURN;
+        tuplaAux = make_tuple(0, 0);
+    }
+
+    return tuplaAux;
+}
 
 void SpecificWorker::compute()
 {
@@ -118,69 +209,49 @@ void SpecificWorker::compute()
     }
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; return ;}
 
-    const int part = 4;
-    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
-    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
-    //qInfo() << copy.front().dist;
 
-//    //el robot pienso lo que va hacer
-//    float addv = 600;
-//    float rot = 0;
-//    //ordenar por disctancia la seccion central del laser
-//    //si el primero es menos que un umbral parar y girar random hasta qwue el primero sea mayor que el segundo
-//    qInfo() << "antes" << copy.front().dist;
-//    if(copy.front().dist < 700)
-//    {
-//        addv = 0;
-//        rot = 0.7;
-//        qInfo() << copy.front().dist;
-//    }
-//    else
-//    {
-//         addv = 600;
-//         rot = 0;
-//    }
+    tuple<float, float> tuplaAux;
 
-    std::tuple<float, float> tuplaAux;
     switch(state){
-        case IDLE:
-            state=STRAIGHT;
+        case State::IDLE:
+            tuplaAux=fIDLE(ldata);
             break;
 
-        case STRAIGHT:
-            tuplaAux=fSTRAIGHT(&ldata);
+        case State::FORWARD:
+            tuplaAux=fFORWARD(ldata);
             break;
 
-        case TURN:
-            tuplaAux=fTURN(&ldata);
+        case State::TURN:
+            tuplaAux=fTURN(ldata);
             break;
-//        case FOLLOW_WALL:
-//
-//            break;
-//        case SPIRAL:
-//
-//            break;
+
+        case State::FOLLOW_WALL:
+
+            break;
+
+        case State::SPIRAL:
+            tuplaAux=fSPIRAL(ldata);
+            break;
 
     }
 
     //robot actua
     try
     {
+        qInfo()<< "addv: "<< get<0>(tuplaAux) << " rot:" << get<1>(tuplaAux);
         differentialrobot_proxy->setSpeedBase(get<0>(tuplaAux),get<1>(tuplaAux));
     }
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; }
 
-
 }
+
 
 int SpecificWorker::startup_check()
 {
-	std::cout << "Startup check" << std::endl;
-	QTimer::singleShot(200, qApp, SLOT(quit()));
-	return 0;
+    std::cout << "Startup check" << std::endl;
+    QTimer::singleShot(200, qApp, SLOT(quit()));
+    return 0;
 }
-
-
 
 
 /**************************************/
@@ -208,4 +279,3 @@ int SpecificWorker::startup_check()
 // From the RoboCompLaser you can use this types:
 // RoboCompLaser::LaserConfData
 // RoboCompLaser::TData
-

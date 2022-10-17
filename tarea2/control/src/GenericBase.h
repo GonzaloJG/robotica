@@ -52,229 +52,229 @@
 namespace RoboCompGenericBase
 {
 
-class GenericBase;
-class GenericBasePrx;
+    class GenericBase;
+    class GenericBasePrx;
 
 }
 
 namespace RoboCompGenericBase
 {
 
-class HardwareFailedException : public ::Ice::UserExceptionHelper<HardwareFailedException, ::Ice::UserException>
-{
-public:
-
-    virtual ~HardwareFailedException();
-
-    HardwareFailedException(const HardwareFailedException&) = default;
-
-    HardwareFailedException() = default;
-
-    /**
-     * One-shot constructor to initialize all data members.
-     */
-    HardwareFailedException(const ::std::string& what) :
-        what(what)
+    class HardwareFailedException : public ::Ice::UserExceptionHelper<HardwareFailedException, ::Ice::UserException>
     {
-    }
+    public:
 
-    /**
-     * Obtains a tuple containing all of the exception's data members.
-     * @return The data members in a tuple.
-     */
-    std::tuple<const ::std::string&> ice_tuple() const
-    {
-        return std::tie(what);
-    }
+        virtual ~HardwareFailedException();
 
-    /**
-     * Obtains the Slice type ID of this exception.
-     * @return The fully-scoped type ID.
-     */
-    static const ::std::string& ice_staticId();
+        HardwareFailedException(const HardwareFailedException&) = default;
 
-    ::std::string what;
-};
+        HardwareFailedException() = default;
 
-/// \cond INTERNAL
-static HardwareFailedException _iceS_HardwareFailedException_init;
-/// \endcond
+        /**
+         * One-shot constructor to initialize all data members.
+         */
+        HardwareFailedException(const ::std::string& what) :
+                what(what)
+        {
+        }
 
-struct TBaseState
-{
-    float x;
-    float correctedX;
-    float z;
-    float correctedZ;
-    float alpha;
-    float correctedAlpha;
-    float advVx;
-    float advVz;
-    float rotV;
-    bool isMoving;
+        /**
+         * Obtains a tuple containing all of the exception's data members.
+         * @return The data members in a tuple.
+         */
+        std::tuple<const ::std::string&> ice_tuple() const
+        {
+            return std::tie(what);
+        }
 
-    /**
-     * Obtains a tuple containing all of the struct's data members.
-     * @return The data members in a tuple.
-     */
-    std::tuple<const float&, const float&, const float&, const float&, const float&, const float&, const float&, const float&, const float&, const bool&> ice_tuple() const
-    {
-        return std::tie(x, correctedX, z, correctedZ, alpha, correctedAlpha, advVx, advVz, rotV, isMoving);
-    }
-};
+        /**
+         * Obtains the Slice type ID of this exception.
+         * @return The fully-scoped type ID.
+         */
+        static const ::std::string& ice_staticId();
 
-using Ice::operator<;
-using Ice::operator<=;
-using Ice::operator>;
-using Ice::operator>=;
-using Ice::operator==;
-using Ice::operator!=;
-
-}
-
-namespace RoboCompGenericBase
-{
-
-class GenericBase : public virtual ::Ice::Object
-{
-public:
-
-    using ProxyType = GenericBasePrx;
-
-    /**
-     * Determines whether this object supports an interface with the given Slice type ID.
-     * @param id The fully-scoped Slice type ID.
-     * @param current The Current object for the invocation.
-     * @return True if this object supports the interface, false, otherwise.
-     */
-    virtual bool ice_isA(::std::string id, const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains a list of the Slice type IDs representing the interfaces supported by this object.
-     * @param current The Current object for the invocation.
-     * @return A list of fully-scoped type IDs.
-     */
-    virtual ::std::vector<::std::string> ice_ids(const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains a Slice type ID representing the most-derived interface supported by this object.
-     * @param current The Current object for the invocation.
-     * @return A fully-scoped type ID.
-     */
-    virtual ::std::string ice_id(const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains the Slice type ID corresponding to this class.
-     * @return A fully-scoped type ID.
-     */
-    static const ::std::string& ice_staticId();
-
-    /**
-     * Encapsulates the results of a call to getBasePose.
-     */
-    struct GetBasePoseResult
-    {
-        int x;
-        int z;
-        float alpha;
+        ::std::string what;
     };
 
-    virtual void getBasePose(int& x, int& z, float& alpha, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getBasePose(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
+/// \cond INTERNAL
+    static HardwareFailedException _iceS_HardwareFailedException_init;
+/// \endcond
 
-    virtual void getBaseState(TBaseState& state, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getBaseState(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
+    struct TBaseState
+    {
+        float x;
+        float correctedX;
+        float z;
+        float correctedZ;
+        float alpha;
+        float correctedAlpha;
+        float advVx;
+        float advVz;
+        float rotV;
+        bool isMoving;
 
-    /// \cond INTERNAL
-    virtual bool _iceDispatch(::IceInternal::Incoming&, const ::Ice::Current&) override;
-    /// \endcond
-};
+        /**
+         * Obtains a tuple containing all of the struct's data members.
+         * @return The data members in a tuple.
+         */
+        std::tuple<const float&, const float&, const float&, const float&, const float&, const float&, const float&, const float&, const float&, const bool&> ice_tuple() const
+        {
+            return std::tie(x, correctedX, z, correctedZ, alpha, correctedAlpha, advVx, advVz, rotV, isMoving);
+        }
+    };
+
+    using Ice::operator<;
+    using Ice::operator<=;
+    using Ice::operator>;
+    using Ice::operator>=;
+    using Ice::operator==;
+    using Ice::operator!=;
 
 }
 
 namespace RoboCompGenericBase
 {
 
-class GenericBasePrx : public virtual ::Ice::Proxy<GenericBasePrx, ::Ice::ObjectPrx>
-{
-public:
-
-    void getBasePose(int& x, int& z, float& alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
+    class GenericBase : public virtual ::Ice::Object
     {
-        auto _result = _makePromiseOutgoing<GenericBase::GetBasePoseResult>(true, this, &GenericBasePrx::_iceI_getBasePose, context).get();
-        x = _result.x;
-        z = _result.z;
-        alpha = _result.alpha;
-    }
+    public:
 
-    template<template<typename> class P = ::std::promise>
-    auto getBasePoseAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
-        -> decltype(::std::declval<P<GenericBase::GetBasePoseResult>>().get_future())
-    {
-        return _makePromiseOutgoing<GenericBase::GetBasePoseResult, P>(false, this, &GenericBasePrx::_iceI_getBasePose, context);
-    }
+        using ProxyType = GenericBasePrx;
 
-    ::std::function<void()>
-    getBasePoseAsync(::std::function<void(int, int, float)> response,
-                     ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                     ::std::function<void(bool)> sent = nullptr,
-                     const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        auto _responseCb = [response](GenericBase::GetBasePoseResult&& _result)
+        /**
+         * Determines whether this object supports an interface with the given Slice type ID.
+         * @param id The fully-scoped Slice type ID.
+         * @param current The Current object for the invocation.
+         * @return True if this object supports the interface, false, otherwise.
+         */
+        virtual bool ice_isA(::std::string id, const ::Ice::Current& current) const override;
+
+        /**
+         * Obtains a list of the Slice type IDs representing the interfaces supported by this object.
+         * @param current The Current object for the invocation.
+         * @return A list of fully-scoped type IDs.
+         */
+        virtual ::std::vector<::std::string> ice_ids(const ::Ice::Current& current) const override;
+
+        /**
+         * Obtains a Slice type ID representing the most-derived interface supported by this object.
+         * @param current The Current object for the invocation.
+         * @return A fully-scoped type ID.
+         */
+        virtual ::std::string ice_id(const ::Ice::Current& current) const override;
+
+        /**
+         * Obtains the Slice type ID corresponding to this class.
+         * @return A fully-scoped type ID.
+         */
+        static const ::std::string& ice_staticId();
+
+        /**
+         * Encapsulates the results of a call to getBasePose.
+         */
+        struct GetBasePoseResult
         {
-            response(_result.x, _result.z, _result.alpha);
+            int x;
+            int z;
+            float alpha;
         };
-        return _makeLamdaOutgoing<GenericBase::GetBasePoseResult>(std::move(_responseCb), std::move(ex), std::move(sent), this, &RoboCompGenericBase::GenericBasePrx::_iceI_getBasePose, context);
-    }
 
-    /// \cond INTERNAL
-    void _iceI_getBasePose(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<GenericBase::GetBasePoseResult>>&, const ::Ice::Context&);
-    /// \endcond
+        virtual void getBasePose(int& x, int& z, float& alpha, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getBasePose(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
 
-    void getBaseState(TBaseState& state, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        virtual void getBaseState(TBaseState& state, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getBaseState(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        /// \cond INTERNAL
+        virtual bool _iceDispatch(::IceInternal::Incoming&, const ::Ice::Current&) override;
+        /// \endcond
+    };
+
+}
+
+namespace RoboCompGenericBase
+{
+
+    class GenericBasePrx : public virtual ::Ice::Proxy<GenericBasePrx, ::Ice::ObjectPrx>
     {
-        state = _makePromiseOutgoing<::RoboCompGenericBase::TBaseState>(true, this, &GenericBasePrx::_iceI_getBaseState, context).get();
-    }
+    public:
 
-    template<template<typename> class P = ::std::promise>
-    auto getBaseStateAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        void getBasePose(int& x, int& z, float& alpha, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            auto _result = _makePromiseOutgoing<GenericBase::GetBasePoseResult>(true, this, &GenericBasePrx::_iceI_getBasePose, context).get();
+            x = _result.x;
+            z = _result.z;
+            alpha = _result.alpha;
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto getBasePoseAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        -> decltype(::std::declval<P<GenericBase::GetBasePoseResult>>().get_future())
+        {
+            return _makePromiseOutgoing<GenericBase::GetBasePoseResult, P>(false, this, &GenericBasePrx::_iceI_getBasePose, context);
+        }
+
+        ::std::function<void()>
+        getBasePoseAsync(::std::function<void(int, int, float)> response,
+                         ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                         ::std::function<void(bool)> sent = nullptr,
+                         const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            auto _responseCb = [response](GenericBase::GetBasePoseResult&& _result)
+            {
+                response(_result.x, _result.z, _result.alpha);
+            };
+            return _makeLamdaOutgoing<GenericBase::GetBasePoseResult>(std::move(_responseCb), std::move(ex), std::move(sent), this, &RoboCompGenericBase::GenericBasePrx::_iceI_getBasePose, context);
+        }
+
+        /// \cond INTERNAL
+        void _iceI_getBasePose(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<GenericBase::GetBasePoseResult>>&, const ::Ice::Context&);
+        /// \endcond
+
+        void getBaseState(TBaseState& state, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            state = _makePromiseOutgoing<::RoboCompGenericBase::TBaseState>(true, this, &GenericBasePrx::_iceI_getBaseState, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto getBaseStateAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<::RoboCompGenericBase::TBaseState>>().get_future())
-    {
-        return _makePromiseOutgoing<::RoboCompGenericBase::TBaseState, P>(false, this, &GenericBasePrx::_iceI_getBaseState, context);
-    }
+        {
+            return _makePromiseOutgoing<::RoboCompGenericBase::TBaseState, P>(false, this, &GenericBasePrx::_iceI_getBaseState, context);
+        }
 
-    ::std::function<void()>
-    getBaseStateAsync(::std::function<void(::RoboCompGenericBase::TBaseState)> response,
-                      ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                      ::std::function<void(bool)> sent = nullptr,
-                      const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<::RoboCompGenericBase::TBaseState>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompGenericBase::GenericBasePrx::_iceI_getBaseState, context);
-    }
+        ::std::function<void()>
+        getBaseStateAsync(::std::function<void(::RoboCompGenericBase::TBaseState)> response,
+                          ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                          ::std::function<void(bool)> sent = nullptr,
+                          const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<::RoboCompGenericBase::TBaseState>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompGenericBase::GenericBasePrx::_iceI_getBaseState, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_getBaseState(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompGenericBase::TBaseState>>&, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_getBaseState(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompGenericBase::TBaseState>>&, const ::Ice::Context&);
+        /// \endcond
 
-    /**
-     * Obtains the Slice type ID of this interface.
-     * @return The fully-scoped type ID.
-     */
-    static const ::std::string& ice_staticId();
+        /**
+         * Obtains the Slice type ID of this interface.
+         * @return The fully-scoped type ID.
+         */
+        static const ::std::string& ice_staticId();
 
-protected:
+    protected:
 
-    /// \cond INTERNAL
-    GenericBasePrx() = default;
-    friend ::std::shared_ptr<GenericBasePrx> IceInternal::createProxy<GenericBasePrx>();
+        /// \cond INTERNAL
+        GenericBasePrx() = default;
+        friend ::std::shared_ptr<GenericBasePrx> IceInternal::createProxy<GenericBasePrx>();
 
-    virtual ::std::shared_ptr<::Ice::ObjectPrx> _newInstance() const override;
-    /// \endcond
-};
+        virtual ::std::shared_ptr<::Ice::ObjectPrx> _newInstance() const override;
+        /// \endcond
+    };
 
 }
 
@@ -282,31 +282,31 @@ protected:
 namespace Ice
 {
 
-template<typename S>
-struct StreamReader<::RoboCompGenericBase::HardwareFailedException, S>
-{
-    static void read(S* istr, ::RoboCompGenericBase::HardwareFailedException& v)
+    template<typename S>
+    struct StreamReader<::RoboCompGenericBase::HardwareFailedException, S>
     {
-        istr->readAll(v.what);
-    }
-};
+        static void read(S* istr, ::RoboCompGenericBase::HardwareFailedException& v)
+        {
+            istr->readAll(v.what);
+        }
+    };
 
-template<>
-struct StreamableTraits<::RoboCompGenericBase::TBaseState>
-{
-    static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 37;
-    static const bool fixedLength = true;
-};
-
-template<typename S>
-struct StreamReader<::RoboCompGenericBase::TBaseState, S>
-{
-    static void read(S* istr, ::RoboCompGenericBase::TBaseState& v)
+    template<>
+    struct StreamableTraits<::RoboCompGenericBase::TBaseState>
     {
-        istr->readAll(v.x, v.correctedX, v.z, v.correctedZ, v.alpha, v.correctedAlpha, v.advVx, v.advVz, v.rotV, v.isMoving);
-    }
-};
+        static const StreamHelperCategory helper = StreamHelperCategoryStruct;
+        static const int minWireSize = 37;
+        static const bool fixedLength = true;
+    };
+
+    template<typename S>
+    struct StreamReader<::RoboCompGenericBase::TBaseState, S>
+    {
+        static void read(S* istr, ::RoboCompGenericBase::TBaseState& v)
+        {
+            istr->readAll(v.x, v.correctedX, v.z, v.correctedZ, v.alpha, v.correctedAlpha, v.advVx, v.advVz, v.rotV, v.isMoving);
+        }
+    };
 
 }
 /// \endcond
@@ -315,8 +315,8 @@ struct StreamReader<::RoboCompGenericBase::TBaseState, S>
 namespace RoboCompGenericBase
 {
 
-using GenericBasePtr = ::std::shared_ptr<GenericBase>;
-using GenericBasePrxPtr = ::std::shared_ptr<GenericBasePrx>;
+    using GenericBasePtr = ::std::shared_ptr<GenericBase>;
+    using GenericBasePrxPtr = ::std::shared_ptr<GenericBasePrx>;
 
 }
 /// \endcond

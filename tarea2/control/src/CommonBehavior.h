@@ -51,355 +51,355 @@
 namespace RoboCompCommonBehavior
 {
 
-class CommonBehavior;
-class CommonBehaviorPrx;
+    class CommonBehavior;
+    class CommonBehaviorPrx;
 
 }
 
 namespace RoboCompCommonBehavior
 {
 
-enum class State : unsigned char
-{
-    Starting,
-    Running
-};
-
-struct Parameter
-{
-    bool editable;
-    ::std::string value;
-    ::std::string type;
-
-    /**
-     * Obtains a tuple containing all of the struct's data members.
-     * @return The data members in a tuple.
-     */
-    std::tuple<const bool&, const ::std::string&, const ::std::string&> ice_tuple() const
+    enum class State : unsigned char
     {
-        return std::tie(editable, value, type);
-    }
-};
+        Starting,
+        Running
+    };
 
-using ParameterList = ::std::map<::std::string, Parameter>;
-
-using Ice::operator<;
-using Ice::operator<=;
-using Ice::operator>;
-using Ice::operator>=;
-using Ice::operator==;
-using Ice::operator!=;
-
-}
-
-namespace RoboCompCommonBehavior
-{
-
-class CommonBehavior : public virtual ::Ice::Object
-{
-public:
-
-    using ProxyType = CommonBehaviorPrx;
-
-    /**
-     * Determines whether this object supports an interface with the given Slice type ID.
-     * @param id The fully-scoped Slice type ID.
-     * @param current The Current object for the invocation.
-     * @return True if this object supports the interface, false, otherwise.
-     */
-    virtual bool ice_isA(::std::string id, const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains a list of the Slice type IDs representing the interfaces supported by this object.
-     * @param current The Current object for the invocation.
-     * @return A list of fully-scoped type IDs.
-     */
-    virtual ::std::vector<::std::string> ice_ids(const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains a Slice type ID representing the most-derived interface supported by this object.
-     * @param current The Current object for the invocation.
-     * @return A fully-scoped type ID.
-     */
-    virtual ::std::string ice_id(const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains the Slice type ID corresponding to this class.
-     * @return A fully-scoped type ID.
-     */
-    static const ::std::string& ice_staticId();
-
-    virtual ParameterList getParameterList(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getParameterList(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual int getPeriod(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getPeriod(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual State getState(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getState(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void killYourSelf(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_killYourSelf(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void reloadConfig(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_reloadConfig(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void setParameterList(ParameterList l, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_setParameterList(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual void setPeriod(int period, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_setPeriod(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    virtual int timeAwake(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_timeAwake(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
-
-    /// \cond INTERNAL
-    virtual bool _iceDispatch(::IceInternal::Incoming&, const ::Ice::Current&) override;
-    /// \endcond
-};
-
-}
-
-namespace RoboCompCommonBehavior
-{
-
-class CommonBehaviorPrx : public virtual ::Ice::Proxy<CommonBehaviorPrx, ::Ice::ObjectPrx>
-{
-public:
-
-    ParameterList getParameterList(const ::Ice::Context& context = ::Ice::noExplicitContext)
+    struct Parameter
     {
-        return _makePromiseOutgoing<::RoboCompCommonBehavior::ParameterList>(true, this, &CommonBehaviorPrx::_iceI_getParameterList, context).get();
-    }
+        bool editable;
+        ::std::string value;
+        ::std::string type;
 
-    template<template<typename> class P = ::std::promise>
-    auto getParameterListAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        /**
+         * Obtains a tuple containing all of the struct's data members.
+         * @return The data members in a tuple.
+         */
+        std::tuple<const bool&, const ::std::string&, const ::std::string&> ice_tuple() const
+        {
+            return std::tie(editable, value, type);
+        }
+    };
+
+    using ParameterList = ::std::map<::std::string, Parameter>;
+
+    using Ice::operator<;
+    using Ice::operator<=;
+    using Ice::operator>;
+    using Ice::operator>=;
+    using Ice::operator==;
+    using Ice::operator!=;
+
+}
+
+namespace RoboCompCommonBehavior
+{
+
+    class CommonBehavior : public virtual ::Ice::Object
+    {
+    public:
+
+        using ProxyType = CommonBehaviorPrx;
+
+        /**
+         * Determines whether this object supports an interface with the given Slice type ID.
+         * @param id The fully-scoped Slice type ID.
+         * @param current The Current object for the invocation.
+         * @return True if this object supports the interface, false, otherwise.
+         */
+        virtual bool ice_isA(::std::string id, const ::Ice::Current& current) const override;
+
+        /**
+         * Obtains a list of the Slice type IDs representing the interfaces supported by this object.
+         * @param current The Current object for the invocation.
+         * @return A list of fully-scoped type IDs.
+         */
+        virtual ::std::vector<::std::string> ice_ids(const ::Ice::Current& current) const override;
+
+        /**
+         * Obtains a Slice type ID representing the most-derived interface supported by this object.
+         * @param current The Current object for the invocation.
+         * @return A fully-scoped type ID.
+         */
+        virtual ::std::string ice_id(const ::Ice::Current& current) const override;
+
+        /**
+         * Obtains the Slice type ID corresponding to this class.
+         * @return A fully-scoped type ID.
+         */
+        static const ::std::string& ice_staticId();
+
+        virtual ParameterList getParameterList(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getParameterList(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual int getPeriod(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getPeriod(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual State getState(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getState(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual void killYourSelf(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_killYourSelf(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual void reloadConfig(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_reloadConfig(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual void setParameterList(ParameterList l, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_setParameterList(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual void setPeriod(int period, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_setPeriod(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual int timeAwake(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_timeAwake(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        /// \cond INTERNAL
+        virtual bool _iceDispatch(::IceInternal::Incoming&, const ::Ice::Current&) override;
+        /// \endcond
+    };
+
+}
+
+namespace RoboCompCommonBehavior
+{
+
+    class CommonBehaviorPrx : public virtual ::Ice::Proxy<CommonBehaviorPrx, ::Ice::ObjectPrx>
+    {
+    public:
+
+        ParameterList getParameterList(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makePromiseOutgoing<::RoboCompCommonBehavior::ParameterList>(true, this, &CommonBehaviorPrx::_iceI_getParameterList, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto getParameterListAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<::RoboCompCommonBehavior::ParameterList>>().get_future())
-    {
-        return _makePromiseOutgoing<::RoboCompCommonBehavior::ParameterList, P>(false, this, &CommonBehaviorPrx::_iceI_getParameterList, context);
-    }
+        {
+            return _makePromiseOutgoing<::RoboCompCommonBehavior::ParameterList, P>(false, this, &CommonBehaviorPrx::_iceI_getParameterList, context);
+        }
 
-    ::std::function<void()>
-    getParameterListAsync(::std::function<void(::RoboCompCommonBehavior::ParameterList)> response,
-                          ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                          ::std::function<void(bool)> sent = nullptr,
-                          const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<::RoboCompCommonBehavior::ParameterList>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_getParameterList, context);
-    }
+        ::std::function<void()>
+        getParameterListAsync(::std::function<void(::RoboCompCommonBehavior::ParameterList)> response,
+                              ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                              ::std::function<void(bool)> sent = nullptr,
+                              const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<::RoboCompCommonBehavior::ParameterList>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_getParameterList, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_getParameterList(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompCommonBehavior::ParameterList>>&, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_getParameterList(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompCommonBehavior::ParameterList>>&, const ::Ice::Context&);
+        /// \endcond
 
-    int getPeriod(const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makePromiseOutgoing<int>(true, this, &CommonBehaviorPrx::_iceI_getPeriod, context).get();
-    }
+        int getPeriod(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makePromiseOutgoing<int>(true, this, &CommonBehaviorPrx::_iceI_getPeriod, context).get();
+        }
 
-    template<template<typename> class P = ::std::promise>
-    auto getPeriodAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        template<template<typename> class P = ::std::promise>
+        auto getPeriodAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<int>>().get_future())
-    {
-        return _makePromiseOutgoing<int, P>(false, this, &CommonBehaviorPrx::_iceI_getPeriod, context);
-    }
+        {
+            return _makePromiseOutgoing<int, P>(false, this, &CommonBehaviorPrx::_iceI_getPeriod, context);
+        }
 
-    ::std::function<void()>
-    getPeriodAsync(::std::function<void(int)> response,
-                   ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                   ::std::function<void(bool)> sent = nullptr,
-                   const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<int>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_getPeriod, context);
-    }
+        ::std::function<void()>
+        getPeriodAsync(::std::function<void(int)> response,
+                       ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                       ::std::function<void(bool)> sent = nullptr,
+                       const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<int>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_getPeriod, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_getPeriod(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<int>>&, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_getPeriod(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<int>>&, const ::Ice::Context&);
+        /// \endcond
 
-    State getState(const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makePromiseOutgoing<::RoboCompCommonBehavior::State>(true, this, &CommonBehaviorPrx::_iceI_getState, context).get();
-    }
+        State getState(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makePromiseOutgoing<::RoboCompCommonBehavior::State>(true, this, &CommonBehaviorPrx::_iceI_getState, context).get();
+        }
 
-    template<template<typename> class P = ::std::promise>
-    auto getStateAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        template<template<typename> class P = ::std::promise>
+        auto getStateAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<::RoboCompCommonBehavior::State>>().get_future())
-    {
-        return _makePromiseOutgoing<::RoboCompCommonBehavior::State, P>(false, this, &CommonBehaviorPrx::_iceI_getState, context);
-    }
+        {
+            return _makePromiseOutgoing<::RoboCompCommonBehavior::State, P>(false, this, &CommonBehaviorPrx::_iceI_getState, context);
+        }
 
-    ::std::function<void()>
-    getStateAsync(::std::function<void(::RoboCompCommonBehavior::State)> response,
-                  ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                  ::std::function<void(bool)> sent = nullptr,
-                  const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<::RoboCompCommonBehavior::State>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_getState, context);
-    }
-
-    /// \cond INTERNAL
-    void _iceI_getState(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompCommonBehavior::State>>&, const ::Ice::Context&);
-    /// \endcond
-
-    void killYourSelf(const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        _makePromiseOutgoing<void>(true, this, &CommonBehaviorPrx::_iceI_killYourSelf, context).get();
-    }
-
-    template<template<typename> class P = ::std::promise>
-    auto killYourSelfAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
-        -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &CommonBehaviorPrx::_iceI_killYourSelf, context);
-    }
-
-    ::std::function<void()>
-    killYourSelfAsync(::std::function<void()> response,
+        ::std::function<void()>
+        getStateAsync(::std::function<void(::RoboCompCommonBehavior::State)> response,
                       ::std::function<void(::std::exception_ptr)> ex = nullptr,
                       ::std::function<void(bool)> sent = nullptr,
                       const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_killYourSelf, context);
-    }
+        {
+            return _makeLamdaOutgoing<::RoboCompCommonBehavior::State>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_getState, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_killYourSelf(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_getState(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompCommonBehavior::State>>&, const ::Ice::Context&);
+        /// \endcond
 
-    void reloadConfig(const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        _makePromiseOutgoing<void>(true, this, &CommonBehaviorPrx::_iceI_reloadConfig, context).get();
-    }
+        void killYourSelf(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &CommonBehaviorPrx::_iceI_killYourSelf, context).get();
+        }
 
-    template<template<typename> class P = ::std::promise>
-    auto reloadConfigAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        template<template<typename> class P = ::std::promise>
+        auto killYourSelfAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &CommonBehaviorPrx::_iceI_reloadConfig, context);
-    }
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &CommonBehaviorPrx::_iceI_killYourSelf, context);
+        }
 
-    ::std::function<void()>
-    reloadConfigAsync(::std::function<void()> response,
-                      ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                      ::std::function<void(bool)> sent = nullptr,
-                      const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_reloadConfig, context);
-    }
-
-    /// \cond INTERNAL
-    void _iceI_reloadConfig(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::Ice::Context&);
-    /// \endcond
-
-    void setParameterList(const ParameterList& l, const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        _makePromiseOutgoing<void>(true, this, &CommonBehaviorPrx::_iceI_setParameterList, l, context).get();
-    }
-
-    template<template<typename> class P = ::std::promise>
-    auto setParameterListAsync(const ParameterList& l, const ::Ice::Context& context = ::Ice::noExplicitContext)
-        -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &CommonBehaviorPrx::_iceI_setParameterList, l, context);
-    }
-
-    ::std::function<void()>
-    setParameterListAsync(const ParameterList& l,
-                          ::std::function<void()> response,
+        ::std::function<void()>
+        killYourSelfAsync(::std::function<void()> response,
                           ::std::function<void(::std::exception_ptr)> ex = nullptr,
                           ::std::function<void(bool)> sent = nullptr,
                           const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_setParameterList, l, context);
-    }
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_killYourSelf, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_setParameterList(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ParameterList&, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_killYourSelf(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::Ice::Context&);
+        /// \endcond
 
-    void setPeriod(int period, const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        _makePromiseOutgoing<void>(true, this, &CommonBehaviorPrx::_iceI_setPeriod, period, context).get();
-    }
+        void reloadConfig(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &CommonBehaviorPrx::_iceI_reloadConfig, context).get();
+        }
 
-    template<template<typename> class P = ::std::promise>
-    auto setPeriodAsync(int period, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        template<template<typename> class P = ::std::promise>
+        auto reloadConfigAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<void>>().get_future())
-    {
-        return _makePromiseOutgoing<void, P>(false, this, &CommonBehaviorPrx::_iceI_setPeriod, period, context);
-    }
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &CommonBehaviorPrx::_iceI_reloadConfig, context);
+        }
 
-    ::std::function<void()>
-    setPeriodAsync(int period,
-                   ::std::function<void()> response,
-                   ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                   ::std::function<void(bool)> sent = nullptr,
-                   const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_setPeriod, period, context);
-    }
+        ::std::function<void()>
+        reloadConfigAsync(::std::function<void()> response,
+                          ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                          ::std::function<void(bool)> sent = nullptr,
+                          const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_reloadConfig, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_setPeriod(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, int, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_reloadConfig(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ::Ice::Context&);
+        /// \endcond
 
-    int timeAwake(const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makePromiseOutgoing<int>(true, this, &CommonBehaviorPrx::_iceI_timeAwake, context).get();
-    }
+        void setParameterList(const ParameterList& l, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &CommonBehaviorPrx::_iceI_setParameterList, l, context).get();
+        }
 
-    template<template<typename> class P = ::std::promise>
-    auto timeAwakeAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        template<template<typename> class P = ::std::promise>
+        auto setParameterListAsync(const ParameterList& l, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        -> decltype(::std::declval<P<void>>().get_future())
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &CommonBehaviorPrx::_iceI_setParameterList, l, context);
+        }
+
+        ::std::function<void()>
+        setParameterListAsync(const ParameterList& l,
+                              ::std::function<void()> response,
+                              ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                              ::std::function<void(bool)> sent = nullptr,
+                              const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_setParameterList, l, context);
+        }
+
+        /// \cond INTERNAL
+        void _iceI_setParameterList(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, const ParameterList&, const ::Ice::Context&);
+        /// \endcond
+
+        void setPeriod(int period, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            _makePromiseOutgoing<void>(true, this, &CommonBehaviorPrx::_iceI_setPeriod, period, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto setPeriodAsync(int period, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        -> decltype(::std::declval<P<void>>().get_future())
+        {
+            return _makePromiseOutgoing<void, P>(false, this, &CommonBehaviorPrx::_iceI_setPeriod, period, context);
+        }
+
+        ::std::function<void()>
+        setPeriodAsync(int period,
+                       ::std::function<void()> response,
+                       ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                       ::std::function<void(bool)> sent = nullptr,
+                       const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<void>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_setPeriod, period, context);
+        }
+
+        /// \cond INTERNAL
+        void _iceI_setPeriod(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>&, int, const ::Ice::Context&);
+        /// \endcond
+
+        int timeAwake(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makePromiseOutgoing<int>(true, this, &CommonBehaviorPrx::_iceI_timeAwake, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto timeAwakeAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<int>>().get_future())
-    {
-        return _makePromiseOutgoing<int, P>(false, this, &CommonBehaviorPrx::_iceI_timeAwake, context);
-    }
+        {
+            return _makePromiseOutgoing<int, P>(false, this, &CommonBehaviorPrx::_iceI_timeAwake, context);
+        }
 
-    ::std::function<void()>
-    timeAwakeAsync(::std::function<void(int)> response,
-                   ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                   ::std::function<void(bool)> sent = nullptr,
-                   const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<int>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_timeAwake, context);
-    }
+        ::std::function<void()>
+        timeAwakeAsync(::std::function<void(int)> response,
+                       ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                       ::std::function<void(bool)> sent = nullptr,
+                       const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<int>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_timeAwake, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_timeAwake(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<int>>&, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_timeAwake(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<int>>&, const ::Ice::Context&);
+        /// \endcond
 
-    /**
-     * Obtains the Slice type ID of this interface.
-     * @return The fully-scoped type ID.
-     */
-    static const ::std::string& ice_staticId();
+        /**
+         * Obtains the Slice type ID of this interface.
+         * @return The fully-scoped type ID.
+         */
+        static const ::std::string& ice_staticId();
 
-protected:
+    protected:
 
-    /// \cond INTERNAL
-    CommonBehaviorPrx() = default;
-    friend ::std::shared_ptr<CommonBehaviorPrx> IceInternal::createProxy<CommonBehaviorPrx>();
+        /// \cond INTERNAL
+        CommonBehaviorPrx() = default;
+        friend ::std::shared_ptr<CommonBehaviorPrx> IceInternal::createProxy<CommonBehaviorPrx>();
 
-    virtual ::std::shared_ptr<::Ice::ObjectPrx> _newInstance() const override;
-    /// \endcond
-};
+        virtual ::std::shared_ptr<::Ice::ObjectPrx> _newInstance() const override;
+        /// \endcond
+    };
 
 }
 
@@ -407,32 +407,32 @@ protected:
 namespace Ice
 {
 
-template<>
-struct StreamableTraits< ::RoboCompCommonBehavior::State>
-{
-    static const StreamHelperCategory helper = StreamHelperCategoryEnum;
-    static const int minValue = 0;
-    static const int maxValue = 1;
-    static const int minWireSize = 1;
-    static const bool fixedLength = false;
-};
-
-template<>
-struct StreamableTraits<::RoboCompCommonBehavior::Parameter>
-{
-    static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 3;
-    static const bool fixedLength = false;
-};
-
-template<typename S>
-struct StreamReader<::RoboCompCommonBehavior::Parameter, S>
-{
-    static void read(S* istr, ::RoboCompCommonBehavior::Parameter& v)
+    template<>
+    struct StreamableTraits< ::RoboCompCommonBehavior::State>
     {
-        istr->readAll(v.editable, v.value, v.type);
-    }
-};
+        static const StreamHelperCategory helper = StreamHelperCategoryEnum;
+        static const int minValue = 0;
+        static const int maxValue = 1;
+        static const int minWireSize = 1;
+        static const bool fixedLength = false;
+    };
+
+    template<>
+    struct StreamableTraits<::RoboCompCommonBehavior::Parameter>
+    {
+        static const StreamHelperCategory helper = StreamHelperCategoryStruct;
+        static const int minWireSize = 3;
+        static const bool fixedLength = false;
+    };
+
+    template<typename S>
+    struct StreamReader<::RoboCompCommonBehavior::Parameter, S>
+    {
+        static void read(S* istr, ::RoboCompCommonBehavior::Parameter& v)
+        {
+            istr->readAll(v.editable, v.value, v.type);
+        }
+    };
 
 }
 /// \endcond
@@ -441,8 +441,8 @@ struct StreamReader<::RoboCompCommonBehavior::Parameter, S>
 namespace RoboCompCommonBehavior
 {
 
-using CommonBehaviorPtr = ::std::shared_ptr<CommonBehavior>;
-using CommonBehaviorPrxPtr = ::std::shared_ptr<CommonBehaviorPrx>;
+    using CommonBehaviorPtr = ::std::shared_ptr<CommonBehavior>;
+    using CommonBehaviorPrxPtr = ::std::shared_ptr<CommonBehaviorPrx>;
 
 }
 /// \endcond

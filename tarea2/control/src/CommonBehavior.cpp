@@ -47,34 +47,34 @@
 namespace
 {
 
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_ids[2] =
-{
-    "::Ice::Object",
-    "::RoboCompCommonBehavior::CommonBehavior"
-};
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_ops[] =
-{
-    "getParameterList",
-    "getPeriod",
-    "getState",
-    "ice_id",
-    "ice_ids",
-    "ice_isA",
-    "ice_ping",
-    "killYourSelf",
-    "reloadConfig",
-    "setParameterList",
-    "setPeriod",
-    "timeAwake"
-};
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_getParameterList_name = "getParameterList";
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_getPeriod_name = "getPeriod";
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_getState_name = "getState";
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_killYourSelf_name = "killYourSelf";
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_reloadConfig_name = "reloadConfig";
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_setParameterList_name = "setParameterList";
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_setPeriod_name = "setPeriod";
-const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_timeAwake_name = "timeAwake";
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_ids[2] =
+            {
+                    "::Ice::Object",
+                    "::RoboCompCommonBehavior::CommonBehavior"
+            };
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_ops[] =
+            {
+                    "getParameterList",
+                    "getPeriod",
+                    "getState",
+                    "ice_id",
+                    "ice_ids",
+                    "ice_isA",
+                    "ice_ping",
+                    "killYourSelf",
+                    "reloadConfig",
+                    "setParameterList",
+                    "setPeriod",
+                    "timeAwake"
+            };
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_getParameterList_name = "getParameterList";
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_getPeriod_name = "getPeriod";
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_getState_name = "getState";
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_killYourSelf_name = "killYourSelf";
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_reloadConfig_name = "reloadConfig";
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_setParameterList_name = "setParameterList";
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_setPeriod_name = "setPeriod";
+    const ::std::string iceC_RoboCompCommonBehavior_CommonBehavior_timeAwake_name = "timeAwake";
 
 }
 
@@ -288,8 +288,8 @@ RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_getParameterList(const ::std::s
 {
     _checkTwowayOnly(iceC_RoboCompCommonBehavior_CommonBehavior_getParameterList_name);
     outAsync->invoke(iceC_RoboCompCommonBehavior_CommonBehavior_getParameterList_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        nullptr);
+                     nullptr,
+                     nullptr);
 }
 /// \endcond
 
@@ -299,8 +299,8 @@ RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_getPeriod(const ::std::shared_p
 {
     _checkTwowayOnly(iceC_RoboCompCommonBehavior_CommonBehavior_getPeriod_name);
     outAsync->invoke(iceC_RoboCompCommonBehavior_CommonBehavior_getPeriod_name, ::Ice::OperationMode::Idempotent, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        nullptr);
+                     nullptr,
+                     nullptr);
 }
 /// \endcond
 
@@ -310,8 +310,8 @@ RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_getState(const ::std::shared_pt
 {
     _checkTwowayOnly(iceC_RoboCompCommonBehavior_CommonBehavior_getState_name);
     outAsync->invoke(iceC_RoboCompCommonBehavior_CommonBehavior_getState_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        nullptr);
+                     nullptr,
+                     nullptr);
 }
 /// \endcond
 
@@ -320,8 +320,8 @@ void
 RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_killYourSelf(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>& outAsync, const ::Ice::Context& context)
 {
     outAsync->invoke(iceC_RoboCompCommonBehavior_CommonBehavior_killYourSelf_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        nullptr);
+                     nullptr,
+                     nullptr);
 }
 /// \endcond
 
@@ -330,8 +330,8 @@ void
 RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_reloadConfig(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>& outAsync, const ::Ice::Context& context)
 {
     outAsync->invoke(iceC_RoboCompCommonBehavior_CommonBehavior_reloadConfig_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        nullptr);
+                     nullptr,
+                     nullptr);
 }
 /// \endcond
 
@@ -340,11 +340,11 @@ void
 RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_setParameterList(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>& outAsync, const ParameterList& iceP_l, const ::Ice::Context& context)
 {
     outAsync->invoke(iceC_RoboCompCommonBehavior_CommonBehavior_setParameterList_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        [&](::Ice::OutputStream* ostr)
-        {
-            ostr->writeAll(iceP_l);
-        },
-        nullptr);
+                     [&](::Ice::OutputStream* ostr)
+                     {
+                         ostr->writeAll(iceP_l);
+                     },
+                     nullptr);
 }
 /// \endcond
 
@@ -353,11 +353,11 @@ void
 RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_setPeriod(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<void>>& outAsync, int iceP_period, const ::Ice::Context& context)
 {
     outAsync->invoke(iceC_RoboCompCommonBehavior_CommonBehavior_setPeriod_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        [&](::Ice::OutputStream* ostr)
-        {
-            ostr->writeAll(iceP_period);
-        },
-        nullptr);
+                     [&](::Ice::OutputStream* ostr)
+                     {
+                         ostr->writeAll(iceP_period);
+                     },
+                     nullptr);
 }
 /// \endcond
 
@@ -367,8 +367,8 @@ RoboCompCommonBehavior::CommonBehaviorPrx::_iceI_timeAwake(const ::std::shared_p
 {
     _checkTwowayOnly(iceC_RoboCompCommonBehavior_CommonBehavior_timeAwake_name);
     outAsync->invoke(iceC_RoboCompCommonBehavior_CommonBehavior_timeAwake_name, ::Ice::OperationMode::Idempotent, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        nullptr);
+                     nullptr,
+                     nullptr);
 }
 /// \endcond
 

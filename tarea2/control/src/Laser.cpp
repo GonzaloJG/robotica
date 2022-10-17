@@ -48,24 +48,24 @@
 namespace
 {
 
-const ::std::string iceC_RoboCompLaser_Laser_ids[2] =
-{
-    "::Ice::Object",
-    "::RoboCompLaser::Laser"
-};
-const ::std::string iceC_RoboCompLaser_Laser_ops[] =
-{
-    "getLaserAndBStateData",
-    "getLaserConfData",
-    "getLaserData",
-    "ice_id",
-    "ice_ids",
-    "ice_isA",
-    "ice_ping"
-};
-const ::std::string iceC_RoboCompLaser_Laser_getLaserAndBStateData_name = "getLaserAndBStateData";
-const ::std::string iceC_RoboCompLaser_Laser_getLaserConfData_name = "getLaserConfData";
-const ::std::string iceC_RoboCompLaser_Laser_getLaserData_name = "getLaserData";
+    const ::std::string iceC_RoboCompLaser_Laser_ids[2] =
+            {
+                    "::Ice::Object",
+                    "::RoboCompLaser::Laser"
+            };
+    const ::std::string iceC_RoboCompLaser_Laser_ops[] =
+            {
+                    "getLaserAndBStateData",
+                    "getLaserConfData",
+                    "getLaserData",
+                    "ice_id",
+                    "ice_ids",
+                    "ice_isA",
+                    "ice_ping"
+            };
+    const ::std::string iceC_RoboCompLaser_Laser_getLaserAndBStateData_name = "getLaserAndBStateData";
+    const ::std::string iceC_RoboCompLaser_Laser_getLaserConfData_name = "getLaserConfData";
+    const ::std::string iceC_RoboCompLaser_Laser_getLaserData_name = "getLaserData";
 
 }
 
@@ -192,14 +192,14 @@ RoboCompLaser::LaserPrx::_iceI_getLaserAndBStateData(const ::std::shared_ptr<::I
 {
     _checkTwowayOnly(iceC_RoboCompLaser_Laser_getLaserAndBStateData_name);
     outAsync->invoke(iceC_RoboCompLaser_Laser_getLaserAndBStateData_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        nullptr,
-        [](::Ice::InputStream* istr)
-        {
-            Laser::GetLaserAndBStateDataResult v;
-            istr->readAll(v.bState, v.returnValue);
-            return v;
-        });
+                     nullptr,
+                     nullptr,
+                     [](::Ice::InputStream* istr)
+                     {
+                         Laser::GetLaserAndBStateDataResult v;
+                         istr->readAll(v.bState, v.returnValue);
+                         return v;
+                     });
 }
 /// \endcond
 
@@ -209,8 +209,8 @@ RoboCompLaser::LaserPrx::_iceI_getLaserConfData(const ::std::shared_ptr<::IceInt
 {
     _checkTwowayOnly(iceC_RoboCompLaser_Laser_getLaserConfData_name);
     outAsync->invoke(iceC_RoboCompLaser_Laser_getLaserConfData_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        nullptr);
+                     nullptr,
+                     nullptr);
 }
 /// \endcond
 
@@ -220,8 +220,8 @@ RoboCompLaser::LaserPrx::_iceI_getLaserData(const ::std::shared_ptr<::IceInterna
 {
     _checkTwowayOnly(iceC_RoboCompLaser_Laser_getLaserData_name);
     outAsync->invoke(iceC_RoboCompLaser_Laser_getLaserData_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        nullptr);
+                     nullptr,
+                     nullptr);
 }
 /// \endcond
 

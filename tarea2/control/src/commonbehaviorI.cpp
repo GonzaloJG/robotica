@@ -22,7 +22,7 @@
 */
 CommonBehaviorI::CommonBehaviorI(GenericMonitor *_monitor)
 {
-	monitor = _monitor;
+    monitor = _monitor;
 }
 
 // Component functions, implementation
@@ -30,40 +30,40 @@ CommonBehaviorI::CommonBehaviorI(GenericMonitor *_monitor)
 * \brief Return compute period in ms
 * @return Compute period in ms
 */
-int CommonBehaviorI::getPeriod( const Ice::Current&) 
-{ 
-	return monitor->getPeriod();
+int CommonBehaviorI::getPeriod( const Ice::Current&)
+{
+    return monitor->getPeriod();
 }
 /**
 * \brief Change compute period
 * @param per Period in ms
 */
-void CommonBehaviorI::setPeriod(int period, const Ice::Current&) 
+void CommonBehaviorI::setPeriod(int period, const Ice::Current&)
 {
-	monitor->setPeriod(period);
+    monitor->setPeriod(period);
 }
 /**
 * \brief Get Component time awake
 * @return int Time alive in seconds
 */
-int CommonBehaviorI::timeAwake( const Ice::Current&) 
-{ 
-	return monitor->timeAwake();
+int CommonBehaviorI::timeAwake( const Ice::Current&)
+{
+    return monitor->timeAwake();
 }
 /**
 * \brief Kill component
 */
-void CommonBehaviorI::killYourSelf( const Ice::Current&) 
+void CommonBehaviorI::killYourSelf( const Ice::Current&)
 {
-	monitor->killYourSelf();
+    monitor->killYourSelf();
 }
 /**
 * \brief Return components parameters
 * @return  AttrList Configuration parameters list
 */
 RoboCompCommonBehavior::ParameterList CommonBehaviorI::getParameterList( const Ice::Current&)
-{ 
-	return monitor->getParameterList();
+{
+    return monitor->getParameterList();
 }
 /**
 * \brief Change configurations parameters to worker
@@ -71,11 +71,11 @@ RoboCompCommonBehavior::ParameterList CommonBehaviorI::getParameterList( const I
 */
 void CommonBehaviorI::setParameterList( RoboCompCommonBehavior::ParameterList l, const Ice::Current&)
 {
-	monitor->setParameterList(l);
+    monitor->setParameterList(l);
 }
 void CommonBehaviorI::reloadConfig( const Ice::Current&)
 {
-	//monitor->readConfig();
+    //monitor->readConfig();
 }
 /**
 * \brief Get component execution state
@@ -83,5 +83,5 @@ void CommonBehaviorI::reloadConfig( const Ice::Current&)
 */
 RoboCompCommonBehavior::State CommonBehaviorI::getState(const Ice::Current&)
 {
-	return monitor->getState();
+    return monitor->getState();
 }

@@ -53,239 +53,239 @@
 namespace RoboCompLaser
 {
 
-class Laser;
-class LaserPrx;
+    class Laser;
+    class LaserPrx;
 
 }
 
 namespace RoboCompLaser
 {
 
-using shortVector = ::std::vector<int>;
+    using shortVector = ::std::vector<int>;
 
-struct LaserConfData
-{
-    ::std::string driver;
-    ::std::string device;
-    int staticConf;
-    int maxMeasures;
-    int maxDegrees;
-    int maxRange;
-    int minRange;
-    int iniRange;
-    int endRange;
-    int cluster;
-    int sampleRate;
-    float angleRes;
-    float angleIni;
-
-    /**
-     * Obtains a tuple containing all of the struct's data members.
-     * @return The data members in a tuple.
-     */
-    std::tuple<const ::std::string&, const ::std::string&, const int&, const int&, const int&, const int&, const int&, const int&, const int&, const int&, const int&, const float&, const float&> ice_tuple() const
+    struct LaserConfData
     {
-        return std::tie(driver, device, staticConf, maxMeasures, maxDegrees, maxRange, minRange, iniRange, endRange, cluster, sampleRate, angleRes, angleIni);
-    }
-};
+        ::std::string driver;
+        ::std::string device;
+        int staticConf;
+        int maxMeasures;
+        int maxDegrees;
+        int maxRange;
+        int minRange;
+        int iniRange;
+        int endRange;
+        int cluster;
+        int sampleRate;
+        float angleRes;
+        float angleIni;
 
-struct TData
-{
-    float angle;
-    float dist;
-
-    /**
-     * Obtains a tuple containing all of the struct's data members.
-     * @return The data members in a tuple.
-     */
-    std::tuple<const float&, const float&> ice_tuple() const
-    {
-        return std::tie(angle, dist);
-    }
-};
-
-using TLaserData = ::std::vector<TData>;
-
-using Ice::operator<;
-using Ice::operator<=;
-using Ice::operator>;
-using Ice::operator>=;
-using Ice::operator==;
-using Ice::operator!=;
-
-}
-
-namespace RoboCompLaser
-{
-
-class Laser : public virtual ::Ice::Object
-{
-public:
-
-    using ProxyType = LaserPrx;
-
-    /**
-     * Determines whether this object supports an interface with the given Slice type ID.
-     * @param id The fully-scoped Slice type ID.
-     * @param current The Current object for the invocation.
-     * @return True if this object supports the interface, false, otherwise.
-     */
-    virtual bool ice_isA(::std::string id, const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains a list of the Slice type IDs representing the interfaces supported by this object.
-     * @param current The Current object for the invocation.
-     * @return A list of fully-scoped type IDs.
-     */
-    virtual ::std::vector<::std::string> ice_ids(const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains a Slice type ID representing the most-derived interface supported by this object.
-     * @param current The Current object for the invocation.
-     * @return A fully-scoped type ID.
-     */
-    virtual ::std::string ice_id(const ::Ice::Current& current) const override;
-
-    /**
-     * Obtains the Slice type ID corresponding to this class.
-     * @return A fully-scoped type ID.
-     */
-    static const ::std::string& ice_staticId();
-
-    /**
-     * Encapsulates the results of a call to getLaserAndBStateData.
-     */
-    struct GetLaserAndBStateDataResult
-    {
-        TLaserData returnValue;
-        ::RoboCompGenericBase::TBaseState bState;
+        /**
+         * Obtains a tuple containing all of the struct's data members.
+         * @return The data members in a tuple.
+         */
+        std::tuple<const ::std::string&, const ::std::string&, const int&, const int&, const int&, const int&, const int&, const int&, const int&, const int&, const int&, const float&, const float&> ice_tuple() const
+        {
+            return std::tie(driver, device, staticConf, maxMeasures, maxDegrees, maxRange, minRange, iniRange, endRange, cluster, sampleRate, angleRes, angleIni);
+        }
     };
 
-    virtual TLaserData getLaserAndBStateData(::RoboCompGenericBase::TBaseState& bState, const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getLaserAndBStateData(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
+    struct TData
+    {
+        float angle;
+        float dist;
 
-    virtual LaserConfData getLaserConfData(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getLaserConfData(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
+        /**
+         * Obtains a tuple containing all of the struct's data members.
+         * @return The data members in a tuple.
+         */
+        std::tuple<const float&, const float&> ice_tuple() const
+        {
+            return std::tie(angle, dist);
+        }
+    };
 
-    virtual TLaserData getLaserData(const ::Ice::Current& current) = 0;
-    /// \cond INTERNAL
-    bool _iceD_getLaserData(::IceInternal::Incoming&, const ::Ice::Current&);
-    /// \endcond
+    using TLaserData = ::std::vector<TData>;
 
-    /// \cond INTERNAL
-    virtual bool _iceDispatch(::IceInternal::Incoming&, const ::Ice::Current&) override;
-    /// \endcond
-};
+    using Ice::operator<;
+    using Ice::operator<=;
+    using Ice::operator>;
+    using Ice::operator>=;
+    using Ice::operator==;
+    using Ice::operator!=;
 
 }
 
 namespace RoboCompLaser
 {
 
-class LaserPrx : public virtual ::Ice::Proxy<LaserPrx, ::Ice::ObjectPrx>
-{
-public:
-
-    TLaserData getLaserAndBStateData(::RoboCompGenericBase::TBaseState& bState, const ::Ice::Context& context = ::Ice::noExplicitContext)
+    class Laser : public virtual ::Ice::Object
     {
-        auto _result = _makePromiseOutgoing<Laser::GetLaserAndBStateDataResult>(true, this, &LaserPrx::_iceI_getLaserAndBStateData, context).get();
-        bState = ::std::move(_result.bState);
-        return ::std::move(_result.returnValue);
-    }
+    public:
 
-    template<template<typename> class P = ::std::promise>
-    auto getLaserAndBStateDataAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
-        -> decltype(::std::declval<P<Laser::GetLaserAndBStateDataResult>>().get_future())
-    {
-        return _makePromiseOutgoing<Laser::GetLaserAndBStateDataResult, P>(false, this, &LaserPrx::_iceI_getLaserAndBStateData, context);
-    }
+        using ProxyType = LaserPrx;
 
-    ::std::function<void()>
-    getLaserAndBStateDataAsync(::std::function<void(::RoboCompLaser::TLaserData, ::RoboCompGenericBase::TBaseState)> response,
-                               ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                               ::std::function<void(bool)> sent = nullptr,
-                               const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        auto _responseCb = [response](Laser::GetLaserAndBStateDataResult&& _result)
+        /**
+         * Determines whether this object supports an interface with the given Slice type ID.
+         * @param id The fully-scoped Slice type ID.
+         * @param current The Current object for the invocation.
+         * @return True if this object supports the interface, false, otherwise.
+         */
+        virtual bool ice_isA(::std::string id, const ::Ice::Current& current) const override;
+
+        /**
+         * Obtains a list of the Slice type IDs representing the interfaces supported by this object.
+         * @param current The Current object for the invocation.
+         * @return A list of fully-scoped type IDs.
+         */
+        virtual ::std::vector<::std::string> ice_ids(const ::Ice::Current& current) const override;
+
+        /**
+         * Obtains a Slice type ID representing the most-derived interface supported by this object.
+         * @param current The Current object for the invocation.
+         * @return A fully-scoped type ID.
+         */
+        virtual ::std::string ice_id(const ::Ice::Current& current) const override;
+
+        /**
+         * Obtains the Slice type ID corresponding to this class.
+         * @return A fully-scoped type ID.
+         */
+        static const ::std::string& ice_staticId();
+
+        /**
+         * Encapsulates the results of a call to getLaserAndBStateData.
+         */
+        struct GetLaserAndBStateDataResult
         {
-            response(::std::move(_result.returnValue), ::std::move(_result.bState));
+            TLaserData returnValue;
+            ::RoboCompGenericBase::TBaseState bState;
         };
-        return _makeLamdaOutgoing<Laser::GetLaserAndBStateDataResult>(std::move(_responseCb), std::move(ex), std::move(sent), this, &RoboCompLaser::LaserPrx::_iceI_getLaserAndBStateData, context);
-    }
 
-    /// \cond INTERNAL
-    void _iceI_getLaserAndBStateData(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<Laser::GetLaserAndBStateDataResult>>&, const ::Ice::Context&);
-    /// \endcond
+        virtual TLaserData getLaserAndBStateData(::RoboCompGenericBase::TBaseState& bState, const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getLaserAndBStateData(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
 
-    LaserConfData getLaserConfData(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        virtual LaserConfData getLaserConfData(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getLaserConfData(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        virtual TLaserData getLaserData(const ::Ice::Current& current) = 0;
+        /// \cond INTERNAL
+        bool _iceD_getLaserData(::IceInternal::Incoming&, const ::Ice::Current&);
+        /// \endcond
+
+        /// \cond INTERNAL
+        virtual bool _iceDispatch(::IceInternal::Incoming&, const ::Ice::Current&) override;
+        /// \endcond
+    };
+
+}
+
+namespace RoboCompLaser
+{
+
+    class LaserPrx : public virtual ::Ice::Proxy<LaserPrx, ::Ice::ObjectPrx>
     {
-        return _makePromiseOutgoing<::RoboCompLaser::LaserConfData>(true, this, &LaserPrx::_iceI_getLaserConfData, context).get();
-    }
+    public:
 
-    template<template<typename> class P = ::std::promise>
-    auto getLaserConfDataAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        TLaserData getLaserAndBStateData(::RoboCompGenericBase::TBaseState& bState, const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            auto _result = _makePromiseOutgoing<Laser::GetLaserAndBStateDataResult>(true, this, &LaserPrx::_iceI_getLaserAndBStateData, context).get();
+            bState = ::std::move(_result.bState);
+            return ::std::move(_result.returnValue);
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto getLaserAndBStateDataAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        -> decltype(::std::declval<P<Laser::GetLaserAndBStateDataResult>>().get_future())
+        {
+            return _makePromiseOutgoing<Laser::GetLaserAndBStateDataResult, P>(false, this, &LaserPrx::_iceI_getLaserAndBStateData, context);
+        }
+
+        ::std::function<void()>
+        getLaserAndBStateDataAsync(::std::function<void(::RoboCompLaser::TLaserData, ::RoboCompGenericBase::TBaseState)> response,
+                                   ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                                   ::std::function<void(bool)> sent = nullptr,
+                                   const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            auto _responseCb = [response](Laser::GetLaserAndBStateDataResult&& _result)
+            {
+                response(::std::move(_result.returnValue), ::std::move(_result.bState));
+            };
+            return _makeLamdaOutgoing<Laser::GetLaserAndBStateDataResult>(std::move(_responseCb), std::move(ex), std::move(sent), this, &RoboCompLaser::LaserPrx::_iceI_getLaserAndBStateData, context);
+        }
+
+        /// \cond INTERNAL
+        void _iceI_getLaserAndBStateData(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<Laser::GetLaserAndBStateDataResult>>&, const ::Ice::Context&);
+        /// \endcond
+
+        LaserConfData getLaserConfData(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makePromiseOutgoing<::RoboCompLaser::LaserConfData>(true, this, &LaserPrx::_iceI_getLaserConfData, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto getLaserConfDataAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
         -> decltype(::std::declval<P<::RoboCompLaser::LaserConfData>>().get_future())
-    {
-        return _makePromiseOutgoing<::RoboCompLaser::LaserConfData, P>(false, this, &LaserPrx::_iceI_getLaserConfData, context);
-    }
+        {
+            return _makePromiseOutgoing<::RoboCompLaser::LaserConfData, P>(false, this, &LaserPrx::_iceI_getLaserConfData, context);
+        }
 
-    ::std::function<void()>
-    getLaserConfDataAsync(::std::function<void(::RoboCompLaser::LaserConfData)> response,
+        ::std::function<void()>
+        getLaserConfDataAsync(::std::function<void(::RoboCompLaser::LaserConfData)> response,
+                              ::std::function<void(::std::exception_ptr)> ex = nullptr,
+                              ::std::function<void(bool)> sent = nullptr,
+                              const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makeLamdaOutgoing<::RoboCompLaser::LaserConfData>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompLaser::LaserPrx::_iceI_getLaserConfData, context);
+        }
+
+        /// \cond INTERNAL
+        void _iceI_getLaserConfData(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompLaser::LaserConfData>>&, const ::Ice::Context&);
+        /// \endcond
+
+        TLaserData getLaserData(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        {
+            return _makePromiseOutgoing<::RoboCompLaser::TLaserData>(true, this, &LaserPrx::_iceI_getLaserData, context).get();
+        }
+
+        template<template<typename> class P = ::std::promise>
+        auto getLaserDataAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
+        -> decltype(::std::declval<P<::RoboCompLaser::TLaserData>>().get_future())
+        {
+            return _makePromiseOutgoing<::RoboCompLaser::TLaserData, P>(false, this, &LaserPrx::_iceI_getLaserData, context);
+        }
+
+        ::std::function<void()>
+        getLaserDataAsync(::std::function<void(::RoboCompLaser::TLaserData)> response,
                           ::std::function<void(::std::exception_ptr)> ex = nullptr,
                           ::std::function<void(bool)> sent = nullptr,
                           const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<::RoboCompLaser::LaserConfData>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompLaser::LaserPrx::_iceI_getLaserConfData, context);
-    }
+        {
+            return _makeLamdaOutgoing<::RoboCompLaser::TLaserData>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompLaser::LaserPrx::_iceI_getLaserData, context);
+        }
 
-    /// \cond INTERNAL
-    void _iceI_getLaserConfData(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompLaser::LaserConfData>>&, const ::Ice::Context&);
-    /// \endcond
+        /// \cond INTERNAL
+        void _iceI_getLaserData(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompLaser::TLaserData>>&, const ::Ice::Context&);
+        /// \endcond
 
-    TLaserData getLaserData(const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makePromiseOutgoing<::RoboCompLaser::TLaserData>(true, this, &LaserPrx::_iceI_getLaserData, context).get();
-    }
+        /**
+         * Obtains the Slice type ID of this interface.
+         * @return The fully-scoped type ID.
+         */
+        static const ::std::string& ice_staticId();
 
-    template<template<typename> class P = ::std::promise>
-    auto getLaserDataAsync(const ::Ice::Context& context = ::Ice::noExplicitContext)
-        -> decltype(::std::declval<P<::RoboCompLaser::TLaserData>>().get_future())
-    {
-        return _makePromiseOutgoing<::RoboCompLaser::TLaserData, P>(false, this, &LaserPrx::_iceI_getLaserData, context);
-    }
+    protected:
 
-    ::std::function<void()>
-    getLaserDataAsync(::std::function<void(::RoboCompLaser::TLaserData)> response,
-                      ::std::function<void(::std::exception_ptr)> ex = nullptr,
-                      ::std::function<void(bool)> sent = nullptr,
-                      const ::Ice::Context& context = ::Ice::noExplicitContext)
-    {
-        return _makeLamdaOutgoing<::RoboCompLaser::TLaserData>(std::move(response), std::move(ex), std::move(sent), this, &RoboCompLaser::LaserPrx::_iceI_getLaserData, context);
-    }
+        /// \cond INTERNAL
+        LaserPrx() = default;
+        friend ::std::shared_ptr<LaserPrx> IceInternal::createProxy<LaserPrx>();
 
-    /// \cond INTERNAL
-    void _iceI_getLaserData(const ::std::shared_ptr<::IceInternal::OutgoingAsyncT<::RoboCompLaser::TLaserData>>&, const ::Ice::Context&);
-    /// \endcond
-
-    /**
-     * Obtains the Slice type ID of this interface.
-     * @return The fully-scoped type ID.
-     */
-    static const ::std::string& ice_staticId();
-
-protected:
-
-    /// \cond INTERNAL
-    LaserPrx() = default;
-    friend ::std::shared_ptr<LaserPrx> IceInternal::createProxy<LaserPrx>();
-
-    virtual ::std::shared_ptr<::Ice::ObjectPrx> _newInstance() const override;
-    /// \endcond
-};
+        virtual ::std::shared_ptr<::Ice::ObjectPrx> _newInstance() const override;
+        /// \endcond
+    };
 
 }
 
@@ -293,39 +293,39 @@ protected:
 namespace Ice
 {
 
-template<>
-struct StreamableTraits<::RoboCompLaser::LaserConfData>
-{
-    static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 46;
-    static const bool fixedLength = false;
-};
-
-template<typename S>
-struct StreamReader<::RoboCompLaser::LaserConfData, S>
-{
-    static void read(S* istr, ::RoboCompLaser::LaserConfData& v)
+    template<>
+    struct StreamableTraits<::RoboCompLaser::LaserConfData>
     {
-        istr->readAll(v.driver, v.device, v.staticConf, v.maxMeasures, v.maxDegrees, v.maxRange, v.minRange, v.iniRange, v.endRange, v.cluster, v.sampleRate, v.angleRes, v.angleIni);
-    }
-};
+        static const StreamHelperCategory helper = StreamHelperCategoryStruct;
+        static const int minWireSize = 46;
+        static const bool fixedLength = false;
+    };
 
-template<>
-struct StreamableTraits<::RoboCompLaser::TData>
-{
-    static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 8;
-    static const bool fixedLength = true;
-};
-
-template<typename S>
-struct StreamReader<::RoboCompLaser::TData, S>
-{
-    static void read(S* istr, ::RoboCompLaser::TData& v)
+    template<typename S>
+    struct StreamReader<::RoboCompLaser::LaserConfData, S>
     {
-        istr->readAll(v.angle, v.dist);
-    }
-};
+        static void read(S* istr, ::RoboCompLaser::LaserConfData& v)
+        {
+            istr->readAll(v.driver, v.device, v.staticConf, v.maxMeasures, v.maxDegrees, v.maxRange, v.minRange, v.iniRange, v.endRange, v.cluster, v.sampleRate, v.angleRes, v.angleIni);
+        }
+    };
+
+    template<>
+    struct StreamableTraits<::RoboCompLaser::TData>
+    {
+        static const StreamHelperCategory helper = StreamHelperCategoryStruct;
+        static const int minWireSize = 8;
+        static const bool fixedLength = true;
+    };
+
+    template<typename S>
+    struct StreamReader<::RoboCompLaser::TData, S>
+    {
+        static void read(S* istr, ::RoboCompLaser::TData& v)
+        {
+            istr->readAll(v.angle, v.dist);
+        }
+    };
 
 }
 /// \endcond
@@ -334,8 +334,8 @@ struct StreamReader<::RoboCompLaser::TData, S>
 namespace RoboCompLaser
 {
 
-using LaserPtr = ::std::shared_ptr<Laser>;
-using LaserPrxPtr = ::std::shared_ptr<LaserPrx>;
+    using LaserPtr = ::std::shared_ptr<Laser>;
+    using LaserPrxPtr = ::std::shared_ptr<LaserPrx>;
 
 }
 /// \endcond

@@ -48,24 +48,24 @@
 namespace
 {
 
-const ::IceInternal::DefaultUserExceptionFactoryInit<::RoboCompGenericBase::HardwareFailedException> iceC_RoboCompGenericBase_HardwareFailedException_init("::RoboCompGenericBase::HardwareFailedException");
+    const ::IceInternal::DefaultUserExceptionFactoryInit<::RoboCompGenericBase::HardwareFailedException> iceC_RoboCompGenericBase_HardwareFailedException_init("::RoboCompGenericBase::HardwareFailedException");
 
-const ::std::string iceC_RoboCompGenericBase_GenericBase_ids[2] =
-{
-    "::Ice::Object",
-    "::RoboCompGenericBase::GenericBase"
-};
-const ::std::string iceC_RoboCompGenericBase_GenericBase_ops[] =
-{
-    "getBasePose",
-    "getBaseState",
-    "ice_id",
-    "ice_ids",
-    "ice_isA",
-    "ice_ping"
-};
-const ::std::string iceC_RoboCompGenericBase_GenericBase_getBasePose_name = "getBasePose";
-const ::std::string iceC_RoboCompGenericBase_GenericBase_getBaseState_name = "getBaseState";
+    const ::std::string iceC_RoboCompGenericBase_GenericBase_ids[2] =
+            {
+                    "::Ice::Object",
+                    "::RoboCompGenericBase::GenericBase"
+            };
+    const ::std::string iceC_RoboCompGenericBase_GenericBase_ops[] =
+            {
+                    "getBasePose",
+                    "getBaseState",
+                    "ice_id",
+                    "ice_ids",
+                    "ice_isA",
+                    "ice_ping"
+            };
+    const ::std::string iceC_RoboCompGenericBase_GenericBase_getBasePose_name = "getBasePose";
+    const ::std::string iceC_RoboCompGenericBase_GenericBase_getBaseState_name = "getBaseState";
 
 }
 
@@ -188,27 +188,27 @@ RoboCompGenericBase::GenericBasePrx::_iceI_getBasePose(const ::std::shared_ptr<:
 {
     _checkTwowayOnly(iceC_RoboCompGenericBase_GenericBase_getBasePose_name);
     outAsync->invoke(iceC_RoboCompGenericBase_GenericBase_getBasePose_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        },
-        [](::Ice::InputStream* istr)
-        {
-            GenericBase::GetBasePoseResult v;
-            istr->readAll(v.x, v.z, v.alpha);
-            return v;
-        });
+                     nullptr,
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     },
+                     [](::Ice::InputStream* istr)
+                     {
+                         GenericBase::GetBasePoseResult v;
+                         istr->readAll(v.x, v.z, v.alpha);
+                         return v;
+                     });
 }
 /// \endcond
 
@@ -218,21 +218,21 @@ RoboCompGenericBase::GenericBasePrx::_iceI_getBaseState(const ::std::shared_ptr<
 {
     _checkTwowayOnly(iceC_RoboCompGenericBase_GenericBase_getBaseState_name);
     outAsync->invoke(iceC_RoboCompGenericBase_GenericBase_getBaseState_name, ::Ice::OperationMode::Normal, ::Ice::FormatType::DefaultFormat, context,
-        nullptr,
-        [](const ::Ice::UserException& ex)
-        {
-            try
-            {
-                ex.ice_throw();
-            }
-            catch(const HardwareFailedException&)
-            {
-                throw;
-            }
-            catch(const ::Ice::UserException&)
-            {
-            }
-        });
+                     nullptr,
+                     [](const ::Ice::UserException& ex)
+                     {
+                         try
+                         {
+                             ex.ice_throw();
+                         }
+                         catch(const HardwareFailedException&)
+                         {
+                             throw;
+                         }
+                         catch(const ::Ice::UserException&)
+                         {
+                         }
+                     });
 }
 /// \endcond
 
