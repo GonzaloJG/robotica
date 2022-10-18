@@ -24,56 +24,56 @@
 #include <qlog/qlog.h>
 
 #if Qt5_FOUND
-#include <QtWidgets>
+	#include <QtWidgets>
 #else
-#include <QtGui>
+	#include <QtGui>
 #endif
 #include <ui_mainUI.h>
 #include <CommonBehavior.h>
 
-#include <DifferentialRobot.h>
+#include <DifferentialRobotMulti.h>
 #include <GenericBase.h>
-#include <Laser.h>
+#include <LaserMulti.h>
 
 
 #define CHECK_PERIOD 5000
 #define BASIC_PERIOD 100
 
 
-using TuplePrx = std::tuple<RoboCompDifferentialRobot::DifferentialRobotPrxPtr,RoboCompLaser::LaserPrxPtr>;
+using TuplePrx = std::tuple<RoboCompDifferentialRobotMulti::DifferentialRobotMultiPrxPtr,RoboCompLaserMulti::LaserMultiPrxPtr>;
 
 
 class GenericWorker : public QWidget, public Ui_guiDlg
 {
 Q_OBJECT
 public:
-    GenericWorker(TuplePrx tprx);
-    virtual ~GenericWorker();
-    virtual void killYourSelf();
-    virtual void setPeriod(int p);
+	GenericWorker(TuplePrx tprx);
+	virtual ~GenericWorker();
+	virtual void killYourSelf();
+	virtual void setPeriod(int p);
 
-    virtual bool setParams(RoboCompCommonBehavior::ParameterList params) = 0;
-    QMutex *mutex;
+	virtual bool setParams(RoboCompCommonBehavior::ParameterList params) = 0;
+	QMutex *mutex;
 
 
-    RoboCompDifferentialRobot::DifferentialRobotPrxPtr differentialrobot_proxy;
-    RoboCompLaser::LaserPrxPtr laser_proxy;
+	RoboCompDifferentialRobotMulti::DifferentialRobotMultiPrxPtr differentialrobotmulti_proxy;
+	RoboCompLaserMulti::LaserMultiPrxPtr lasermulti_proxy;
 
 
 protected:
 
-    QTimer timer;
-    int Period;
+	QTimer timer;
+	int Period;
 
 private:
 
 
 public slots:
-    virtual void compute() = 0;
-    virtual void initialize(int period) = 0;
-
+	virtual void compute() = 0;
+	virtual void initialize(int period) = 0;
+	
 signals:
-    void kill();
+	void kill();
 };
 
 #endif

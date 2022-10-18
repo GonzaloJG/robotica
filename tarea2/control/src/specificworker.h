@@ -31,9 +31,9 @@
 #include <ranges>
 
 
-#define MAX_ADV_SPEED 500
+#define MAX_ADV_SPEED 1500
 #define MAX_ROT_SPPED 1.2
-#define MAX_DIST_PARADA 700
+#define MAX_DIST_PARADA 1200
 
 class SpecificWorker : public GenericWorker
 {
@@ -43,12 +43,12 @@ public:
     ~SpecificWorker();
     bool setParams(RoboCompCommonBehavior::ParameterList params);
 
-    float realizarMedia(RoboCompLaser::TLaserData &copy);
-    tuple<float, float> fIDLE(RoboCompLaser::TLaserData &ldata);
-    tuple<float, float> fFORWARD(RoboCompLaser::TLaserData &ldata);
-    tuple<float, float> fTURN(RoboCompLaser::TLaserData &ldata);
-    tuple<float, float> fFOLLOW_WALL(RoboCompLaser::TLaserData &ldata);
-    tuple<float, float> fSPIRAL(RoboCompLaser::TLaserData &ldata);
+    float realizarMedia(RoboCompLaserMulti::TLaserData &copy);
+    tuple<float, float> fIDLE(RoboCompLaserMulti::TLaserData &ldata);
+    tuple<float, float> fFORWARD(RoboCompLaserMulti::TLaserData &ldata);
+    tuple<float, float> fTURN(RoboCompLaserMulti::TLaserData &ldata);
+    tuple<float, float> fFOLLOW_WALL(RoboCompLaserMulti::TLaserData &ldata);
+    tuple<float, float> fSPIRAL(RoboCompLaserMulti::TLaserData &ldata);
 
 
 public slots:

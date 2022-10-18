@@ -23,18 +23,18 @@
 GenericWorker::GenericWorker(TuplePrx tprx) : Ui_guiDlg()
 {
 
-    differentialrobot_proxy = std::get<0>(tprx);
-    laser_proxy = std::get<1>(tprx);
+	differentialrobotmulti_proxy = std::get<0>(tprx);
+	lasermulti_proxy = std::get<1>(tprx);
 
-    mutex = new QMutex(QMutex::Recursive);
+	mutex = new QMutex(QMutex::Recursive);
 
 
-#ifdef USE_QTGUI
-    setupUi(this);
-    show();
-#endif
-    Period = BASIC_PERIOD;
-    connect(&timer, SIGNAL(timeout()), this, SLOT(compute()));
+	#ifdef USE_QTGUI
+		setupUi(this);
+		show();
+	#endif
+	Period = BASIC_PERIOD;
+	connect(&timer, SIGNAL(timeout()), this, SLOT(compute()));
 
 }
 
@@ -47,8 +47,8 @@ GenericWorker::~GenericWorker()
 }
 void GenericWorker::killYourSelf()
 {
-    rDebug("Killing myself");
-    emit kill();
+	rDebug("Killing myself");
+	emit kill();
 }
 /**
 * \brief Change compute period
@@ -56,7 +56,7 @@ void GenericWorker::killYourSelf()
 */
 void GenericWorker::setPeriod(int p)
 {
-    rDebug("Period changed"+QString::number(p));
-    Period = p;
-    timer.start(Period);
+	rDebug("Period changed"+QString::number(p));
+	Period = p;
+	timer.start(Period);
 }

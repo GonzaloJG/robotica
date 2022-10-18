@@ -72,7 +72,7 @@ void SpecificWorker::initialize(int period)
 }
 
 
-float SpecificWorker::realizarMedia(RoboCompLaser::TLaserData &copy){
+float SpecificWorker::realizarMedia(RoboCompLaserMulti::TLaserData &copy){
     float suma=0, media;
     for (long unsigned int i=0; i < copy.size(); i++){
         suma+=copy.at(i).dist;
@@ -83,13 +83,13 @@ float SpecificWorker::realizarMedia(RoboCompLaser::TLaserData &copy){
     return media;
 }
 
-tuple<float, float> SpecificWorker::fIDLE(RoboCompLaser::TLaserData &ldata){
+tuple<float, float> SpecificWorker::fIDLE(RoboCompLaserMulti::TLaserData &ldata){
     const int part = 3;
-    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
-    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+    RoboCompLaserMulti::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaserMulti::TData::dist);
 
-    RoboCompLaser::TLaserData copyAll(ldata.begin(), ldata.end());
-    std::ranges::sort(copyAll, {},&RoboCompLaser::TData::dist);
+    RoboCompLaserMulti::TLaserData copyAll(ldata.begin(), ldata.end());
+    std::ranges::sort(copyAll, {},&RoboCompLaserMulti::TData::dist);
 
     tuple<float, float> tuplaAux = make_tuple(0,0);
 
@@ -111,13 +111,13 @@ tuple<float, float> SpecificWorker::fIDLE(RoboCompLaser::TLaserData &ldata){
 }
 
 
-tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaser::TLaserData &ldata){
+tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaserMulti::TLaserData &ldata){
     const int part = 3;
-    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
-    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+    RoboCompLaserMulti::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaserMulti::TData::dist);
 
-    RoboCompLaser::TLaserData copyAll(ldata.begin(), ldata.end());
-    std::ranges::sort(copyAll, {},&RoboCompLaser::TData::dist);
+    RoboCompLaserMulti::TLaserData copyAll(ldata.begin(), ldata.end());
+    std::ranges::sort(copyAll, {},&RoboCompLaserMulti::TData::dist);
 
     qInfo() <<"FORWARD:"<< " distancia:" <<copy.front().dist;
 
@@ -143,13 +143,13 @@ tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaser::TLaserData &ldata){
 }
 
 
-tuple<float, float> SpecificWorker::fTURN(RoboCompLaser::TLaserData &ldata){
+tuple<float, float> SpecificWorker::fTURN(RoboCompLaserMulti::TLaserData &ldata){
     const int part = 3;
-    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
-    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+    RoboCompLaserMulti::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaserMulti::TData::dist);
 
-    RoboCompLaser::TLaserData copyAll(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
-    std::ranges::sort(copyAll, {},&RoboCompLaser::TData::dist);
+    RoboCompLaserMulti::TLaserData copyAll(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copyAll, {},&RoboCompLaserMulti::TData::dist);
 
     qInfo() <<"TURN:"<< " distancia:" <<copy.front().dist;
 
@@ -168,65 +168,46 @@ tuple<float, float> SpecificWorker::fTURN(RoboCompLaser::TLaserData &ldata){
 }
 
 
-tuple<float, float> SpecificWorker::fFOLLOW_WALL(RoboCompLaser::TLaserData &ldata){
-    const int part = 3;
-    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
-    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+tuple<float, float> SpecificWorker::fFOLLOW_WALL(RoboCompLaserMulti::TLaserData &ldata){
+    const int part = 5;
+    RoboCompLaserMulti::TLaserData copyFrente(ldata.begin()+(2*(ldata.size()/part)), ldata.end()-(2*(ldata.size()/part)));
+    std::ranges::sort(copyFrente, {},&RoboCompLaserMulti::TData::dist);
 
-    RoboCompLaser::TLaserData copyIzq(ldata.begin(), ldata.begin()+30);
-    std::ranges::sort(copyIzq, {},&RoboCompLaser::TData::dist);
+    RoboCompLaserMulti::TLaserData copyIzq(ldata.begin()+(4*(ldata.size()/part)), ldata.end());
+    std::ranges::sort(copyIzq, {},&RoboCompLaserMulti::TData::dist);
 
-    RoboCompLaser::TLaserData copyDer(ldata.end()-30, ldata.end());
-    std::ranges::sort(copyDer, {},&RoboCompLaser::TData::dist);
-
-    qInfo() <<"FOLLOW_WALL:"<< " distancia:" <<copy.front().dist;
+    qInfo() <<"FOLLOW_WALL:"<< " distancia:" <<copyFrente.front().dist;
 
     tuple<float, float> tuplaAux;
     float mediaIzq = realizarMedia(copyIzq);
-    float mediaDer = realizarMedia(copyDer);
 
     qInfo() <<"FOLLOW_WALL:"<< " mediaIzq:" <<mediaIzq;
-    qInfo() <<"FOLLOW_WALL:"<< " mediaDer:" <<mediaDer;
 
-
-    if(mediaIzq > mediaDer){
-        if (mediaIzq > 1000){
-            tuplaAux=make_tuple(0, -0.2);
+        if (mediaIzq > 1300){
+            tuplaAux=make_tuple(100, -0.2);
         }else {
-            if (mediaIzq < 1000){
-                tuplaAux=make_tuple(0, +0.1);
+            if (mediaIzq < 1100){
+                tuplaAux=make_tuple(100, +0.2);
             } else{
                 state=State::FORWARD;
-                tuplaAux= make_tuple(0,0);
+                tuplaAux= make_tuple(500,0);
             }
         }
-    } else {
-        if (mediaDer > 1000){
-            tuplaAux=make_tuple(0, +0.1);
-        }else {
-            if (mediaDer < 1000){
-                tuplaAux=make_tuple(0, -0.2);
-            } else{
-                state=State::FORWARD;
-                tuplaAux= make_tuple(0,0);
-            }
-        }
-    }
 
-    if(copy.front().dist < MAX_DIST_PARADA)
-    {
-        state=State::TURN;
-        tuplaAux = make_tuple(0, 0);
-    }
+//    if(copy.front().dist < MAX_DIST_PARADA)
+//    {
+//        state=State::TURN;
+//        tuplaAux = make_tuple(0, 0);
+//    }
 
     return tuplaAux;
 }
 
 
-tuple<float, float> SpecificWorker::fSPIRAL(RoboCompLaser::TLaserData &ldata){
+tuple<float, float> SpecificWorker::fSPIRAL(RoboCompLaserMulti::TLaserData &ldata){
     const int part = 3;
-    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
-    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
+    RoboCompLaserMulti::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaserMulti::TData::dist);
 
     qInfo() <<"SPIRAL:"<< " distancia:" <<copy.front().dist;
 
@@ -249,10 +230,10 @@ tuple<float, float> SpecificWorker::fSPIRAL(RoboCompLaser::TLaserData &ldata){
 void SpecificWorker::compute()
 {
     //robot control
-    RoboCompLaser::TLaserData ldata;
+    RoboCompLaserMulti::TLaserData ldata;
     try
     {
-        ldata = laser_proxy->getLaserData();
+        ldata = lasermulti_proxy->getLaserData(1);
     }
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; return ;}
 
@@ -286,7 +267,7 @@ void SpecificWorker::compute()
     try
     {
         qInfo()<< "addv: "<< get<0>(tuplaAux) << " rot:" << get<1>(tuplaAux);
-        differentialrobot_proxy->setSpeedBase(get<0>(tuplaAux),get<1>(tuplaAux));
+        differentialrobotmulti_proxy->setSpeedBase(1, get<0>(tuplaAux),get<1>(tuplaAux));
     }
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; }
 

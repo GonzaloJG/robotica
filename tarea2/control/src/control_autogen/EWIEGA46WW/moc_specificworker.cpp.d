@@ -1,12 +1,12 @@
-/home/gonzalo/robocomp/components/robotica/tarea2/control/src/control_autogen/EWIEGA46WW/moc_specificworker.cpp: /home/gonzalo/robocomp/components/robotica/tarea2/control/src/specificworker.h \
-  /home/gonzalo/robocomp/components/robotica/tarea2/control/src/control_autogen/moc_predefs.h \
-  /home/gonzalo/robocomp/components/robotica/tarea2/control/src/CommonBehavior.h \
-  /home/gonzalo/robocomp/components/robotica/tarea2/control/src/DifferentialRobot.h \
-  /home/gonzalo/robocomp/components/robotica/tarea2/control/src/GenericBase.h \
-  /home/gonzalo/robocomp/components/robotica/tarea2/control/src/Laser.h \
-  /home/gonzalo/robocomp/components/robotica/tarea2/control/src/config.h \
-  /home/gonzalo/robocomp/components/robotica/tarea2/control/src/genericworker.h \
-  /home/gonzalo/robocomp/components/robotica/tarea2/control/src/ui_mainUI.h \
+/home/alumno/robocomp/components/robotica/tarea2/control/src/control_autogen/EWIEGA46WW/moc_specificworker.cpp: /home/alumno/robocomp/components/robotica/tarea2/control/src/specificworker.h \
+  /home/alumno/robocomp/components/robotica/tarea2/control/src/control_autogen/moc_predefs.h \
+  /home/alumno/robocomp/components/robotica/tarea2/control/src/CommonBehavior.h \
+  /home/alumno/robocomp/components/robotica/tarea2/control/src/DifferentialRobotMulti.h \
+  /home/alumno/robocomp/components/robotica/tarea2/control/src/GenericBase.h \
+  /home/alumno/robocomp/components/robotica/tarea2/control/src/LaserMulti.h \
+  /home/alumno/robocomp/components/robotica/tarea2/control/src/config.h \
+  /home/alumno/robocomp/components/robotica/tarea2/control/src/genericworker.h \
+  /home/alumno/robocomp/components/robotica/tarea2/control/src/ui_mainUI.h \
   /opt/robocomp/classes/qlog/qlog.h \
   /usr/include/GL/gl.h \
   /usr/include/Ice/AsyncResult.h \
