@@ -31,9 +31,9 @@
 #include <ranges>
 
 
-#define MAX_ADV_SPEED 1500
+#define MAX_ADV_SPEED 500
 #define MAX_ROT_SPPED 1.2
-#define MAX_DIST_PARADA 1200
+#define MAX_DIST_PARADA 700
 
 class SpecificWorker : public GenericWorker
 {
@@ -64,7 +64,6 @@ private:
     enum class State {IDLE, FORWARD, TURN, FOLLOW_WALL, SPIRAL};
     State state = State::IDLE;
 
-    bool objeto=false;
     float addvSpiral = 1;
     float rotSpiral = MAX_ROT_SPPED;
 

@@ -74,8 +74,8 @@ void SpecificWorker::initialize(int period)
 
 float SpecificWorker::realizarMedia(RoboCompLaser::TLaserData &copy){
     float suma=0, media;
-    for (double i=0; i < copy.size(); i++){
-        suma+=copy[i].dist;
+    for (long unsigned int i=0; i < copy.size(); i++){
+        suma+=copy.at(i).dist;
     }
 
     media=suma/copy.size();
@@ -98,13 +98,13 @@ tuple<float, float> SpecificWorker::fIDLE(RoboCompLaser::TLaserData &ldata){
     if(copy.front().dist < MAX_DIST_PARADA){
         state=State::TURN;
     } else {
-        if (copyAll.front().dist > 2000){
-            state = State::SPIRAL;
-            addvSpiral = 1;
-            rotSpiral = MAX_ROT_SPPED;
-        } else {
+        //if (copyAll.front().dist > 2000){
+        //    state = State::SPIRAL;
+        //    addvSpiral = 1;
+        //    rotSpiral = MAX_ROT_SPPED;
+        //} else {
             state=State::FORWARD;
-        }
+        //}
     }
 
     return tuplaAux;
@@ -129,14 +129,14 @@ tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaser::TLaserData &ldata){
         state=State::TURN;
         tuplaAux = make_tuple(0, 0);
     } else {
-        if (copyAll.front().dist > 2000){
-            state = State::SPIRAL;
-            addvSpiral = 1;
-            rotSpiral = MAX_ROT_SPPED;
-            tuplaAux = make_tuple(0, 0);
-        } else {
+        //if (copyAll.front().dist > 2000){
+        //    state = State::SPIRAL;
+        //    addvSpiral = 1;
+        //    rotSpiral = MAX_ROT_SPPED;
+        //    tuplaAux = make_tuple(0, 0);
+        //} else {
             tuplaAux = make_tuple(MAX_ADV_SPEED, 0);
-        }
+        //}
     }
 
     return tuplaAux;
@@ -159,8 +159,8 @@ tuple<float, float> SpecificWorker::fTURN(RoboCompLaser::TLaserData &ldata){
 
     if(copy.front().dist >= MAX_DIST_PARADA) {
         //Comprobar si hay una pared a su izquierda o derecha y ver a que distancia está, si esta a una cierta distancia hacer el seguir pared sino hacer el FORWARD
-
-        state = State::FORWARD;
+        //state = State::FORWARD;
+        state = State::FOLLOW_WALL;
         tuplaAux = make_tuple(0, 0);
     }
 
@@ -169,8 +169,55 @@ tuple<float, float> SpecificWorker::fTURN(RoboCompLaser::TLaserData &ldata){
 
 
 tuple<float, float> SpecificWorker::fFOLLOW_WALL(RoboCompLaser::TLaserData &ldata){
-    tuple<float, float> tuplaAux;
+    const int part = 3;
+    RoboCompLaser::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    std::ranges::sort(copy, {},&RoboCompLaser::TData::dist);
 
+    RoboCompLaser::TLaserData copyIzq(ldata.begin(), ldata.begin()+30);
+    std::ranges::sort(copyIzq, {},&RoboCompLaser::TData::dist);
+
+    RoboCompLaser::TLaserData copyDer(ldata.end()-30, ldata.end());
+    std::ranges::sort(copyDer, {},&RoboCompLaser::TData::dist);
+
+    qInfo() <<"FOLLOW_WALL:"<< " distancia:" <<copy.front().dist;
+
+    tuple<float, float> tuplaAux;
+    float mediaIzq = realizarMedia(copyIzq);
+    float mediaDer = realizarMedia(copyDer);
+
+    qInfo() <<"FOLLOW_WALL:"<< " mediaIzq:" <<mediaIzq;
+    qInfo() <<"FOLLOW_WALL:"<< " mediaDer:" <<mediaDer;
+
+
+    if(mediaIzq > mediaDer){
+        if (mediaIzq > 1000){
+            tuplaAux=make_tuple(0, -0.2);
+        }else {
+            if (mediaIzq < 1000){
+                tuplaAux=make_tuple(0, +0.1);
+            } else{
+                state=State::FORWARD;
+                tuplaAux= make_tuple(0,0);
+            }
+        }
+    } else {
+        if (mediaDer > 1000){
+            tuplaAux=make_tuple(0, +0.1);
+        }else {
+            if (mediaDer < 1000){
+                tuplaAux=make_tuple(0, -0.2);
+            } else{
+                state=State::FORWARD;
+                tuplaAux= make_tuple(0,0);
+            }
+        }
+    }
+
+    if(copy.front().dist < MAX_DIST_PARADA)
+    {
+        state=State::TURN;
+        tuplaAux = make_tuple(0, 0);
+    }
 
     return tuplaAux;
 }
@@ -226,7 +273,7 @@ void SpecificWorker::compute()
             break;
 
         case State::FOLLOW_WALL:
-
+            tuplaAux=fFOLLOW_WALL(ldata);
             break;
 
         case State::SPIRAL:
