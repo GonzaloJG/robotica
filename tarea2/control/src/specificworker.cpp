@@ -42,16 +42,6 @@ SpecificWorker::~SpecificWorker()
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-//	THE FOLLOWING IS JUST AN EXAMPLE
-//	To use innerModelPath parameter you should uncomment specificmonitor.cpp readConfig method content
-//	try
-//	{
-//		RoboCompCommonBehavior::Parameter par = params.at("InnerModelPath");
-//		std::string innermodel_path = par.value;
-//		innerModel = std::make_shared(innermodel_path);
-//	}
-//	catch(const std::exception &e) { qFatal("Error reading config params"); }
-
     return true;
 }
 
@@ -71,6 +61,47 @@ void SpecificWorker::initialize(int period)
 
 }
 
+void SpecificWorker::compute()
+{
+    //robot control
+    RoboCompLaserMulti::TLaserData ldata;
+    try
+    { ldata = lasermulti_proxy->getLaserData(1);}
+    catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; return ;}
+
+
+    std::tuple<float, float> tuplaAux;
+    switch(state)
+    {
+        case State::IDLE:
+            tuplaAux=fIDLE(ldata);
+            break;
+
+        case State::FORWARD:
+            tuplaAux=fFORWARD(ldata);
+            break;
+
+        case State::TURN:
+            tuplaAux=fTURN(ldata);
+            break;
+
+        case State::FOLLOW_WALL:
+            tuplaAux=fFOLLOW_WALL(ldata);
+            break;
+
+        case State::SPIRAL:
+            tuplaAux=fSPIRAL(ldata);
+            break;
+    }
+
+    //robot actua
+    qInfo()<< "addv: "<< get<0>(tuplaAux) << " rot:" << get<1>(tuplaAux);
+    try
+    { differentialrobotmulti_proxy->setSpeedBase(1, get<0>(tuplaAux),get<1>(tuplaAux));}
+    catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
 
 float SpecificWorker::realizarMedia(RoboCompLaserMulti::TLaserData &copy){
     float suma=0, media;
@@ -88,6 +119,8 @@ tuple<float, float> SpecificWorker::fIDLE(RoboCompLaserMulti::TLaserData &ldata)
     RoboCompLaserMulti::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
     std::ranges::sort(copy, {},&RoboCompLaserMulti::TData::dist);
 
+
+
     RoboCompLaserMulti::TLaserData copyAll(ldata.begin(), ldata.end());
     std::ranges::sort(copyAll, {},&RoboCompLaserMulti::TData::dist);
 
@@ -95,23 +128,27 @@ tuple<float, float> SpecificWorker::fIDLE(RoboCompLaserMulti::TLaserData &ldata)
 
     qInfo() <<"IDLE:"<< " distancia:" <<copyAll.front().dist;
 
-    if(copy.front().dist < MAX_DIST_PARADA){
+
+    if(copy.front().dist < consts.MAX_DIST_PARADA){
+
+
         state=State::TURN;
     } else {
-        if (copyAll.front().dist > 2000){
-            state = State::SPIRAL;
-            addvSpiral = 1;
-            rotSpiral = MAX_ROT_SPPED;
-        } else {
-            state=State::FORWARD;
-        }
+//        if (copyAll.front().dist > 2000){
+//            state = State::SPIRAL;
+//            addvSpiral = 1;
+//            rotSpiral = MAX_ROT_SPPED;
+//        } else {
+          state=State::FORWARD;
+//        }
     }
 
     return tuplaAux;
 }
 
 
-tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaserMulti::TLaserData &ldata){
+tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaserMulti::TLaserData &ldata)
+{
     const int part = 3;
     RoboCompLaserMulti::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
     std::ranges::sort(copy, {},&RoboCompLaserMulti::TData::dist);
@@ -124,26 +161,30 @@ tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaserMulti::TLaserData &lda
     tuple<float, float> tuplaAux;
 
 
-    if(copy.front().dist < MAX_DIST_PARADA)
+    if(copy.front().dist < consts.MAX_DIST_PARADA)
     {
         state=State::TURN;
         tuplaAux = make_tuple(0, 0);
-    } else {
-        if (copyAll.front().dist > 2000){
-            state = State::SPIRAL;
-            addvSpiral = 1;
-            rotSpiral = MAX_ROT_SPPED;
-            tuplaAux = make_tuple(0, 0);
-        } else {
-            tuplaAux = make_tuple(MAX_ADV_SPEED, 0);
-        }
-    }
+    }else
+//    else if (copyAll.front().dist > 2000)
+//    {
+//        state = State::SPIRAL;
+//        consts.addvSpiral = 1;
+//        consts.rotSpiral = consts.MAX_ROT_SPPED;
+//        tuplaAux = make_tuple(0, 0);
+//    }
+//    else
+        tuplaAux = make_tuple(consts.MAX_ADV_SPEED, 0);
 
     return tuplaAux;
 }
 
 
-tuple<float, float> SpecificWorker::fTURN(RoboCompLaserMulti::TLaserData &ldata){
+tuple<float, float> SpecificWorker::fTURN(RoboCompLaserMulti::TLaserData &ldata)
+{
+    static bool primera_vez=true;
+    static  bool giro_derecha=true;
+
     const int part = 3;
     RoboCompLaserMulti::TLaserData copy(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
     std::ranges::sort(copy, {},&RoboCompLaserMulti::TData::dist);
@@ -151,18 +192,37 @@ tuple<float, float> SpecificWorker::fTURN(RoboCompLaserMulti::TLaserData &ldata)
     RoboCompLaserMulti::TLaserData copyAll(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
     std::ranges::sort(copyAll, {},&RoboCompLaserMulti::TData::dist);
 
+    const int partRotacion = 2;
+    RoboCompLaserMulti::TLaserData copyDer(ldata.begin(), ldata.end()-ldata.size()/partRotacion);
+    std::ranges::sort(copyDer, {},&RoboCompLaserMulti::TData::dist);
+
+    RoboCompLaserMulti::TLaserData copyIzq(ldata.begin()+ldata.size()/partRotacion, ldata.end());
+    std::ranges::sort(copyIzq, {},&RoboCompLaserMulti::TData::dist);
+
     qInfo() <<"TURN:"<< " distancia:" <<copy.front().dist;
+    qInfo() <<"IDLE:"<< " mediaIzq:" <<realizarMedia(copyIzq) << " mediaDer:"<< realizarMedia(copyDer);
 
     tuple<float, float> tuplaAux;
 
-    tuplaAux = make_tuple(0, 0.5);
-
-    if(copy.front().dist >= MAX_DIST_PARADA) {
+    if(copy.front().dist >= consts.MAX_DIST_PARADA) {
         //Comprobar si hay una pared a su izquierda o derecha y ver a que distancia está, si esta a una cierta distancia hacer el seguir pared sino hacer el FORWARD
         state = State::FORWARD;
         //state = State::FOLLOW_WALL;
         tuplaAux = make_tuple(0, 0);
     }
+
+    if (primera_vez)
+    {
+        if (realizarMedia(copyIzq) > realizarMedia(copyDer)) {
+            giro_derecha = false;
+            primera_vez = false;
+        }
+    }
+
+    if (giro_derecha)
+        tuplaAux = make_tuple(0, 0.5);
+    else
+        tuplaAux = make_tuple(0, -0.5);
 
     return tuplaAux;
 }
@@ -211,66 +271,20 @@ tuple<float, float> SpecificWorker::fSPIRAL(RoboCompLaserMulti::TLaserData &ldat
 
     qInfo() <<"SPIRAL:"<< " distancia:" <<copy.front().dist;
 
-    tuple<float, float> tuplaAux = make_tuple(addvSpiral, rotSpiral);
+    tuple<float, float> tuplaAux = make_tuple(consts.addvSpiral, consts.rotSpiral);
 
-    if(addvSpiral < MAX_ADV_SPEED && rotSpiral > 0){
+    if(consts.addvSpiral < consts.MAX_ADV_SPEED && consts.rotSpiral > 0){
         sleep(1);
-        addvSpiral+=50;
-        rotSpiral-=0.03;
+        consts.addvSpiral+=50;
+        consts.rotSpiral-=0.03;
     }
 
-    if(copy.front().dist < MAX_DIST_PARADA){
+    if(copy.front().dist < consts.MAX_DIST_PARADA){
         state = State::TURN;
         tuplaAux = make_tuple(0, 0);
     }
 
     return tuplaAux;
-}
-
-void SpecificWorker::compute()
-{
-    //robot control
-    RoboCompLaserMulti::TLaserData ldata;
-    try
-    {
-        ldata = lasermulti_proxy->getLaserData(1);
-    }
-    catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; return ;}
-
-
-    tuple<float, float> tuplaAux;
-
-    switch(state){
-        case State::IDLE:
-            tuplaAux=fIDLE(ldata);
-            break;
-
-        case State::FORWARD:
-            tuplaAux=fFORWARD(ldata);
-            break;
-
-        case State::TURN:
-            tuplaAux=fTURN(ldata);
-            break;
-
-        case State::FOLLOW_WALL:
-            tuplaAux=fFOLLOW_WALL(ldata);
-            break;
-
-        case State::SPIRAL:
-            tuplaAux=fSPIRAL(ldata);
-            break;
-
-    }
-
-    //robot actua
-    try
-    {
-        qInfo()<< "addv: "<< get<0>(tuplaAux) << " rot:" << get<1>(tuplaAux);
-        differentialrobotmulti_proxy->setSpeedBase(1, get<0>(tuplaAux),get<1>(tuplaAux));
-    }
-    catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; }
-
 }
 
 

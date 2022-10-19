@@ -31,10 +31,6 @@
 #include <ranges>
 
 
-#define MAX_ADV_SPEED 1500
-#define MAX_ROT_SPPED 1.2
-#define MAX_DIST_PARADA 1200
-
 class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
@@ -64,10 +60,18 @@ private:
     enum class State {IDLE, FORWARD, TURN, FOLLOW_WALL, SPIRAL};
     State state = State::IDLE;
 
-    float addvSpiral = 1;
-    float rotSpiral = MAX_ROT_SPPED;
 
 
+
+    struct Constants
+    {
+        const float MAX_ADV_SPEED = 1500;
+        const float MAX_ROT_SPPED = 1.2;
+        const float MAX_DIST_PARADA = 1200;
+        float addvSpiral = 1;
+        float rotSpiral = MAX_ROT_SPPED;
+    };
+    Constants consts;
 };
 
 #endif
