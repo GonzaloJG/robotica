@@ -98,13 +98,13 @@ tuple<float, float> SpecificWorker::fIDLE(RoboCompLaserMulti::TLaserData &ldata)
     if(copy.front().dist < MAX_DIST_PARADA){
         state=State::TURN;
     } else {
-        //if (copyAll.front().dist > 2000){
-        //    state = State::SPIRAL;
-        //    addvSpiral = 1;
-        //    rotSpiral = MAX_ROT_SPPED;
-        //} else {
+        if (copyAll.front().dist > 2000){
+            state = State::SPIRAL;
+            addvSpiral = 1;
+            rotSpiral = MAX_ROT_SPPED;
+        } else {
             state=State::FORWARD;
-        //}
+        }
     }
 
     return tuplaAux;
@@ -129,14 +129,14 @@ tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaserMulti::TLaserData &lda
         state=State::TURN;
         tuplaAux = make_tuple(0, 0);
     } else {
-        //if (copyAll.front().dist > 2000){
-        //    state = State::SPIRAL;
-        //    addvSpiral = 1;
-        //    rotSpiral = MAX_ROT_SPPED;
-        //    tuplaAux = make_tuple(0, 0);
-        //} else {
+        if (copyAll.front().dist > 2000){
+            state = State::SPIRAL;
+            addvSpiral = 1;
+            rotSpiral = MAX_ROT_SPPED;
+            tuplaAux = make_tuple(0, 0);
+        } else {
             tuplaAux = make_tuple(MAX_ADV_SPEED, 0);
-        //}
+        }
     }
 
     return tuplaAux;
@@ -159,8 +159,8 @@ tuple<float, float> SpecificWorker::fTURN(RoboCompLaserMulti::TLaserData &ldata)
 
     if(copy.front().dist >= MAX_DIST_PARADA) {
         //Comprobar si hay una pared a su izquierda o derecha y ver a que distancia está, si esta a una cierta distancia hacer el seguir pared sino hacer el FORWARD
-        //state = State::FORWARD;
-        state = State::FOLLOW_WALL;
+        state = State::FORWARD;
+        //state = State::FOLLOW_WALL;
         tuplaAux = make_tuple(0, 0);
     }
 
