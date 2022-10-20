@@ -52,24 +52,20 @@ public slots:
     int startup_check();
     void initialize(int period);
 
-
 private:
     std::shared_ptr < InnerModel > innerModel;
     bool startup_check_flag;
 
-    enum class State {IDLE, FORWARD, TURN, FOLLOW_WALL, SPIRAL};
-    State state = State::IDLE;
-
-
-
+    enum class State {FORWARD, TURN, FOLLOW_WALL, SPIRAL};
+    State state = State::FORWARD;
 
     struct Constants
     {
-        const float MAX_ADV_SPEED = 1500;
+        const float MAX_ADV_SPEED = 700;
         const float MAX_ROT_SPPED = 1.2;
-        const float MAX_DIST_PARADA = 1200;
-        float addvSpiral = 1;
-        float rotSpiral = MAX_ROT_SPPED;
+        const float REFERENCE_DISTANCE = 1200;
+        const float DELTA = 50;
+        const float MAX_SPIRAL = 2000;
     };
     Constants consts;
 };
