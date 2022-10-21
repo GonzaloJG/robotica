@@ -128,6 +128,8 @@ tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaserMulti::TLaserData &lda
 
     if(copyFrente.front().dist < consts.REFERENCE_DISTANCE)
     {
+        primera_vez_turn=true;
+        modo=rand()%2;
         state = State::TURN;
         tuplaAux = make_tuple(0, 0);
     }
@@ -137,7 +139,7 @@ tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaserMulti::TLaserData &lda
         tuplaAux = make_tuple(0, 0);
     }
     else
-            tuplaAux = make_tuple(consts.MAX_ADV_SPEED, 0);
+            tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FORWARD, 0);
 
     return tuplaAux;
 }
@@ -145,10 +147,7 @@ tuple<float, float> SpecificWorker::fFORWARD(RoboCompLaserMulti::TLaserData &lda
 
 tuple<float, float> SpecificWorker::fTURN(RoboCompLaserMulti::TLaserData &ldata)
 {
-    srand(time(NULL));
-    static bool primera_vez=true;
-    static bool giro_derecha=true;
-    //static int modo=rand()%2;
+    static bool giro_derecha;
 
     //Laser parte central
     const int part = 3;
@@ -171,22 +170,25 @@ tuple<float, float> SpecificWorker::fTURN(RoboCompLaserMulti::TLaserData &ldata)
     if(copyFrente.front().dist >= consts.REFERENCE_DISTANCE)
     {
         //generar el movimiento random, unas veces irá recto, otras hará seguir pared.
-        //if(modo==0)
+        qInfo()<<"SE ELIGE EL MODO:"<<modo;
+        //MIRAR SI A LOS LATERALES NO TIENE NADA Y SINO FORZAR FORWARD
+        if(modo==0)
             state = State::FORWARD;
-        //else
-            //state = State::FOLLOW_WALL;
+        else
+            state = State::FOLLOW_WALL;
 
         tuplaAux = make_tuple(consts.MAX_ADV_SPEED, 0);
     }
     else
     {
-        if (primera_vez)
+        if (primera_vez_turn)
         {
             if (realizarMedia(copyIzq) > realizarMedia(copyDer))
-            {
                 giro_derecha = false;
-            }
-            primera_vez = false;
+            else
+                giro_derecha = true;
+
+            primera_vez_turn = false;
         }
 
         if (giro_derecha)
@@ -200,6 +202,12 @@ tuple<float, float> SpecificWorker::fTURN(RoboCompLaserMulti::TLaserData &ldata)
 
 tuple<float, float> SpecificWorker::fFOLLOW_WALL(RoboCompLaserMulti::TLaserData &ldata)
 {
+    static std::chrono::time_point<std::chrono::system_clock> start;
+    if (primera_vez_fw){
+        start = std::chrono::system_clock::now();
+        primera_vez_fw=false;
+    }
+
     //laser parte central
     const int part = 3;
     RoboCompLaserMulti::TLaserData copyFrente(ldata.begin()+(ldata.size()/part), ldata.end()-(ldata.size()/part));
@@ -215,17 +223,37 @@ tuple<float, float> SpecificWorker::fFOLLOW_WALL(RoboCompLaserMulti::TLaserData 
 
     tuple<float, float> tuplaAux;
 
-    if(copyFrente.front().dist < consts.REFERENCE_DISTANCE-300)
+    float mediaIzq = realizarMedia(copyIzq);
+    float mediaDer = realizarMedia(copyDer);
+
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<float,std::milli> duration = end - start;
+
+    qInfo()<<"FOLLOW_WALL"<<"Tiempo de ejecucion:"<<duration.count();
+
+    if(copyFrente.front().dist < consts.REFERENCE_DISTANCE-300 ||  duration.count() >  consts.TIEMPO_DIFERENCIA)
     {
+        if(duration.count() > consts.TIEMPO_DIFERENCIA) {
+            qInfo()<<"HA CUMPLIDO LOS 10s SIGUIENDO LA PARED";
+            modo = rand()%2;
+            primera_vez_fw = true;
+            /////////////////////////////// PROBAR ESTO PORQUE CREO QUE NO LO HACE ///////////////////////////////
+            if(mediaIzq < mediaDer)
+                tuplaAux = make_tuple(1500, 1.2);
+            else
+                tuplaAux = make_tuple(1500, -1.2);
+        } else {
+            modo = 1;
+            tuplaAux = make_tuple(0, 0);
+        }
+        primera_vez_turn=true;
         state = State::TURN;
         tuplaAux = make_tuple(0, 0);
+
     }
     else
     {
         qInfo() << "FOLLOW_WALL:" << " distancia:" << copyFrente.front().dist;
-
-        float mediaIzq = realizarMedia(copyIzq);
-        float mediaDer = realizarMedia(copyDer);
 
         qInfo() << "FOLLOW_WALL:" << " mediaIzq:" << mediaIzq << " mediaDer:" << mediaDer;
 
@@ -264,11 +292,11 @@ tuple<float, float> SpecificWorker::fFOLLOW_WALL(RoboCompLaserMulti::TLaserData 
 
 tuple<float, float> SpecificWorker::fSPIRAL(RoboCompLaserMulti::TLaserData &ldata)
 {
-    static float addvSpiral = 1;
-    static float rotSpiral = consts.MAX_ROT_SPPED;
+    static float addvSpiral=1;
+    static float rotSpiral=consts.MAX_ROT_SPPED;
 
     const int part = 3;
-    RoboCompLaserMulti::TLaserData copyFrente(ldata.begin()+ldata.size()/part, ldata.end()-ldata.size()/part);
+    RoboCompLaserMulti::TLaserData copyFrente(ldata.begin()+(ldata.size()/part), ldata.end()-(ldata.size()/part));
     std::ranges::sort(copyFrente, {},&RoboCompLaserMulti::TData::dist);
 
     qInfo() <<"SPIRAL:"<< " distancia:" <<copyFrente.front().dist;
@@ -277,8 +305,12 @@ tuple<float, float> SpecificWorker::fSPIRAL(RoboCompLaserMulti::TLaserData &ldat
 
     if(copyFrente.front().dist < consts.REFERENCE_DISTANCE)
     {
+        primera_vez_turn=true;
+        modo=rand()%2;
         state = State::TURN;
         tuplaAux = make_tuple(0, 0);
+        addvSpiral=1;
+        rotSpiral=consts.MAX_ROT_SPPED;
     }
     else {
         if(addvSpiral < consts.MAX_ADV_SPEED && rotSpiral > 0)
@@ -286,6 +318,13 @@ tuple<float, float> SpecificWorker::fSPIRAL(RoboCompLaserMulti::TLaserData &ldat
             sleep(1);
             addvSpiral+=50;
             rotSpiral-=0.03;
+        }else{
+            primera_vez_turn=true;
+            modo=rand()%2;
+            state = State::TURN;
+            tuplaAux = make_tuple(0, 0);
+            addvSpiral=1;
+            rotSpiral=consts.MAX_ROT_SPPED;
         }
     }
 

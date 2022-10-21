@@ -40,7 +40,6 @@ public:
     bool setParams(RoboCompCommonBehavior::ParameterList params);
 
     float realizarMedia(RoboCompLaserMulti::TLaserData &copy);
-    tuple<float, float> fIDLE(RoboCompLaserMulti::TLaserData &ldata);
     tuple<float, float> fFORWARD(RoboCompLaserMulti::TLaserData &ldata);
     tuple<float, float> fTURN(RoboCompLaserMulti::TLaserData &ldata);
     tuple<float, float> fFOLLOW_WALL(RoboCompLaserMulti::TLaserData &ldata);
@@ -61,13 +60,21 @@ private:
 
     struct Constants
     {
+        const float MAX_ADV_SPEED_FORWARD = 1500;
         const float MAX_ADV_SPEED = 700;
         const float MAX_ROT_SPPED = 1.2;
-        const float REFERENCE_DISTANCE = 1200;
+        const float REFERENCE_DISTANCE = 900;
         const float DELTA = 50;
         const float MAX_SPIRAL = 2000;
+        const float TIEMPO_DIFERENCIA = 10000;
     };
     Constants consts;
+
+    //TURN
+    bool primera_vez_turn=true;
+    int modo;
+    //FOLLOW WALL
+    bool primera_vez_fw=true;
 };
 
 #endif
