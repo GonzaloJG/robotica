@@ -61,11 +61,12 @@ private:
 
     struct Constants
     {
-        const float MAX_ADV_SPEED_FORWARD = 1200;
-        const float MAX_ADV_SPEED_FW = 700;
+        const float MAX_ADV_SPEED_FORWARD = 1500;
+        const float ROT_TURN=0.55;
+        const float MAX_ADV_SPEED_FW = 900;
         const float MAX_ADV_SPEED_SPIRAL = 1500;
         const float MAX_ROT_SPPED = 1.2;
-        const float REFERENCE_DISTANCE = 1000;
+        const float REFERENCE_DISTANCE = 1250;
         const float DELTA = 50;
         const float MAX_SPIRAL = 2000;
         const float TIEMPO_DIFERENCIA = 10000;
@@ -77,6 +78,8 @@ private:
     int modo;
     //FOLLOW WALL
     bool primera_vez_fw=true;
+
+    int id_giraff;
 };
 
 #endif

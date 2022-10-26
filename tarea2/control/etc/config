@@ -4,7 +4,7 @@ CommonBehavior.Endpoints=tcp -p 10000
 DifferentialRobotMultiProxy = differentialrobotmulti:tcp -h localhost -p 10007
 LaserMultiProxy = lasermulti:tcp -h localhost -p 10008
 
-
+id_giraff=1;
 
 InnerModelPath = innermodel.xml
 

@@ -42,6 +42,7 @@ SpecificWorker::~SpecificWorker()
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
+    id_giraff=std::stoi(params.at("id_giraff").value);
     return true;
 }
 
@@ -66,7 +67,7 @@ void SpecificWorker::compute()
     //robot control
     RoboCompLaserMulti::TLaserData ldata;
     try
-    { ldata = lasermulti_proxy->getLaserData(2);}
+    { ldata = lasermulti_proxy->getLaserData(id_giraff);}
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; return ;}
 
 
@@ -93,7 +94,7 @@ void SpecificWorker::compute()
     //robot actua
     qInfo()<< "addv: "<< get<0>(tuplaAux) << " rot:" << get<1>(tuplaAux);
     try
-    { differentialrobotmulti_proxy->setSpeedBase(2, get<0>(tuplaAux),get<1>(tuplaAux));}
+    { differentialrobotmulti_proxy->setSpeedBase(id_giraff, get<0>(tuplaAux),get<1>(tuplaAux));}
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; }
 }
 
@@ -219,9 +220,9 @@ tuple<float, float> SpecificWorker::fTURN(RoboCompLaserMulti::TLaserData &ldata)
         }
 
         if (giro_derecha)
-            tuplaAux = make_tuple(0, 0.5);
+            tuplaAux = make_tuple(0, consts.ROT_TURN);
         else
-            tuplaAux = make_tuple(0, -0.5);
+            tuplaAux = make_tuple(0, -consts.ROT_TURN);
     }
     return tuplaAux;
 }
@@ -287,11 +288,11 @@ tuple<float, float> SpecificWorker::fFOLLOW_WALL(RoboCompLaserMulti::TLaserData 
         {
             if (mediaIzq > consts.REFERENCE_DISTANCE + consts.DELTA) {
                 qInfo() << "FOLLOW_WALL:" << "corrige trayectoria:";
-                tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, -0.2);
+                tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, -0.25);
             } else {
                 if (mediaIzq < consts.REFERENCE_DISTANCE - consts.DELTA) {
                     qInfo() << "FOLLOW_WALL:" << "corrige trayectoria:";
-                    tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, +0.2);
+                    tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, +0.25);
                 } else {
                     tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, 0);
                 }
@@ -300,11 +301,11 @@ tuple<float, float> SpecificWorker::fFOLLOW_WALL(RoboCompLaserMulti::TLaserData 
         {
             if (mediaDer > consts.REFERENCE_DISTANCE + consts.DELTA) {
                 qInfo() << "FOLLOW_WALL:" << "corrige trayectoria:";
-                tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, +0.2);
+                tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, +0.25);
             } else {
                 if (mediaDer < consts.REFERENCE_DISTANCE - consts.DELTA) {
                     qInfo() << "FOLLOW_WALL:" << "corrige trayectoria:";
-                    tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, -0.2);
+                    tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, -0.25);
                 } else {
                     tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FW, 0);
                 }
@@ -339,11 +340,11 @@ tuple<float, float> SpecificWorker::fSPIRAL(RoboCompLaserMulti::TLaserData &ldat
         rotSpiral=consts.MAX_ROT_SPPED;
     }
     else {
-        if(addvSpiral < consts.MAX_ADV_SPEED_SPIRAL && rotSpiral > 0)
+        if(addvSpiral <= consts.MAX_ADV_SPEED_SPIRAL && rotSpiral >= 0)
         {
             sleep(1);
-            addvSpiral+=50;
-            rotSpiral-=0.03;
+            addvSpiral+=35;
+            rotSpiral-=0.012;
         }else{
             state = State::FORWARD;
             tuplaAux = make_tuple(consts.MAX_ADV_SPEED_FORWARD, 0);
