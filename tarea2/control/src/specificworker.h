@@ -79,7 +79,7 @@ private:
     //FOLLOW WALL
     bool primera_vez_fw=true;
 
-    int id_giraff;
+    //int id_giraff;
 };
 
 #endif
