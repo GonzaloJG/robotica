@@ -42,7 +42,7 @@ SpecificWorker::~SpecificWorker()
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-    id_giraff=std::stoi(params.at("id_giraff").value);
+//    id_giraff=std::stoi(params.at("id_giraff").value);
     return true;
 }
 
@@ -67,7 +67,7 @@ void SpecificWorker::compute()
     //robot control
     RoboCompLaserMulti::TLaserData ldata;
     try
-    { ldata = lasermulti_proxy->getLaserData(id_giraff);}
+    { ldata = lasermulti_proxy->getLaserData(0);}
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; return ;}
 
 
@@ -94,7 +94,7 @@ void SpecificWorker::compute()
     //robot actua
     qInfo()<< "addv: "<< get<0>(tuplaAux) << " rot:" << get<1>(tuplaAux);
     try
-    { differentialrobotmulti_proxy->setSpeedBase(id_giraff, get<0>(tuplaAux),get<1>(tuplaAux));}
+    { differentialrobotmulti_proxy->setSpeedBase(0, get<0>(tuplaAux),get<1>(tuplaAux));}
     catch (const Ice::Exception &e) {std::cout << e.what() << std::endl; }
 }
 
