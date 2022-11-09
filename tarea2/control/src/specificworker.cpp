@@ -22,6 +22,8 @@
 * \brief Default constructor
 */
 
+
+
 SpecificWorker::SpecificWorker(TuplePrx tprx, bool startup_check) : GenericWorker(tprx)
 {
     this->startup_check_flag = startup_check;
