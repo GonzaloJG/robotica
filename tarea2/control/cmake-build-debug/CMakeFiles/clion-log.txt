@@ -1,4 +1,4 @@
-Cannot generate into /home/gonzalo/robocomp/components/robotica/tarea2/control
+Cannot generate into /home/robocomp/robocomp/components/robotica/tarea2/control
 It is already used for project /home/carmen/robotica/tarea2/control
 
 Please either delete it manually or select another generation directory
