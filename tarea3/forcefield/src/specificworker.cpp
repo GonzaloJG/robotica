@@ -164,6 +164,7 @@ void SpecificWorker::initialize(int period)
         timer.start(Period);
 	}
 }
+
 void SpecificWorker::compute()
 {
     cv::Mat omni_rgb_frame;
@@ -200,6 +201,9 @@ void SpecificWorker::compute()
     draw_objects_on_2dview(objects, RoboCompYoloObjects::TBox());
 
     // TODO: state machine to activate basic behaviours. Returns a current target vector
+    Eigen::Vector3f aux{0.f, 0.f,  0.f};
+    //aux=state_machine(objects, ) NO SABEMOS QUE ES EL LINE Y QUE HACEMOS CON LOS VALORES DEL VECTOR QUE OBTENEMOS, PREGUNTAR
+
 
     /// eye tracking: tracks  current selected object or  selects a new one
     //eye_track(robot.has_target, robot.target);
@@ -555,6 +559,39 @@ void SpecificWorker::JoystickAdapter_sendData(RoboCompJoystickAdapter::TData dat
         robot.current_target = target;
     }
 }
+
+
+Eigen::Vector3f state_machine(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line){
+    Eigen::Vector3f aux{0.f, 0.f,  0.f}; //PREGUNTAR COMO SE DECLARA EL VECTOR Y COLOR DEL CASE
+    switch(state)
+    {
+        case State::SEARCHING:
+            aux=search_state(objects);
+            break;
+        case State::APPROACHING:
+            aux=approach_state(objects);
+            break;
+    }
+    return aux;
+}
+
+Eigen::Vector3f search_state(const RoboCompYoloObjects::TObjects &objects){
+    Eigen::Vector3f aux{0.f, 0.f,  0.f};
+
+    //selecionar el objetivo con target
+    //target=
+
+    state=State::APPROACHING;
+    return aux;
+}
+Eigen::Vector3f approach_state(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line){
+    Eigen::Vector3f aux{0.f, 0.f,  0.f};
+    aux=Eigen::Vector3f(0.f, robot.max_advance_speed , 0);
+    //PREGUNTAR COMO HACE LA ROTACION Y SI MIENTRAS ROTA TIENE QUE SELECCIONAR UN OBJETIVO O ROTA Y LUEGO SELECCIONA OBJETIVO
+    state=State::SEARCHING;
+    return aux;
+}
+
 
 /**************************************/
 // From the RoboCompCameraRGBDSimple you can call this methods:

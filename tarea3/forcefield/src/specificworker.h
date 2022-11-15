@@ -121,12 +121,12 @@ class SpecificWorker : public GenericWorker
     void set_target_force(const Eigen::Vector2f &vec);
 
     // state machine
-    Eigen::Vector2f state_machine(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line);
+    Eigen::Vector3f state_machine(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line);
     enum class State {IDLE, SEARCHING, APPROACHING, WAITING};
     State state = State::IDLE;
-    Eigen::Vector2f search_state(const RoboCompYoloObjects::TObjects &objects);
-    Eigen::Vector2f approach_state(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line);
-    Eigen::Vector2f wait_state();
+    Eigen::Vector3f search_state(const RoboCompYoloObjects::TObjects &objects);
+    Eigen::Vector3f approach_state(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line);
+    Eigen::Vector3f wait_state();
 
     float closest_distance_ahead(const vector<Eigen::Vector2f> &line);
 
