@@ -23,6 +23,7 @@
 #include <cppitertools/filter.hpp>
 #include <cppitertools/chunked.hpp>
 #include <cppitertools/sliding_window.hpp>
+#include <ranges>
 
 /**
 * \brief Default constructor
@@ -229,7 +230,7 @@ void SpecificWorker::compute()
 
     // TODO:: STATE MACHINE
     // state machine to activate basic behaviours. Returns a  target_coordinates vector
-    //  state_machine(objects, current_line);
+     state_machine(objects, current_line);
 
     /// eye tracking: tracks  current selected object or  IOR if none
     eye_track(robot);
@@ -238,13 +239,11 @@ void SpecificWorker::compute()
     // DWA algorithm
     auto [adv, rot, side] =  dwa.update(robot.get_robot_target_coordinates(), current_line, robot.get_current_advance_speed(), robot.get_current_rot_speed(), viewer);
 
-    //qInfo() << __FUNCTION__ << adv <<  side << rot;
-    //    try{ omnirobot_proxy->setSpeedBase(side, adv, rot); }
-    //    catch(const Ice::Exception &e){ std::cout << e.what() << "Error connecting to omnirobot" << std::endl;}
-    // execute move commands
-    //move_robot(force);
+    qInfo() << __FUNCTION__ << adv <<  side << rot;
+    try{ omnirobot_proxy->setSpeedBase(side, adv, rot); }
+    catch(const Ice::Exception &e){ std::cout << e.what() << "Error connecting to omnirobot" << std::endl;}
 
-    //robot.print();
+    robot.print();
 }
 
 //////////////////// ELEMENTS OF CONTROL/////////////////////////////////////////////////
@@ -462,7 +461,37 @@ void SpecificWorker::move_robot(Eigen::Vector2f force)
 }
 
 ///////////////////  State machine ////////////////////////////////////////////
+void SpecificWorker::state_machine(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line){
+    switch(state){
+        case State::SEARCHING:
+            search_state(objects);
+            break;
+        case State::APPROACHING:
 
+            break;
+    }
+}
+
+void SpecificWorker::search_state(const RoboCompYoloObjects::TObjects &objects){
+
+    //Comprueba que el objeto que identifica es distinto del objeto que tenemos actualmente.
+    //Una vez comprobado, si es distinto, cambia en el iterador a los atributos del nuevo objeto y cambia de estado.
+    if(auto it = std::ranges::find_if_not(objects,
+                                          [r=robot](auto &a){return a.type == r.get_current_target().type;}); it != objects.end())
+    {
+        robot.set_current_target(*it);
+        robot.set_pure_rotation(0.f);
+        state=State::APPROACHING;
+
+    }
+        //Si no, sigue rotando.
+    else
+        robot.set_pure_rotation(0.5);
+}
+void SpecificWorker::approach_state(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line){
+    //Comprobar distancia al target y parar
+    //Mismo if buscar en objet un objeto igual que el actual y si es true reemplazas el actual por el nuevo.
+}
 
 ///////////////////// Aux //////////////////////////////////////////////////////////////////
 float SpecificWorker::closest_distance_ahead(const std::vector<Eigen::Vector2f> &line)
