@@ -1,0 +1,96 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-34c71776ed784388d362.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-src-0e45e8f54f9fe6eb1f95.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "forcefield",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "ICES__home_gonzalo_robocomp_components_robotica_tarea3_forcefield_src::@145eef247bfb46b6828c",
+					"jsonFile" : "target-ICES__home_gonzalo_robocomp_components_robotica_tarea3_forcefield_src-0ff62f48f7466a21645c.json",
+					"name" : "ICES__home_gonzalo_robocomp_components_robotica_tarea3_forcefield_src",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "forcefield::@145eef247bfb46b6828c",
+					"jsonFile" : "target-forcefield-bdd9fe7c5c10bae65f5b.json",
+					"name" : "forcefield",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "forcefield_autogen::@145eef247bfb46b6828c",
+					"jsonFile" : "target-forcefield_autogen-e79305a56d7aeda4b3d6.json",
+					"name" : "forcefield_autogen",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/gonzalo/robocomp/components/robotica/tarea3/forcefield",
+		"source" : "/home/gonzalo/robocomp/components/robotica/tarea3/forcefield"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
