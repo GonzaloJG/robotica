@@ -1,7 +1,7 @@
 src/CMakeFiles/forcefield.dir/OmniRobot.cpp.o: \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/OmniRobot.cpp \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/OmniRobot.cpp \
  /usr/include/stdc-predef.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/OmniRobot.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/OmniRobot.h \
  /usr/include/IceUtil/PushDisableWarnings.h /usr/include/Ice/ProxyF.h \
  /usr/include/Ice/Config.h /usr/include/IceUtil/Config.h \
  /usr/include/c++/11/stdlib.h /usr/include/c++/11/cstdlib \
@@ -286,4 +286,4 @@ src/CMakeFiles/forcefield.dir/OmniRobot.cpp.o: \
  /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
  /usr/include/c++/11/bits/deque.tcc /usr/include/Ice/FactoryTableInit.h \
  /usr/include/Ice/DefaultValueFactory.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/GenericBase.h
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/GenericBase.h

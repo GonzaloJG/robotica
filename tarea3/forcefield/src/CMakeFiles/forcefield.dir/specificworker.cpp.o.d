@@ -1,9 +1,9 @@
 src/CMakeFiles/forcefield.dir/specificworker.cpp.o: \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/specificworker.cpp \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/specificworker.cpp \
  /usr/include/stdc-predef.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/specificworker.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/genericworker.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/config.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/specificworker.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/genericworker.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/config.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -19,8 +19,8 @@ src/CMakeFiles/forcefield.dir/specificworker.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /home/gonzalo/robocomp/classes/qlog/qlog.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/config.h \
+ /opt/robocomp/classes/qlog/qlog.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/config.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QtCore \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QtCoreDepends \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
@@ -961,7 +961,7 @@ src/CMakeFiles/forcefield.dir/specificworker.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qvector4d.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiversion.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/ui_mainUI.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/ui_mainUI.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h \
@@ -983,7 +983,7 @@ src/CMakeFiles/forcefield.dir/specificworker.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgridlayout.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/CommonBehavior.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/CommonBehavior.h \
  /usr/include/IceUtil/PushDisableWarnings.h /usr/include/Ice/ProxyF.h \
  /usr/include/Ice/Config.h /usr/include/IceUtil/Config.h \
  /usr/include/c++/11/cassert /usr/include/c++/11/sstream \
@@ -1028,13 +1028,13 @@ src/CMakeFiles/forcefield.dir/specificworker.cpp.o: \
  /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
  /usr/include/c++/11/bits/deque.tcc /usr/include/Ice/FactoryTableInit.h \
  /usr/include/Ice/DefaultValueFactory.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/CameraRGBDSimple.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/GenericBase.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/JointMotorSimple.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/JoystickAdapter.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/OmniRobot.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/YoloObjects.h \
- /home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/CameraRGBDSimple.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/GenericBase.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/JointMotorSimple.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/JoystickAdapter.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/OmniRobot.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/YoloObjects.h \
+ /opt/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsScene \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h \
@@ -1058,7 +1058,7 @@ src/CMakeFiles/forcefield.dir/specificworker.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsPolygonItem \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsitem.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpainterpath.h \
- /home/gonzalo/robocomp/classes/timer/timer.h /usr/include/Eigen/Dense \
+ /opt/robocomp/classes/timer/timer.h /usr/include/Eigen/Dense \
  /usr/include/Eigen/Core \
  /usr/include/Eigen/src/Core/util/DisableStupidWarnings.h \
  /usr/include/Eigen/src/Core/util/Macros.h \
@@ -1277,15 +1277,15 @@ src/CMakeFiles/forcefield.dir/specificworker.cpp.o: \
  /usr/include/opencv4/opencv2/highgui.hpp \
  /usr/include/opencv4/opencv2/imgcodecs.hpp \
  /usr/include/opencv4/opencv2/videoio.hpp \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/dynamic_window.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/dynamic_window.h \
  /usr/include/c++/11/optional \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/QPolygonF \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/QTransform \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsEllipseItem \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/robot.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/robot.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/QColor \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/camera.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/camera.h \
  /usr/local/include/cppitertools/range.hpp \
  /usr/local/include/cppitertools/internal/iterbase.hpp \
  /usr/local/include/cppitertools/enumerate.hpp \

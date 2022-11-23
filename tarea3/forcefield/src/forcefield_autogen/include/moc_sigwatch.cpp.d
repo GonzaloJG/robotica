@@ -1,5 +1,5 @@
-/home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/forcefield_autogen/include/moc_sigwatch.cpp: /home/gonzalo/robocomp/classes/sigwatch/sigwatch.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/forcefield_autogen/moc_predefs.h \
+/home/alumno/robocomp/components/robotica/tarea3/forcefield/src/forcefield_autogen/include/moc_sigwatch.cpp: /opt/robocomp/classes/sigwatch/sigwatch.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/forcefield_autogen/moc_predefs.h \
   /usr/include/assert.h \
   /usr/include/c++/11/algorithm \
   /usr/include/c++/11/array \

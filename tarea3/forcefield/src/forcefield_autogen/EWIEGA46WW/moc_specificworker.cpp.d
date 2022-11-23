@@ -1,21 +1,21 @@
-/home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/forcefield_autogen/EWIEGA46WW/moc_specificworker.cpp: /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/specificworker.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/forcefield_autogen/moc_predefs.h \
-  /home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.h \
-  /home/gonzalo/robocomp/classes/qlog/qlog.h \
-  /home/gonzalo/robocomp/classes/timer/timer.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/CameraRGBDSimple.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/CommonBehavior.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/GenericBase.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/JointMotorSimple.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/JoystickAdapter.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/OmniRobot.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/YoloObjects.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/camera.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/config.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/dynamic_window.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/genericworker.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/robot.h \
-  /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/ui_mainUI.h \
+/home/alumno/robocomp/components/robotica/tarea3/forcefield/src/forcefield_autogen/EWIEGA46WW/moc_specificworker.cpp: /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/specificworker.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/forcefield_autogen/moc_predefs.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/CameraRGBDSimple.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/CommonBehavior.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/GenericBase.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/JointMotorSimple.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/JoystickAdapter.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/OmniRobot.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/YoloObjects.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/camera.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/config.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/dynamic_window.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/genericworker.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/robot.h \
+  /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/ui_mainUI.h \
+  /opt/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.h \
+  /opt/robocomp/classes/qlog/qlog.h \
+  /opt/robocomp/classes/timer/timer.h \
   /usr/include/GL/gl.h \
   /usr/include/Ice/AsyncResult.h \
   /usr/include/Ice/BatchRequestQueueF.h \

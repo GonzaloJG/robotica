@@ -1,7 +1,7 @@
 src/CMakeFiles/forcefield.dir/CommonBehavior.cpp.o: \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/CommonBehavior.cpp \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/CommonBehavior.cpp \
  /usr/include/stdc-predef.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/CommonBehavior.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/CommonBehavior.h \
  /usr/include/IceUtil/PushDisableWarnings.h /usr/include/Ice/ProxyF.h \
  /usr/include/Ice/Config.h /usr/include/IceUtil/Config.h \
  /usr/include/c++/11/stdlib.h /usr/include/c++/11/cstdlib \

@@ -1,7 +1,7 @@
 src/CMakeFiles/forcefield.dir/JoystickAdapter.cpp.o: \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/JoystickAdapter.cpp \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/JoystickAdapter.cpp \
  /usr/include/stdc-predef.h \
- /home/gonzalo/robocomp/components/robotica/tarea3/forcefield/src/JoystickAdapter.h \
+ /home/alumno/robocomp/components/robotica/tarea3/forcefield/src/JoystickAdapter.h \
  /usr/include/IceUtil/PushDisableWarnings.h /usr/include/Ice/ProxyF.h \
  /usr/include/Ice/Config.h /usr/include/IceUtil/Config.h \
  /usr/include/c++/11/stdlib.h /usr/include/c++/11/cstdlib \

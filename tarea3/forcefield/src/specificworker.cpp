@@ -232,8 +232,8 @@ void SpecificWorker::compute()
     state_machine(objects, current_line);
 
     /// eye tracking: tracks  current selected object or  IOR if none
-    eye_track(robot);
-    draw_top_camera_optic_ray();
+    //eye_track(robot);
+    //draw_top_camera_optic_ray();
 
     // DWA algorithm
     auto [adv, rot, side] =  dwa.update(robot.get_robot_target_coordinates(), current_line, robot.get_current_advance_speed(), robot.get_current_rot_speed(), viewer);
@@ -483,13 +483,13 @@ void SpecificWorker::search_state(const RoboCompYoloObjects::TObjects &objects){
     {
         robot.set_current_target(*it);
         qInfo()<< __FUNCTION__<<"Target:"<<robot.get_current_target().type;
-        robot.set_pure_rotation(0.f);
+//        robot.set_pure_rotation(0.f);
         state=State::APPROACHING;
 
     }
         //Si no, sigue rotando.
-    else
-        robot.set_pure_rotation(0.5);
+//    else
+//        robot.set_pure_rotation(0.5);
 
 }
 void SpecificWorker::approach_state(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line){
