@@ -471,6 +471,9 @@ void SpecificWorker::state_machine(const RoboCompYoloObjects::TObjects &objects,
         case State::APPROACHING:
             approach_state(objects, line);
             break;
+        case State::WAITING:
+            wait_state();
+            break;
     }
 
 }
@@ -488,15 +491,16 @@ void SpecificWorker::search_state(const RoboCompYoloObjects::TObjects &objects){
 
     }
         //Si no, sigue rotando.
-//    else
-//        robot.set_pure_rotation(0.5);
+    else
+        robot.set_pure_rotation(0.5);
 
 }
 void SpecificWorker::approach_state(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line){
+    robot.set_pure_rotation(0.f);
 
-    if (robot.get_distance_to_target() < 800)
-        state = State::SEARCHING;
-    else
+    if (robot.get_distance_to_target() < 800) {
+        state = State::WAITING;
+    }else
         if(auto it=std::find_if(objects.begin(), objects.end(),
                                 [r=robot](auto &a){return a.type == r.get_current_target().type;}); it != objects.end())
             //En una funcion lamda lo que hay entre corchete es para capturar un objeto del entorno, y en a esta los elementos del it
@@ -506,6 +510,25 @@ void SpecificWorker::approach_state(const RoboCompYoloObjects::TObjects &objects
         }
 
 }
+
+void SpecificWorker::wait_state(){
+    static std::chrono::time_point<std::chrono::system_clock> start;
+    static bool primera_vez=true;
+    if (primera_vez)
+    {
+        start = std::chrono::system_clock::now();
+        primera_vez=false;
+    }
+
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<float,std::milli> duration = end - start;
+    if(duration.count() > 2000)
+    {
+        state = State::SEARCHING;
+        primera_vez=true;
+    }
+}
+
 
 ///////////////////// Aux //////////////////////////////////////////////////////////////////
 float SpecificWorker::closest_distance_ahead(const std::vector<Eigen::Vector2f> &line)

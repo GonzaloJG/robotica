@@ -23,13 +23,14 @@
 #include <cppitertools/filter.hpp>
 #include <cppitertools/chunked.hpp>
 #include <cppitertools/sliding_window.hpp>
+#include <cppitertools/combinations_with_replacement.hpp>
 
 /**
 * \brief Default constructor
 */
 SpecificWorker::SpecificWorker(TuplePrx tprx, bool startup_check) : GenericWorker(tprx)
 {
-	this->startup_check_flag = startup_check;
+    this->startup_check_flag = startup_check;
 }
 /**
 * \brief Default destructor
@@ -37,7 +38,7 @@ SpecificWorker::SpecificWorker(TuplePrx tprx, bool startup_check) : GenericWorke
 SpecificWorker::~SpecificWorker()
 {
     jointmotorsimple_proxy->setVelocity("camera_pan_joint", RoboCompJointMotorSimple::MotorGoalVelocity{0.f, 1.f});
-	std::cout << "Destroying SpecificWorker" << std::endl;
+    std::cout << "Destroying SpecificWorker" << std::endl;
 }
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
@@ -51,18 +52,18 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 //	}
 //	catch(const std::exception &e) { qFatal("Error reading config params"); }
 
-	return true;
+    return true;
 }
 void SpecificWorker::initialize(int period)
 {
-	std::cout << "Initializing worker" << std::endl;
-	this->Period = period;
-	if(this->startup_check_flag)
-	{
-		this->startup_check();
-	}
-	else
-	{
+    std::cout << "Initializing worker" << std::endl;
+    this->Period = period;
+    if(this->startup_check_flag)
+    {
+        this->startup_check();
+    }
+    else
+    {
         // graphics
         viewer = new AbstractGraphicViewer(this->beta_frame,  QRectF(-2500, -2500, 5000, 5000));
         this->resize(900,650);
@@ -191,7 +192,7 @@ void SpecificWorker::initialize(int period)
         Period = 50;
         timer.start(Period);
         std::cout << "Worker initialized OK" << std::endl;
-	}
+    }
 }
 void SpecificWorker::compute()
 {
@@ -212,15 +213,16 @@ void SpecificWorker::compute()
 
     /// compute level_lines
     auto omni_lines = get_multi_level_3d_points_omni(omni_depth_frame);
-    //draw_floor_line(omni_lines, {1});
+    draw_floor_line(omni_lines, {1});
     auto current_line = omni_lines[1];  // second line of the list of laser lines at different heights
     //auto top_lines = get_multi_level_3d_points_top(top_depth_frame, top_camera.get_depth_focalx(), top_camera.get_depth_focaly());
-    auto top_lines  = top_camera.get_depth_lines_in_robot(0, 1600, 50, robot.get_tf_cam_to_base());
-    draw_floor_line(top_lines, {1});
+    //auto top_lines  = top_camera.get_depth_lines_in_robot(0, 1600, 50, robot.get_tf_cam_to_base());
+    //draw_floor_line(top_lines, {1});
 
     /// YOLO
     RoboCompYoloObjects::TObjects objects = yolo_detect_objects(top_rgb_frame);
-
+    //door detector (current_line);
+    door_detector(current_line);
     /// draw top image
     cv::imshow("top", top_rgb_frame); cv::waitKey(5);
 
@@ -239,8 +241,8 @@ void SpecificWorker::compute()
     auto [adv, rot, side] =  dwa.update(robot.get_robot_target_coordinates(), current_line, robot.get_current_advance_speed(), robot.get_current_rot_speed(), viewer);
 
     //qInfo() << __FUNCTION__ << adv <<  side << rot;
-        try{ omnirobot_proxy->setSpeedBase(side, adv, rot); }
-        catch(const Ice::Exception &e){ std::cout << e.what() << "Error connecting to omnirobot" << std::endl;}
+//    try{ omnirobot_proxy->setSpeedBase(side, adv, rot); }
+//    catch(const Ice::Exception &e){ std::cout << e.what() << "Error connecting to omnirobot" << std::endl;}
     // execute move commands
     //move_robot(force);
 
@@ -376,23 +378,23 @@ std::vector<std::vector<Eigen::Vector2f>> SpecificWorker::get_multi_level_3d_poi
 
     // filter initialized points not filled with real measures, with the value of its closest valid neighboor
     auto nearest_initialized_neighboor = [c=consts](const std::vector<Eigen::Vector2f> &line, std::vector<Eigen::Vector2f>::const_iterator it)
+    {
+        // go from index alternating left and right until condition is met
+        auto it_l = it+1; auto it_r = it-1;
+        bool end_r = false;
+        bool end_l = false;
+        while(not end_r and not end_l)
+            if(it_r->x() != c.max_camera_depth_range and it_r->y() != c.max_camera_depth_range)
+                return  *it_r;
+            else if (it_l->x() != c.max_camera_depth_range and it_l->y() != c.max_camera_depth_range)
+                return *it_l;
+            else
             {
-                // go from index alternating left and right until condition is met
-                auto it_l = it+1; auto it_r = it-1;
-                bool end_r = false;
-                bool end_l = false;
-                while(not end_r and not end_l)
-                    if(it_r->x() != c.max_camera_depth_range and it_r->y() != c.max_camera_depth_range)
-                        return  *it_r;
-                    else if (it_l->x() != c.max_camera_depth_range and it_l->y() != c.max_camera_depth_range)
-                            return *it_l;
-                    else
-                    {
-                        if (it_r != line.end()) it_r++; else end_r = true;
-                        if (it_l != line.begin()) it_l--; else end_l = true;
-                    }
-                return Eigen::Vector2f{0.f, 0.f};  // should not go through here
-            };
+                if (it_r != line.end()) it_r++; else end_r = true;
+                if (it_l != line.begin()) it_l--; else end_l = true;
+            }
+        return Eigen::Vector2f{0.f, 0.f};  // should not go through here
+    };
     for(auto &level : points)
         for(auto it=level.begin(); it!=level.end(); it++)
             if(it->x() == consts.max_camera_depth_range and it->y() == consts.max_camera_depth_range)
@@ -471,6 +473,9 @@ void SpecificWorker::state_machine(const RoboCompYoloObjects::TObjects &objects,
         case State::APPROACHING:
             approach_state(objects, line);
             break;
+        case State::WAITING:
+            wait_state();
+            break;
     }
 
 }
@@ -488,24 +493,44 @@ void SpecificWorker::search_state(const RoboCompYoloObjects::TObjects &objects){
 
     }
         //Si no, sigue rotando.
-//    else
-//        robot.set_pure_rotation(0.5);
+    else
+        robot.set_pure_rotation(0.5);
 
 }
 void SpecificWorker::approach_state(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line){
+    robot.set_pure_rotation(0.f);
 
-    if (robot.get_distance_to_target() < 800)
-        state = State::SEARCHING;
-    else
-        if(auto it=std::find_if(objects.begin(), objects.end(),
-                                [r=robot](auto &a){return a.type == r.get_current_target().type;}); it != objects.end())
-            //En una funcion lamda lo que hay entre corchete es para capturar un objeto del entorno, y en a esta los elementos del it
-        {
-            robot.set_current_target(*it);
-            qInfo()<< __FUNCTION__<<"Target:"<<robot.get_current_target().type;
-        }
+    if (robot.get_distance_to_target() < 800) {
+        state = State::WAITING;
+    }else
+    if(auto it=std::find_if(objects.begin(), objects.end(),
+                            [r=robot](auto &a){return a.type == r.get_current_target().type;}); it != objects.end())
+        //En una funcion lamda lo que hay entre corchete es para capturar un objeto del entorno, y en a esta los elementos del it
+    {
+        robot.set_current_target(*it);
+        qInfo()<< __FUNCTION__<<"Target:"<<robot.get_current_target().type;
+    }
 
 }
+
+void SpecificWorker::wait_state(){
+    static std::chrono::time_point<std::chrono::system_clock> start;
+    static bool primera_vez=true;
+    if (primera_vez)
+    {
+        start = std::chrono::system_clock::now();
+        primera_vez=false;
+    }
+
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<float,std::milli> duration = end - start;
+    if(duration.count() > 2000)
+    {
+        state = State::SEARCHING;
+        primera_vez=true;
+    }
+}
+
 
 ///////////////////// Aux //////////////////////////////////////////////////////////////////
 float SpecificWorker::closest_distance_ahead(const std::vector<Eigen::Vector2f> &line)
@@ -579,7 +604,7 @@ void SpecificWorker::draw_floor_line(const vector<vector<Eigen::Vector2f>> &line
 }
 void SpecificWorker::draw_forces(const Eigen::Vector2f &force, const Eigen::Vector2f &target, const Eigen::Vector2f &res)
 {
-      static std::vector<QGraphicsItem *> items;
+    static std::vector<QGraphicsItem *> items;
     for(const auto &i: items)
         viewer->scene.removeItem(i);
     items.clear();
@@ -619,14 +644,14 @@ void SpecificWorker::draw_top_camera_optic_ray()
     // compute intersection according to https://mathworld.wolfram.com/Line-PlaneIntersection.html
     Eigen::Matrix4f numerator;
     numerator << 1.f, 1.f, 1.f, 1.f,
-                 x1.x(), x2.x(), x3.x(), x4.x(),
-                 x1.y(), x2.y(), x3.y(), x4.y(),
-                 x1.z(), x2.z(), x3.z(), x4.z();
+            x1.x(), x2.x(), x3.x(), x4.x(),
+            x1.y(), x2.y(), x3.y(), x4.y(),
+            x1.z(), x2.z(), x3.z(), x4.z();
     Eigen::Matrix4f denominator;
     denominator << 1.f, 1.f, 1.f, 0.f,
-                   x1.x(), x2.x(), x3.x(), x5.x()-x4.x(),
-                   x1.y(), x2.y(), x3.y(), x5.y()-x4.y(),
-                   x1.z(), x2.z(), x3.z(), x5.z()-x4.z();
+            x1.x(), x2.x(), x3.x(), x5.x()-x4.x(),
+            x1.y(), x2.y(), x3.y(), x5.y()-x4.y(),
+            x1.z(), x2.z(), x3.z(), x5.z()-x4.z();
     float k = numerator.determinant()/denominator.determinant();
     float x = x4.x() + (x5.x()-x4.x())*k;
     float y = x4.y() + (x5.y()-x4.y())*k;
@@ -728,6 +753,46 @@ int SpecificWorker::startup_check()
     return 0;
 }
 
+std::vector<Eigen::Vector2f> SpecificWorker::door_detector(const vector<Eigen::Vector2f> &line)
+{
+    std::vector<float> derivaties(line.size()-1);
+    for (auto &&[i,d]:line | iter::sliding_window(2) | iter::enumerate)
+        derivaties[i]=d[1].norm() - d[0].norm();
+
+    std::vector<std::tuple<int,bool>> peaks;
+    for(auto &&[i,d]:derivaties | iter::enumerate)
+        if(d > consts.door_dynamic_threshold)
+            peaks.push_back(  std::make_tuple(i,true));
+        else
+            peaks.push_back(  std::make_tuple(i,false));
+
+    std::vector<Eigen::Vector2f> doors;
+    for(auto && p:peaks | iter::combinations_with_replacement(2)){
+        auto &[p1,pos1]=p[0];
+        auto &[p2,pos2]=p[1];
+        auto v1 = line[p1];
+        auto v2 = line[p2];
+
+        if(((pos1 and not pos2) or (pos2 and not pos1)) and (v1-v2).norm() < 1000 and (v1-v2).norm() > 600)
+            doors.push_back((v1+v2)/2);
+    }
+    return doors;
+}
+
+void SpecificWorker::draw_doors( const std::vector<Eigen::Vector2f> &doors){
+    static std::vector<QGraphicsItem *> items;
+    for(const auto &i: items)
+        viewer->scene.removeItem(i);
+    items.clear();
+
+    for (const auto &d:doors)
+    {
+        auto item=viewer->scene.addEllipse(-100, -100, 200, 2* 200, QPen(QColor("magenta")), QBrush(QColor("magenta")));
+        item ->setPos(d.x(), d.y());
+        items.push_back(item);
+    }
+
+}
 
 //        int row = (o.top + o.bot)/2;
 //        int col = (o.left + o.right)/2;

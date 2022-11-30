@@ -93,6 +93,7 @@ class SpecificWorker : public GenericWorker
         const float forces_similarity_threshold = 200;
         double xset_gaussian = 0.4;             // gaussian break x set value
         double yset_gaussian = 0.3;             // gaussian break y set value
+        float door_dynamic_threshold = 500;
     };
     Constants consts;
     float current_servo_angle = 0.f;
@@ -142,8 +143,8 @@ class SpecificWorker : public GenericWorker
     // Clock
     rc::Timer<> clock;
 
-
-
+    std::vector<Eigen::Vector2f> door_detector(const vector<Eigen::Vector2f> &line);
+    void draw_doors( const std::vector<Eigen::Vector2f> &doors);
 };
 
 #endif
