@@ -462,7 +462,8 @@ void SpecificWorker::move_robot(Eigen::Vector2f force)
 }
 
 ///////////////////  State machine ////////////////////////////////////////////
-void SpecificWorker::state_machine(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line){
+void SpecificWorker::state_machine(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line)
+{
     switch(state)
     {
         case State::SEARCHING:
@@ -477,7 +478,9 @@ void SpecificWorker::state_machine(const RoboCompYoloObjects::TObjects &objects,
     }
 
 }
-void SpecificWorker::search_state(const RoboCompYoloObjects::TObjects &objects){
+
+void SpecificWorker::search_state(const RoboCompYoloObjects::TObjects &objects)
+{
     //Comprueba que el objeto que identifica es distinto del objeto que tenemos actualmente.
     //Una vez comprobado, si es distinto, cambia en el iterador a los atributos del nuevo objeto y cambia de estado.
     qInfo()<< __FUNCTION__<<"Buscando Target, target anterior:" << robot.get_current_target().type;
@@ -495,7 +498,9 @@ void SpecificWorker::search_state(const RoboCompYoloObjects::TObjects &objects){
         robot.set_pure_rotation(0.5);
 
 }
-void SpecificWorker::approach_state(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line){
+
+void SpecificWorker::approach_state(const RoboCompYoloObjects::TObjects &objects, const std::vector<Eigen::Vector2f> &line)
+{
     robot.set_pure_rotation(0.f);
 
     if (robot.get_distance_to_target() < 800) {
@@ -508,10 +513,10 @@ void SpecificWorker::approach_state(const RoboCompYoloObjects::TObjects &objects
             robot.set_current_target(*it);
             qInfo()<< __FUNCTION__<<"Target:"<<robot.get_current_target().type;
         }
-
 }
 
-void SpecificWorker::wait_state(){
+void SpecificWorker::wait_state()
+{
     static std::chrono::time_point<std::chrono::system_clock> start;
     static bool primera_vez=true;
     if (primera_vez)
@@ -527,8 +532,8 @@ void SpecificWorker::wait_state(){
         state = State::SEARCHING;
         primera_vez=true;
     }
-}
 
+}
 
 ///////////////////// Aux //////////////////////////////////////////////////////////////////
 float SpecificWorker::closest_distance_ahead(const std::vector<Eigen::Vector2f> &line)
