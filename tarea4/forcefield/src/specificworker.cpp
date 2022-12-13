@@ -223,7 +223,7 @@ void SpecificWorker::compute()
     RoboCompYoloObjects::TObjects objects = yolo_detect_objects(top_rgb_frame);
 
     /// Door Detector
-    auto doors = door_detector.detector(current_line);
+    auto doors = door_detector.detector(current_line, viewer);
     door_detector.draw_doors(doors, viewer);
 
     /// draw top image

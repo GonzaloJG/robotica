@@ -11,7 +11,7 @@
 #include <cppitertools/combinations_with_replacement.hpp>
 
 ////////////////////// DOOR DERECTOR //////////////////////////////////////////
-std::vector<Door_detector::Door> Door_detector::detector(const std::vector<Eigen::Vector2f> &line)
+std::vector<Door_detector::Door> Door_detector::detector(const std::vector<Eigen::Vector2f> &line, AbstractGraphicViewer *viewer)
 {
     std::vector<float> derivaties(line.size() - 1);
 
@@ -27,7 +27,7 @@ std::vector<Door_detector::Door> Door_detector::detector(const std::vector<Eigen
         else if (d < -500)
             pecks.push_back(std::make_tuple(i+1, false));
     }
-    //draw_peaks(pecks, line, viewer);
+    draw_peaks(pecks, line, viewer);
     std::vector<Door> doors;
 
     for(auto &&p:pecks | iter::combinations_with_replacement(2))
@@ -37,7 +37,7 @@ std::vector<Door_detector::Door> Door_detector::detector(const std::vector<Eigen
         auto v1 = line[p1];
         auto v2 = line[p2];
 
-        if(((pos1 and !pos2) or (pos2 and !pos1)) and ((v1 - v2).norm() < 1200 and (v1 - v2).norm() > 600))
+        if(((pos1 and !pos2) or (pos2 and !pos1)) and ((v1 - v2).norm() < 1200 and (v1 - v2).norm() > 600) and (v1.y() > 200 and v2.y() > 200))
         {
             Door door{.p0=v1, .p1=v2, .p_center=(v1 + v2)/2};
             doors.push_back(door);
@@ -66,6 +66,7 @@ void Door_detector::draw_doors(const std::vector<Door> &doors_v, AbstractGraphic
         }
     }
 }
+
 void Door_detector::draw_peaks(std::vector<std::tuple<int, bool>> pecks, const std::vector<Eigen::Vector2f> &line,
                                AbstractGraphicViewer *viewer)
 {

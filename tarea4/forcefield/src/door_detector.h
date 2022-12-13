@@ -18,7 +18,7 @@ public:
     {
         Eigen::Vector2f p0, p1, p_center;
     };
-    std::vector<Door> detector(const std::vector<Eigen::Vector2f> &line);
+    std::vector<Door> detector(const std::vector<Eigen::Vector2f> &line, AbstractGraphicViewer *viewer);
     void draw_doors(const std::vector<Door> &doors_v, AbstractGraphicViewer *viewer);
     void draw_peaks(std::vector<std::tuple<int, bool>> pecks, const std::vector<Eigen::Vector2f> &line, AbstractGraphicViewer *viewer);
 };
