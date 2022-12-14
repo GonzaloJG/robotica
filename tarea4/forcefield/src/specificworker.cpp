@@ -24,6 +24,7 @@
 #include <cppitertools/chunked.hpp>
 #include <cppitertools/sliding_window.hpp>
 #include <cppitertools/combinations_with_replacement.hpp>
+#include "GenericObject.h"
 
 /**
 * \brief Default constructor
@@ -232,9 +233,14 @@ void SpecificWorker::compute()
     /// draw yolo_objects on 2D view
     draw_objects_on_2dview(objects, RoboCompYoloObjects::TBox());
 
+    auto l1 = GenericObject::create_list(doors);
+    auto l2 = GenericObject::create_list(objects);
+    for(const auto &l : l1)
+        l2.push_back(l);
+
     // TODO:: STATE MACHINE
     // state machine to activate basic behaviours. Returns a  target_coordinates vector
-    state_machine(objects, current_line);
+    state_machine(genericObjects, current_line);
 
     /// eye tracking: tracks  current selected object or  IOR if none
     //eye_track(robot);
