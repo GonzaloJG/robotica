@@ -215,6 +215,12 @@
 		<Unit filename="/home/alumno/robocomp/components/robotica/tarea4/forcefield/src/GenericBase.h">
 			<Option target="forcefield"/>
 		</Unit>
+		<Unit filename="/home/alumno/robocomp/components/robotica/tarea4/forcefield/src/GenericObject.cpp">
+			<Option target="forcefield"/>
+		</Unit>
+		<Unit filename="/home/alumno/robocomp/components/robotica/tarea4/forcefield/src/GenericObject.h">
+			<Option target="forcefield"/>
+		</Unit>
 		<Unit filename="/home/alumno/robocomp/components/robotica/tarea4/forcefield/src/JointMotorSimple.cpp">
 			<Option target="forcefield"/>
 		</Unit>
