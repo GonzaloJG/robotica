@@ -39,6 +39,7 @@ std::vector<Door_detector::Door> Door_detector::detector(const std::vector<Eigen
 
         if(((pos1 and !pos2) or (pos2 and !pos1)) and ((v1 - v2).norm() < 1200 and (v1 - v2).norm() > 600) and (v1.y() > 200 and v2.y() > 200))
         {
+            qInfo()<<"Puerta detectada";
             Door door{.p0=v1, .p1=v2, .p_center=(v1 + v2)/2};
             doors.push_back(door);
         }

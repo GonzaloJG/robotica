@@ -13,6 +13,8 @@
 #include "camera.h"
 #include <JointMotorSimple.h>
 #include <OmniRobot.h>
+#include "GenericObject.h"
+#include <dynamic_window.h>
 
 namespace rc
 {
@@ -35,7 +37,7 @@ namespace rc
                 float get_current_rot_speed() const;
                 float get_target_angle_in_frame() const;
                 float get_current_pan_angle() const;
-                RoboCompYoloObjects::TBox get_current_target() const;
+                rc::GenericObject get_current_target() const;
                 float get_distance_to_target();
                 Eigen::Transform<float, 3, Eigen::Affine> get_tf_cam_to_base();
                 float get_pure_rotation() const;
@@ -46,11 +48,18 @@ namespace rc
                 void set_current_advance_speed(float adv);
                 void set_current_rot_speed(float rot);
                 void set_current_pan_angle(float pan);
-                void set_current_target(const RoboCompYoloObjects::TBox &target);
+                //void set_current_target(const RoboCompYoloObjects::TBox &target);
                 void set_has_target(bool val);
                 void set_pure_rotation(float rot);
                 bool has_target() const;
                 void set_desired_distance_to_target(float dist); //mm
+
+                ///Nuevos metodos
+                void set_current_target(const rc::GenericObject &object); // establece has_target en verdadero y almacena el objeto como el objetivo actual
+                void goto_target(const std::vector<Eigen::Vector2f> &current_line, AbstractGraphicViewer *viewer); // llamado desde compute(), mueve el robot. Si se ha llamado a rotar (), establecerá la velocidad de avance en 0 y comenzará la rotación
+                // De lo contrario, solicitará las coordenadas de destino actuales, se las pasará a DWA y enviará las velocidades resultantes al proxy
+                void stop();// detiene el robot y establece has_target en falso
+                void rotate(float vel_rotation);  // establece el robot en modo de rotación pura
 
                 const float width = 450;
                 const float length = 450;
@@ -75,10 +84,13 @@ namespace rc
                 RoboCompJointMotorSimple::JointMotorSimplePrxPtr joint_motor_proxy;
                 RoboCompOmniRobot::OmniRobotPrxPtr omnirobot_proxy;
                 float pure_rotation = 0.f;
-                RoboCompYoloObjects::TBox current_target{.type = -1};
+                rc::GenericObject current_target;
                 bool has_target_flag = false;
                 std::map<float, float> bumper;
                 Eigen::ArrayXf sector1, sector2, sector3,  sector4, sector5;
+
+                // DWA
+                Dynamic_Window dwa;
 
                 void recompute_bumper(float dynamic_offset);
 

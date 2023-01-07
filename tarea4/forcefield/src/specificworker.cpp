@@ -227,31 +227,35 @@ void SpecificWorker::compute()
     auto doors = door_detector.detector(current_line, viewer);
     door_detector.draw_doors(doors, viewer);
 
-    static GenericObject aux;
-    genericObject=aux.create_list(doors);
-    genericObject.insert(genericObject.end(), aux.create_list(objects).begin(), aux.create_list(objects).end());
-
     /// draw top image
     cv::imshow("top", top_rgb_frame); cv::waitKey(5);
 
     /// draw yolo_objects on 2D view
     draw_objects_on_2dview(objects, RoboCompYoloObjects::TBox());
 
-    auto l1 = GenericObject::create_list(doors);
-    auto l2 = GenericObject::create_list(objects);
-    for(const auto &l : l1)
-        l2.push_back(l);
+    std::vector<rc::GenericObject> genericObjects;
+    rc::GenericObject aux;
+    genericObjects=aux.add_doors(doors);
+
+    genericObjects.insert(genericObjects.end(), aux.add_yolo(objects, robot.get_tf_cam_to_base()).begin(), aux.add_yolo(objects, robot.get_tf_cam_to_base()).end());
+
+//Lo puso de ejemplo para ver como se unian dos listas
+//    auto l1 = rc::GenericObject::add_doors(doors);
+//    auto l2 = rc::GenericObject::add_yolo(objects);
+//    for(const auto &l : l1)
+//        l2.push_back(l);
 
     // TODO:: STATE MACHINE
     // state machine to activate basic behaviours. Returns a  target_coordinates vector
-    state_machine.state_machine(genericObject, current_line, robot);
+    state_machine.state_machine(genericObjects, current_line, robot);
+    robot.goto_target(current_line, viewer);
 
     /// eye tracking: tracks  current selected object or  IOR if none
     //eye_track(robot);
     //draw_top_camera_optic_ray();
 
     // DWA algorithm
-    auto [adv, rot, side] =  dwa.update(robot.get_robot_target_coordinates(), current_line, robot.get_current_advance_speed(), robot.get_current_rot_speed(), viewer);
+    //auto [adv, rot, side] =  dwa.update(robot.get_robot_target_coordinates(), current_line, robot.get_current_advance_speed(), robot.get_current_rot_speed(), viewer);
 
     //qInfo() << __FUNCTION__ << adv <<  side << rot;
 //    try{ omnirobot_proxy->setSpeedBase(side, adv, rot); }

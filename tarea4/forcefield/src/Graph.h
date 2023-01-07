@@ -6,31 +6,38 @@
 #define FORCEFIELD_GRAPH_H
 
 #include <Eigen/Dense>
-#include <YoloObjects.h>
-#include <QtCore>
-#include <QColor>
 #include <abstract_graphic_viewer/abstract_graphic_viewer.h>
-#include <JointMotorSimple.h>
-#include <OmniRobot.h>
-#include <stdio>
-#include <list>
+#include "GenericObject.h"
 
-class Graph {
-private:
-    struct nodo{
-        int id;//nombre del vertice o nodo
-    };
-
-    struct arista{
-        int from, to;
-    };
-
-    std::vector<arista> aristas;
-    std::vector<nodo> nodos;
-
+class Graph
+{
 public:
+    Graph() = default;
+    struct Node
+    {
+        Node(int id_) : id(id_){};
+        int id;
+        std::set<std::string> objects;
+        QPointF draw_pos{0.f, 0.f};
+    };
+    struct Edge
+    {
+        Edge(int n1_, int n2_) : n1(n1_), n2(n2_){};
+        int n1, n2;
+    };
+    int add_node();
+    int add_node(int node_dest);
+    void add_edge(int n1, int n2);
+    void add_tags(int id, const std::vector<rc::GenericObject> &objects);
+    void draw(AbstractGraphicViewer *viewer);
+
+private:
+    int id_counter = 0;
+    std::map<int, Node> nodes;
+    std::map<std::pair<int, int>,  Edge> edges;
 
 };
+
 
 
 #endif //FORCEFIELD_GRAPH_H
