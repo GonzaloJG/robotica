@@ -2,43 +2,6 @@
 // Created by alumno on 14/12/22.
 //
 
-//#ifndef FORCEFIELD_GENERICOBJECT_H
-//#define FORCEFIELD_GENERICOBJECT_H
-//
-//#include <Eigen/Dense>
-//#include <YoloObjects.h>
-//#include <JointMotorSimple.h>
-//#include <OmniRobot.h>
-//#include "door_detector.h"
-//
-//
-//class GenericObject {
-//public:
-//    int id;
-//    int type;
-//    int left;
-//    int top;
-//    int right;
-//    int bot;
-//    float score;
-//    float depth;
-//    float x;
-//    float y;
-//    float z;
-//
-//    GenericObject(const RoboCompYoloObjects::TBox &box);
-//    GenericObject(const Door_detector::Door &door);
-//    GenericObject();
-//
-//    static std::vector<GenericObject> create_list(const std::vector<Door_detector::Door> &doors);
-//    static std::vector<GenericObject> create_list(const std::vector<RoboCompYoloObjects::TBox> &objs);
-//    Eigen::Vector2f TagetCoordenates();
-//};
-//
-//
-//#endif //FORCEFIELD_GENERICOBJECT_H
-
-
 #ifndef FORCEFIELD_GENERICOBJECT_H
 #define FORCEFIELD_GENERICOBJECT_H
 
@@ -60,8 +23,8 @@ namespace rc
         static std::vector<GenericObject> add_doors(const std::vector<Door_detector::Door>     &doors);
         static std::vector<GenericObject> add_yolo(const std::vector<RoboCompYoloObjects::TBox> &boxes, const  Eigen::Transform<float, 3, Eigen::Affine> &tf);
 
-        int id = 0;         // 0:person     80:door
-        int type = -1;
+        int id = 0;
+        int type = -1;      // 0:person     80:door
         int left;
         int top;
         int right;

@@ -122,7 +122,8 @@ namespace rc
         pure_rotation = 0;
     }
 
-    void Robot::goto_target(const std::vector<Eigen::Vector2f> &current_line, AbstractGraphicViewer *viewer) {
+    void Robot::goto_target(const std::vector<Eigen::Vector2f> &current_line, AbstractGraphicViewer *viewer)
+    {
         float adv, rot, side;
 
         if (pure_rotation > 0.f)
@@ -133,18 +134,33 @@ namespace rc
         }
         else if (has_target_flag)
         {
-            // DWA algorithm
-            auto [adv1, rot1, side1] = dwa.update(get_robot_target_coordinates(), current_line, get_current_advance_speed(), get_current_rot_speed(), viewer);
-            side=side1;
-            rot=rot1;
-            adv=adv1;
-        } else {
+            if(recto)
+            {
+                // DWA algorithm
+                auto [adv1, rot1, side1] = dwa.update(get_robot_target_coordinates(), current_line,
+                                                      get_current_advance_speed(), get_current_rot_speed(), viewer);
+                side = side1;
+                rot = 0;
+                adv = 600;
+            }
+            else
+            {
+                // DWA algorithm
+                auto [adv1, rot1, side1] = dwa.update(get_robot_target_coordinates(), current_line,
+                                                      get_current_advance_speed(), get_current_rot_speed(), viewer);
+                side = side1;
+                rot = rot1;
+                adv = adv1;
+            }
+        }
+        else
+        {
             side=0;
             rot=0;
             adv=0;
         }
 
-        qInfo() << __FUNCTION__ << adv <<  side << rot;
+        print();
         try{ omnirobot_proxy->setSpeedBase(side, adv, rot); }
         catch(const Ice::Exception &e){ std::cout << e.what() << "Error connecting to omnirobot" << std::endl;}
 
@@ -161,10 +177,23 @@ namespace rc
         pure_rotation = vel_rotation;
     }
 
+    void Robot::resetTarget()
+    {
+        current_target.type = -1;
+        has_target_flag = false;
+    }
+
+    void Robot::set_recto(bool bandera)
+    {
+        recto=bandera;
+    }
+
+    bool Robot::get_recto()
+    {
+        return recto;
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
     void Robot::print()
     {
@@ -182,6 +211,7 @@ namespace rc
             std::cout << "      Distance: " << get_distance_to_target() << std::endl;
         }
     }
+
     void Robot::create_bumper(float offset,  AbstractGraphicViewer *viewer)
     {
         // create bumper

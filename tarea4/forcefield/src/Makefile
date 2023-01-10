@@ -299,6 +299,30 @@ GenericObject.cpp.s:
 	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericObject.cpp.s
 .PHONY : GenericObject.cpp.s
 
+Graph.o: Graph.cpp.o
+.PHONY : Graph.o
+
+# target to build an object file
+Graph.cpp.o:
+	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/Graph.cpp.o
+.PHONY : Graph.cpp.o
+
+Graph.i: Graph.cpp.i
+.PHONY : Graph.i
+
+# target to preprocess a source file
+Graph.cpp.i:
+	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/Graph.cpp.i
+.PHONY : Graph.cpp.i
+
+Graph.s: Graph.cpp.s
+.PHONY : Graph.s
+
+# target to generate assembly for a file
+Graph.cpp.s:
+	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/Graph.cpp.s
+.PHONY : Graph.cpp.s
+
 JointMotorSimple.o: JointMotorSimple.cpp.o
 .PHONY : JointMotorSimple.o
 
@@ -830,6 +854,9 @@ help:
 	@echo "... GenericObject.o"
 	@echo "... GenericObject.i"
 	@echo "... GenericObject.s"
+	@echo "... Graph.o"
+	@echo "... Graph.i"
+	@echo "... Graph.s"
 	@echo "... JointMotorSimple.o"
 	@echo "... JointMotorSimple.i"
 	@echo "... JointMotorSimple.s"

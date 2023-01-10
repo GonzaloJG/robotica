@@ -9,6 +9,7 @@ SET ( SOURCES
   door_detector.cpp
   GenericObject.cpp
   StateMachine.cpp
+  Graph.cpp
 )
 
 # Headers set

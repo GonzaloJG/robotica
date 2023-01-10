@@ -233,11 +233,14 @@ void SpecificWorker::compute()
     /// draw yolo_objects on 2D view
     draw_objects_on_2dview(objects, RoboCompYoloObjects::TBox());
 
-    std::vector<rc::GenericObject> genericObjects;
-    rc::GenericObject aux;
-    genericObjects=aux.add_doors(doors);
+    ///Unir objetos yolo y doors en GenericObjects
+    genericObjects.clear();
 
-    genericObjects.insert(genericObjects.end(), aux.add_yolo(objects, robot.get_tf_cam_to_base()).begin(), aux.add_yolo(objects, robot.get_tf_cam_to_base()).end());
+    auto pyolo= rc::GenericObject::add_yolo(objects, robot.get_tf_cam_to_base());
+    genericObjects.insert(genericObjects.end(), pyolo.begin(), pyolo.end());
+
+    auto pdoor = rc::GenericObject::add_doors(doors);
+    genericObjects.insert(genericObjects.end(), pdoor.begin(), pdoor.end());
 
 //Lo puso de ejemplo para ver como se unian dos listas
 //    auto l1 = rc::GenericObject::add_doors(doors);

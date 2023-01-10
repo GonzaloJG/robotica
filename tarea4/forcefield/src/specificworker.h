@@ -41,6 +41,7 @@
 #include "door_detector.h"
 #include "StateMachine.h"
 #include "GenericObject.h"
+#include "Graph.h"
 
 class SpecificWorker : public GenericWorker
 {
@@ -132,6 +133,9 @@ class SpecificWorker : public GenericWorker
     //State Machine
     StateMachine state_machine;
 
+    //Generic Object List
+    std::vector<rc::GenericObject> genericObjects;
+
     float iou(const RoboCompYoloObjects::TBox &a, const RoboCompYoloObjects::TBox &b);
     float closest_distance_ahead(const vector<Eigen::Vector2f> &line);
 
@@ -143,6 +147,9 @@ class SpecificWorker : public GenericWorker
 
     // Clock
     rc::Timer<> clock;
+
+    //Graph
+    //Graph graph;
 
 };
 
