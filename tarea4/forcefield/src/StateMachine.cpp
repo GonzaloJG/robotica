@@ -50,9 +50,10 @@ void StateMachine::approach_state(const std::vector<rc::GenericObject> genericOb
 {
     robot.set_pure_rotation(0.f);
 
-    if (robot.get_distance_to_target() < 100)
+    if (robot.get_distance_to_target() < 200)
     {
         qInfo()<< __FUNCTION__<<" -> Pasamos al estado CROSS: " << robot.get_current_target().type;
+        qInfo()<< __FUNCTION__<<" -> DISTANCIA AL TARGET INICIAL: " << robot.get_distance_to_target();
         state = State::CROSS;
     }
     else
@@ -66,6 +67,13 @@ void StateMachine::approach_state(const std::vector<rc::GenericObject> genericOb
 
 }
 
+//HACE EL ROCORRIDO COMPLETO PERO LA CONSOLA SOLO MUESTRA EL ESTADO APPROACHING!!!!
+//EN EL DOOR DETECTOR COMPROBAR LAS CUATRO RODAJAS DEL LASER
+//EN EL INICIALIZAR PASAR LA LISTA DE OBJETOS YOLO, METERLA EN UN ATRIBUTO DE CLASE PARA TRATARLOS EN EL GRAFO
+//COMPROBAR SI LO REALIZADO HOY ES CORRECTO (SOLO REALIZAR LA TRANSFORMADA CON LOS OBJETOS YOLO) Y CAMBIO EN EL GO_TO_TARGET SIN FORZAR RECTO
+//CAMBIAR EN EL GRAFO LA LISTA DE GENERICOBJECT Y QUE SEAN STRING
+//SET PURE ROTATION VER SI CAMBIAR A NEGATIVO PARA QUE FUERZE A LA IZQUIERDA Y HAGA RECORRIDO COMPLETO
+
 void StateMachine::cross_state(rc::Robot &robot, Graph &graph)
 {
     static std::chrono::time_point<std::chrono::system_clock> start;
@@ -73,24 +81,26 @@ void StateMachine::cross_state(rc::Robot &robot, Graph &graph)
     if (primera_vez)
     {
         start = std::chrono::system_clock::now();
-        robot.set_recto(true);
+        //robot.set_recto(true);
         primera_vez=false;
     }
 
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<float,std::milli> duration = end - start;
 
+    qInfo()<< __FUNCTION__<<" -> DISTANCIA AL TARGET: " << robot.get_distance_to_target();
+
     if(duration.count() > 1500)
     {
         qInfo()<< __FUNCTION__<<" -> Atraviesa la puerta";
-        robot.set_recto(false);
+        //robot.set_recto(false);
         robot.resetTarget();
         state = State::SEARCHING;
         primera_vez=true;
 
         id_nodo_actual = graph.add_node(id_nodo_actual+1);
 
-        graph.show_graph();
+        //graph.show_graph();
     }
 }
 

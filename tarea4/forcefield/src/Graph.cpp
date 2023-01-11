@@ -25,10 +25,10 @@ void Graph::add_edge(int n1, int n2)
 
 void Graph::add_tags(int id, const std::vector<rc::GenericObject> &objects_yolo)
 {
-    for (auto &entry : nodes)
-        if(entry.first==id)
-            for(auto &object : objects_yolo)
-                auto prueba = entry.second.objects.insert(object);
+//    for (auto &entry : nodes)
+//        if(entry.first==id)
+//            for(auto &object : objects_yolo)
+//                auto prueba = entry.second.objects.insert(object);
 }
 
 void Graph::draw(AbstractGraphicViewer *viewer)

@@ -19,10 +19,20 @@ namespace rc
         if(get_pure_rotation() != 0)
             return Eigen::Vector3f{0.f, 0.f, get_pure_rotation()};
 
-        Eigen::Transform<float, 3, Eigen::Affine> tf = get_tf_cam_to_base();
-        Eigen::Vector3f target = tf * get_camera_target_coordinates();
-        target[2] = 0.f;  // dismiss pure rotation here
-        target = target.normalized() * (target.norm() - min_distance_to_target);  // set target coordinates before the real target
+        //Hay que transformar solo las coordenadas de yolo no las de las puertas.
+        Eigen::Vector3f target;
+        if (get_current_target().type < 80)
+        {
+            Eigen::Transform<float, 3, Eigen::Affine> tf = get_tf_cam_to_base();
+            target = tf * get_camera_target_coordinates();
+            target[2] = 0.f;  // dismiss pure rotation here
+            target = target.normalized() *
+                     (target.norm() - min_distance_to_target);  // set target coordinates before the real target
+        }
+        else
+        {
+            target = get_camera_target_coordinates();
+        }
         return target;
     }
     Eigen::Vector3f Robot::get_camera_target_coordinates() const
@@ -134,24 +144,24 @@ namespace rc
         }
         else if (has_target_flag)
         {
-            if(recto)
-            {
-                // DWA algorithm
-                auto [adv1, rot1, side1] = dwa.update(get_robot_target_coordinates(), current_line,
-                                                      get_current_advance_speed(), get_current_rot_speed(), viewer);
-                side = side1;
-                rot = 0;
-                adv = 600;
-            }
-            else
-            {
+//            if(recto)
+//            {
+//                // DWA algorithm
+//                auto [adv1, rot1, side1] = dwa.update(get_robot_target_coordinates(), current_line,
+//                                                      get_current_advance_speed(), get_current_rot_speed(), viewer);
+//                side = side1;
+//                rot = 0;
+//                adv = 600;
+//            }
+//            else
+//            {
                 // DWA algorithm
                 auto [adv1, rot1, side1] = dwa.update(get_robot_target_coordinates(), current_line,
                                                       get_current_advance_speed(), get_current_rot_speed(), viewer);
                 side = side1;
                 rot = rot1;
                 adv = adv1;
-            }
+//            }
         }
         else
         {
@@ -183,15 +193,15 @@ namespace rc
         has_target_flag = false;
     }
 
-    void Robot::set_recto(bool bandera)
-    {
-        recto=bandera;
-    }
-
-    bool Robot::get_recto()
-    {
-        return recto;
-    }
+//    void Robot::set_recto(bool bandera)
+//    {
+//        recto=bandera;
+//    }
+//
+//    bool Robot::get_recto()
+//    {
+//        return recto;
+//    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
