@@ -250,7 +250,7 @@ void SpecificWorker::compute()
 
     // TODO:: STATE MACHINE
     // state machine to activate basic behaviours. Returns a  target_coordinates vector
-    state_machine.state_machine(genericObjects, current_line, robot);
+    state_machine.state_machine(genericObjects, robot, graph);
     robot.goto_target(current_line, viewer);
 
     /// eye tracking: tracks  current selected object or  IOR if none

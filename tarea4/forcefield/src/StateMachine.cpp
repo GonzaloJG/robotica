@@ -5,20 +5,21 @@
 #include "StateMachine.h"
 
 ///////////////////  State machine ////////////////////////////////////////////
-void StateMachine::state_machine(const std::vector<rc::GenericObject> genericObjects, const std::vector<Eigen::Vector2f> &line, rc::Robot &robot){
+void StateMachine::state_machine(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot, Graph &graph)
+{
     switch(state)
     {
-//        case State::IDLE:
-//            //idle_state(graph);
-//            break;
+        case State::IDLE:
+            idle_state(graph);
+            break;
         case State::SEARCHING:
             search_state(genericObjects, robot);
             break;
         case State::APPROACHING:
-            approach_state(genericObjects, line, robot);
+            approach_state(genericObjects, robot);
             break;
         case State::CROSS:
-            cross_state(robot);
+            cross_state(robot, graph);
             break;
     }
 
@@ -45,18 +46,14 @@ void StateMachine::search_state(const std::vector<rc::GenericObject> genericObje
     }
 }
 
-void StateMachine::approach_state(const std::vector<rc::GenericObject> genericObjects, const std::vector<Eigen::Vector2f> &line, rc::Robot &robot)
+void StateMachine::approach_state(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot)
 {
     robot.set_pure_rotation(0.f);
 
     if (robot.get_distance_to_target() < 100)
     {
-        //qInfo()<< __FUNCTION__<<" -> Hemos llegado al Target: "<<robot.get_current_target().type;
-        //state = State::WAITING;
-
-        qInfo()<< __FUNCTION__<<" -> Pasamos al estado WAITING: " << robot.get_current_target().type;
+        qInfo()<< __FUNCTION__<<" -> Pasamos al estado CROSS: " << robot.get_current_target().type;
         state = State::CROSS;
-
     }
     else
     if (auto it=std::find_if(genericObjects.begin(), genericObjects.end(),
@@ -69,7 +66,7 @@ void StateMachine::approach_state(const std::vector<rc::GenericObject> genericOb
 
 }
 
-void StateMachine::cross_state(rc::Robot &robot)
+void StateMachine::cross_state(rc::Robot &robot, Graph &graph)
 {
     static std::chrono::time_point<std::chrono::system_clock> start;
     static bool primera_vez=true;
@@ -82,6 +79,7 @@ void StateMachine::cross_state(rc::Robot &robot)
 
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<float,std::milli> duration = end - start;
+
     if(duration.count() > 1500)
     {
         qInfo()<< __FUNCTION__<<" -> Atraviesa la puerta";
@@ -89,10 +87,14 @@ void StateMachine::cross_state(rc::Robot &robot)
         robot.resetTarget();
         state = State::SEARCHING;
         primera_vez=true;
+
+        id_nodo_actual = graph.add_node(id_nodo_actual+1);
+
+        graph.show_graph();
     }
 }
 
-//void StateMachine::idle_state(Graph &graph) {
-//    graph.add_node();
-//    state = State::SEARCHING;
-//}
+void StateMachine::idle_state(Graph &graph) {
+    id_nodo_actual = graph.add_node();
+    state = State::SEARCHING;
+}

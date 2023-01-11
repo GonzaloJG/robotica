@@ -28,8 +28,9 @@ public:
     int add_node();
     int add_node(int node_dest);
     void add_edge(int n1, int n2);
-    void add_tags(int id, const std::vector<rc::GenericObject> &objects);
+    void add_tags(int id, const std::vector<rc::GenericObject> &objects_yolo);
     void draw(AbstractGraphicViewer *viewer);
+    void show_graph();
 
 private:
     int id_counter = 0;

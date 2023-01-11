@@ -160,7 +160,7 @@ namespace rc
             adv=0;
         }
 
-        print();
+        //print();
         try{ omnirobot_proxy->setSpeedBase(side, adv, rot); }
         catch(const Ice::Exception &e){ std::cout << e.what() << "Error connecting to omnirobot" << std::endl;}
 

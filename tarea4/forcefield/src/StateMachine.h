@@ -13,14 +13,16 @@
 class StateMachine {
 public:
     // state machine
-    void state_machine(const std::vector<rc::GenericObject> genericObjects, const std::vector<Eigen::Vector2f> &line, rc::Robot &robot);
+    void state_machine(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot, Graph &graph);
     enum class State {IDLE, SEARCHING, APPROACHING, CROSS};
-    State state = State::SEARCHING;
+    State state = State::IDLE;
 
     void search_state(const std::vector<rc::GenericObject> genericObjects,  rc::Robot &robot);
-    void approach_state(const std::vector<rc::GenericObject> genericObjects, const std::vector<Eigen::Vector2f> &line,  rc::Robot &robot);
-    void cross_state(rc::Robot &robot);
-    //void idle_state(Graph &graph);
+    void approach_state(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot);
+    void cross_state(rc::Robot &robot, Graph &graph);
+    void idle_state(Graph &graph);
+
+    int id_nodo_actual=0;
 };
 
 

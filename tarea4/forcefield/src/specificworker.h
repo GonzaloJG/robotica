@@ -149,7 +149,7 @@ class SpecificWorker : public GenericWorker
     rc::Timer<> clock;
 
     //Graph
-    //Graph graph;
+    Graph graph;
 
 };
 

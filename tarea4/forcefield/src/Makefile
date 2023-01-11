@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gonzalo/robocomp/components/robotica/tarea4/forcefield
+CMAKE_SOURCE_DIR = /home/alumno/robocomp/components/robotica/tarea4/forcefield
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gonzalo/robocomp/components/robotica/tarea4/forcefield
+CMAKE_BINARY_DIR = /home/alumno/robocomp/components/robotica/tarea4/forcefield
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(CMAKE_COMMAND) -E cmake_progress_start /home/gonzalo/robocomp/components/robotica/tarea4/forcefield/CMakeFiles /home/gonzalo/robocomp/components/robotica/tarea4/forcefield/src//CMakeFiles/progress.marks
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gonzalo/robocomp/components/robotica/tarea4/forcefield/CMakeFiles 0
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(CMAKE_COMMAND) -E cmake_progress_start /home/alumno/robocomp/components/robotica/tarea4/forcefield/CMakeFiles /home/alumno/robocomp/components/robotica/tarea4/forcefield/src//CMakeFiles/progress.marks
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumno/robocomp/components/robotica/tarea4/forcefield/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,36 +148,36 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src.dir/rule:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src.dir/rule
-.PHONY : src/CMakeFiles/ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src.dir/rule
+src/CMakeFiles/ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src.dir/rule:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src.dir/rule
+.PHONY : src/CMakeFiles/ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src.dir/rule
 
 # Convenience name for target.
-ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src: src/CMakeFiles/ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src.dir/rule
-.PHONY : ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src
+ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src: src/CMakeFiles/ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src.dir/rule
+.PHONY : ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src
 
 # fast build rule for target.
-ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src/fast:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src.dir/build.make src/CMakeFiles/ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src.dir/build
-.PHONY : ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src/fast
+ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src/fast:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src.dir/build.make src/CMakeFiles/ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src.dir/build
+.PHONY : ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src/fast
 
 # Convenience name for target.
 src/CMakeFiles/forcefield.dir/rule:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/forcefield.dir/rule
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/forcefield.dir/rule
 .PHONY : src/CMakeFiles/forcefield.dir/rule
 
 # Convenience name for target.
@@ -186,12 +186,12 @@ forcefield: src/CMakeFiles/forcefield.dir/rule
 
 # fast build rule for target.
 forcefield/fast:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/build
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/build
 .PHONY : forcefield/fast
 
 # Convenience name for target.
 src/CMakeFiles/forcefield_autogen.dir/rule:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/forcefield_autogen.dir/rule
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/forcefield_autogen.dir/rule
 .PHONY : src/CMakeFiles/forcefield_autogen.dir/rule
 
 # Convenience name for target.
@@ -200,7 +200,7 @@ forcefield_autogen: src/CMakeFiles/forcefield_autogen.dir/rule
 
 # fast build rule for target.
 forcefield_autogen/fast:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield_autogen.dir/build.make src/CMakeFiles/forcefield_autogen.dir/build
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield_autogen.dir/build.make src/CMakeFiles/forcefield_autogen.dir/build
 .PHONY : forcefield_autogen/fast
 
 CameraRGBDSimple.o: CameraRGBDSimple.cpp.o
@@ -208,7 +208,7 @@ CameraRGBDSimple.o: CameraRGBDSimple.cpp.o
 
 # target to build an object file
 CameraRGBDSimple.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CameraRGBDSimple.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CameraRGBDSimple.cpp.o
 .PHONY : CameraRGBDSimple.cpp.o
 
 CameraRGBDSimple.i: CameraRGBDSimple.cpp.i
@@ -216,7 +216,7 @@ CameraRGBDSimple.i: CameraRGBDSimple.cpp.i
 
 # target to preprocess a source file
 CameraRGBDSimple.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CameraRGBDSimple.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CameraRGBDSimple.cpp.i
 .PHONY : CameraRGBDSimple.cpp.i
 
 CameraRGBDSimple.s: CameraRGBDSimple.cpp.s
@@ -224,7 +224,7 @@ CameraRGBDSimple.s: CameraRGBDSimple.cpp.s
 
 # target to generate assembly for a file
 CameraRGBDSimple.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CameraRGBDSimple.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CameraRGBDSimple.cpp.s
 .PHONY : CameraRGBDSimple.cpp.s
 
 CommonBehavior.o: CommonBehavior.cpp.o
@@ -232,7 +232,7 @@ CommonBehavior.o: CommonBehavior.cpp.o
 
 # target to build an object file
 CommonBehavior.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CommonBehavior.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CommonBehavior.cpp.o
 .PHONY : CommonBehavior.cpp.o
 
 CommonBehavior.i: CommonBehavior.cpp.i
@@ -240,7 +240,7 @@ CommonBehavior.i: CommonBehavior.cpp.i
 
 # target to preprocess a source file
 CommonBehavior.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CommonBehavior.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CommonBehavior.cpp.i
 .PHONY : CommonBehavior.cpp.i
 
 CommonBehavior.s: CommonBehavior.cpp.s
@@ -248,7 +248,7 @@ CommonBehavior.s: CommonBehavior.cpp.s
 
 # target to generate assembly for a file
 CommonBehavior.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CommonBehavior.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/CommonBehavior.cpp.s
 .PHONY : CommonBehavior.cpp.s
 
 GenericBase.o: GenericBase.cpp.o
@@ -256,7 +256,7 @@ GenericBase.o: GenericBase.cpp.o
 
 # target to build an object file
 GenericBase.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericBase.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericBase.cpp.o
 .PHONY : GenericBase.cpp.o
 
 GenericBase.i: GenericBase.cpp.i
@@ -264,7 +264,7 @@ GenericBase.i: GenericBase.cpp.i
 
 # target to preprocess a source file
 GenericBase.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericBase.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericBase.cpp.i
 .PHONY : GenericBase.cpp.i
 
 GenericBase.s: GenericBase.cpp.s
@@ -272,7 +272,7 @@ GenericBase.s: GenericBase.cpp.s
 
 # target to generate assembly for a file
 GenericBase.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericBase.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericBase.cpp.s
 .PHONY : GenericBase.cpp.s
 
 GenericObject.o: GenericObject.cpp.o
@@ -280,7 +280,7 @@ GenericObject.o: GenericObject.cpp.o
 
 # target to build an object file
 GenericObject.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericObject.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericObject.cpp.o
 .PHONY : GenericObject.cpp.o
 
 GenericObject.i: GenericObject.cpp.i
@@ -288,7 +288,7 @@ GenericObject.i: GenericObject.cpp.i
 
 # target to preprocess a source file
 GenericObject.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericObject.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericObject.cpp.i
 .PHONY : GenericObject.cpp.i
 
 GenericObject.s: GenericObject.cpp.s
@@ -296,7 +296,7 @@ GenericObject.s: GenericObject.cpp.s
 
 # target to generate assembly for a file
 GenericObject.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericObject.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/GenericObject.cpp.s
 .PHONY : GenericObject.cpp.s
 
 Graph.o: Graph.cpp.o
@@ -304,7 +304,7 @@ Graph.o: Graph.cpp.o
 
 # target to build an object file
 Graph.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/Graph.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/Graph.cpp.o
 .PHONY : Graph.cpp.o
 
 Graph.i: Graph.cpp.i
@@ -312,7 +312,7 @@ Graph.i: Graph.cpp.i
 
 # target to preprocess a source file
 Graph.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/Graph.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/Graph.cpp.i
 .PHONY : Graph.cpp.i
 
 Graph.s: Graph.cpp.s
@@ -320,7 +320,7 @@ Graph.s: Graph.cpp.s
 
 # target to generate assembly for a file
 Graph.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/Graph.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/Graph.cpp.s
 .PHONY : Graph.cpp.s
 
 JointMotorSimple.o: JointMotorSimple.cpp.o
@@ -328,7 +328,7 @@ JointMotorSimple.o: JointMotorSimple.cpp.o
 
 # target to build an object file
 JointMotorSimple.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JointMotorSimple.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JointMotorSimple.cpp.o
 .PHONY : JointMotorSimple.cpp.o
 
 JointMotorSimple.i: JointMotorSimple.cpp.i
@@ -336,7 +336,7 @@ JointMotorSimple.i: JointMotorSimple.cpp.i
 
 # target to preprocess a source file
 JointMotorSimple.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JointMotorSimple.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JointMotorSimple.cpp.i
 .PHONY : JointMotorSimple.cpp.i
 
 JointMotorSimple.s: JointMotorSimple.cpp.s
@@ -344,7 +344,7 @@ JointMotorSimple.s: JointMotorSimple.cpp.s
 
 # target to generate assembly for a file
 JointMotorSimple.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JointMotorSimple.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JointMotorSimple.cpp.s
 .PHONY : JointMotorSimple.cpp.s
 
 JoystickAdapter.o: JoystickAdapter.cpp.o
@@ -352,7 +352,7 @@ JoystickAdapter.o: JoystickAdapter.cpp.o
 
 # target to build an object file
 JoystickAdapter.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JoystickAdapter.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JoystickAdapter.cpp.o
 .PHONY : JoystickAdapter.cpp.o
 
 JoystickAdapter.i: JoystickAdapter.cpp.i
@@ -360,7 +360,7 @@ JoystickAdapter.i: JoystickAdapter.cpp.i
 
 # target to preprocess a source file
 JoystickAdapter.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JoystickAdapter.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JoystickAdapter.cpp.i
 .PHONY : JoystickAdapter.cpp.i
 
 JoystickAdapter.s: JoystickAdapter.cpp.s
@@ -368,7 +368,7 @@ JoystickAdapter.s: JoystickAdapter.cpp.s
 
 # target to generate assembly for a file
 JoystickAdapter.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JoystickAdapter.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/JoystickAdapter.cpp.s
 .PHONY : JoystickAdapter.cpp.s
 
 OmniRobot.o: OmniRobot.cpp.o
@@ -376,7 +376,7 @@ OmniRobot.o: OmniRobot.cpp.o
 
 # target to build an object file
 OmniRobot.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/OmniRobot.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/OmniRobot.cpp.o
 .PHONY : OmniRobot.cpp.o
 
 OmniRobot.i: OmniRobot.cpp.i
@@ -384,7 +384,7 @@ OmniRobot.i: OmniRobot.cpp.i
 
 # target to preprocess a source file
 OmniRobot.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/OmniRobot.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/OmniRobot.cpp.i
 .PHONY : OmniRobot.cpp.i
 
 OmniRobot.s: OmniRobot.cpp.s
@@ -392,7 +392,7 @@ OmniRobot.s: OmniRobot.cpp.s
 
 # target to generate assembly for a file
 OmniRobot.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/OmniRobot.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/OmniRobot.cpp.s
 .PHONY : OmniRobot.cpp.s
 
 StateMachine.o: StateMachine.cpp.o
@@ -400,7 +400,7 @@ StateMachine.o: StateMachine.cpp.o
 
 # target to build an object file
 StateMachine.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/StateMachine.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/StateMachine.cpp.o
 .PHONY : StateMachine.cpp.o
 
 StateMachine.i: StateMachine.cpp.i
@@ -408,7 +408,7 @@ StateMachine.i: StateMachine.cpp.i
 
 # target to preprocess a source file
 StateMachine.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/StateMachine.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/StateMachine.cpp.i
 .PHONY : StateMachine.cpp.i
 
 StateMachine.s: StateMachine.cpp.s
@@ -416,7 +416,7 @@ StateMachine.s: StateMachine.cpp.s
 
 # target to generate assembly for a file
 StateMachine.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/StateMachine.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/StateMachine.cpp.s
 .PHONY : StateMachine.cpp.s
 
 YoloObjects.o: YoloObjects.cpp.o
@@ -424,7 +424,7 @@ YoloObjects.o: YoloObjects.cpp.o
 
 # target to build an object file
 YoloObjects.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/YoloObjects.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/YoloObjects.cpp.o
 .PHONY : YoloObjects.cpp.o
 
 YoloObjects.i: YoloObjects.cpp.i
@@ -432,7 +432,7 @@ YoloObjects.i: YoloObjects.cpp.i
 
 # target to preprocess a source file
 YoloObjects.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/YoloObjects.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/YoloObjects.cpp.i
 .PHONY : YoloObjects.cpp.i
 
 YoloObjects.s: YoloObjects.cpp.s
@@ -440,7 +440,7 @@ YoloObjects.s: YoloObjects.cpp.s
 
 # target to generate assembly for a file
 YoloObjects.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/YoloObjects.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/YoloObjects.cpp.s
 .PHONY : YoloObjects.cpp.s
 
 camera.o: camera.cpp.o
@@ -448,7 +448,7 @@ camera.o: camera.cpp.o
 
 # target to build an object file
 camera.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/camera.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/camera.cpp.o
 .PHONY : camera.cpp.o
 
 camera.i: camera.cpp.i
@@ -456,7 +456,7 @@ camera.i: camera.cpp.i
 
 # target to preprocess a source file
 camera.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/camera.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/camera.cpp.i
 .PHONY : camera.cpp.i
 
 camera.s: camera.cpp.s
@@ -464,7 +464,7 @@ camera.s: camera.cpp.s
 
 # target to generate assembly for a file
 camera.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/camera.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/camera.cpp.s
 .PHONY : camera.cpp.s
 
 commonbehaviorI.o: commonbehaviorI.cpp.o
@@ -472,7 +472,7 @@ commonbehaviorI.o: commonbehaviorI.cpp.o
 
 # target to build an object file
 commonbehaviorI.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/commonbehaviorI.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/commonbehaviorI.cpp.o
 .PHONY : commonbehaviorI.cpp.o
 
 commonbehaviorI.i: commonbehaviorI.cpp.i
@@ -480,7 +480,7 @@ commonbehaviorI.i: commonbehaviorI.cpp.i
 
 # target to preprocess a source file
 commonbehaviorI.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/commonbehaviorI.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/commonbehaviorI.cpp.i
 .PHONY : commonbehaviorI.cpp.i
 
 commonbehaviorI.s: commonbehaviorI.cpp.s
@@ -488,7 +488,7 @@ commonbehaviorI.s: commonbehaviorI.cpp.s
 
 # target to generate assembly for a file
 commonbehaviorI.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/commonbehaviorI.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/commonbehaviorI.cpp.s
 .PHONY : commonbehaviorI.cpp.s
 
 door_detector.o: door_detector.cpp.o
@@ -496,7 +496,7 @@ door_detector.o: door_detector.cpp.o
 
 # target to build an object file
 door_detector.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/door_detector.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/door_detector.cpp.o
 .PHONY : door_detector.cpp.o
 
 door_detector.i: door_detector.cpp.i
@@ -504,7 +504,7 @@ door_detector.i: door_detector.cpp.i
 
 # target to preprocess a source file
 door_detector.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/door_detector.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/door_detector.cpp.i
 .PHONY : door_detector.cpp.i
 
 door_detector.s: door_detector.cpp.s
@@ -512,7 +512,7 @@ door_detector.s: door_detector.cpp.s
 
 # target to generate assembly for a file
 door_detector.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/door_detector.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/door_detector.cpp.s
 .PHONY : door_detector.cpp.s
 
 dynamic_window.o: dynamic_window.cpp.o
@@ -520,7 +520,7 @@ dynamic_window.o: dynamic_window.cpp.o
 
 # target to build an object file
 dynamic_window.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/dynamic_window.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/dynamic_window.cpp.o
 .PHONY : dynamic_window.cpp.o
 
 dynamic_window.i: dynamic_window.cpp.i
@@ -528,7 +528,7 @@ dynamic_window.i: dynamic_window.cpp.i
 
 # target to preprocess a source file
 dynamic_window.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/dynamic_window.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/dynamic_window.cpp.i
 .PHONY : dynamic_window.cpp.i
 
 dynamic_window.s: dynamic_window.cpp.s
@@ -536,7 +536,7 @@ dynamic_window.s: dynamic_window.cpp.s
 
 # target to generate assembly for a file
 dynamic_window.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/dynamic_window.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/dynamic_window.cpp.s
 .PHONY : dynamic_window.cpp.s
 
 forcefield_autogen/mocs_compilation.o: forcefield_autogen/mocs_compilation.cpp.o
@@ -544,7 +544,7 @@ forcefield_autogen/mocs_compilation.o: forcefield_autogen/mocs_compilation.cpp.o
 
 # target to build an object file
 forcefield_autogen/mocs_compilation.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/forcefield_autogen/mocs_compilation.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/forcefield_autogen/mocs_compilation.cpp.o
 .PHONY : forcefield_autogen/mocs_compilation.cpp.o
 
 forcefield_autogen/mocs_compilation.i: forcefield_autogen/mocs_compilation.cpp.i
@@ -552,7 +552,7 @@ forcefield_autogen/mocs_compilation.i: forcefield_autogen/mocs_compilation.cpp.i
 
 # target to preprocess a source file
 forcefield_autogen/mocs_compilation.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/forcefield_autogen/mocs_compilation.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/forcefield_autogen/mocs_compilation.cpp.i
 .PHONY : forcefield_autogen/mocs_compilation.cpp.i
 
 forcefield_autogen/mocs_compilation.s: forcefield_autogen/mocs_compilation.cpp.s
@@ -560,7 +560,7 @@ forcefield_autogen/mocs_compilation.s: forcefield_autogen/mocs_compilation.cpp.s
 
 # target to generate assembly for a file
 forcefield_autogen/mocs_compilation.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/forcefield_autogen/mocs_compilation.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/forcefield_autogen/mocs_compilation.cpp.s
 .PHONY : forcefield_autogen/mocs_compilation.cpp.s
 
 genericmonitor.o: genericmonitor.cpp.o
@@ -568,7 +568,7 @@ genericmonitor.o: genericmonitor.cpp.o
 
 # target to build an object file
 genericmonitor.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericmonitor.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericmonitor.cpp.o
 .PHONY : genericmonitor.cpp.o
 
 genericmonitor.i: genericmonitor.cpp.i
@@ -576,7 +576,7 @@ genericmonitor.i: genericmonitor.cpp.i
 
 # target to preprocess a source file
 genericmonitor.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericmonitor.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericmonitor.cpp.i
 .PHONY : genericmonitor.cpp.i
 
 genericmonitor.s: genericmonitor.cpp.s
@@ -584,7 +584,7 @@ genericmonitor.s: genericmonitor.cpp.s
 
 # target to generate assembly for a file
 genericmonitor.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericmonitor.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericmonitor.cpp.s
 .PHONY : genericmonitor.cpp.s
 
 genericworker.o: genericworker.cpp.o
@@ -592,7 +592,7 @@ genericworker.o: genericworker.cpp.o
 
 # target to build an object file
 genericworker.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericworker.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericworker.cpp.o
 .PHONY : genericworker.cpp.o
 
 genericworker.i: genericworker.cpp.i
@@ -600,7 +600,7 @@ genericworker.i: genericworker.cpp.i
 
 # target to preprocess a source file
 genericworker.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericworker.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericworker.cpp.i
 .PHONY : genericworker.cpp.i
 
 genericworker.s: genericworker.cpp.s
@@ -608,111 +608,111 @@ genericworker.s: genericworker.cpp.s
 
 # target to generate assembly for a file
 genericworker.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericworker.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/genericworker.cpp.s
 .PHONY : genericworker.cpp.s
 
-home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.o: home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.o
-.PHONY : home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.o
+home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.o: home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.o
+.PHONY : home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.o
 
 # target to build an object file
-home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.o
-.PHONY : home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.o
+home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.o:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.o
+.PHONY : home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.o
 
-home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.i: home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.i
-.PHONY : home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.i
+home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.i: home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.i
+.PHONY : home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.i
 
 # target to preprocess a source file
-home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.i
-.PHONY : home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.i
+home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.i:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.i
+.PHONY : home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.i
 
-home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.s: home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.s
-.PHONY : home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.s
+home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.s: home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.s
+.PHONY : home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.s
 
 # target to generate assembly for a file
-home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.s
-.PHONY : home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.s
+home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.s:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.s
+.PHONY : home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp.s
 
-home/gonzalo/robocomp/classes/qlog/qlog.o: home/gonzalo/robocomp/classes/qlog/qlog.cpp.o
-.PHONY : home/gonzalo/robocomp/classes/qlog/qlog.o
+home/alumno/robocomp/classes/qlog/qlog.o: home/alumno/robocomp/classes/qlog/qlog.cpp.o
+.PHONY : home/alumno/robocomp/classes/qlog/qlog.o
 
 # target to build an object file
-home/gonzalo/robocomp/classes/qlog/qlog.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/qlog/qlog.cpp.o
-.PHONY : home/gonzalo/robocomp/classes/qlog/qlog.cpp.o
+home/alumno/robocomp/classes/qlog/qlog.cpp.o:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/qlog/qlog.cpp.o
+.PHONY : home/alumno/robocomp/classes/qlog/qlog.cpp.o
 
-home/gonzalo/robocomp/classes/qlog/qlog.i: home/gonzalo/robocomp/classes/qlog/qlog.cpp.i
-.PHONY : home/gonzalo/robocomp/classes/qlog/qlog.i
+home/alumno/robocomp/classes/qlog/qlog.i: home/alumno/robocomp/classes/qlog/qlog.cpp.i
+.PHONY : home/alumno/robocomp/classes/qlog/qlog.i
 
 # target to preprocess a source file
-home/gonzalo/robocomp/classes/qlog/qlog.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/qlog/qlog.cpp.i
-.PHONY : home/gonzalo/robocomp/classes/qlog/qlog.cpp.i
+home/alumno/robocomp/classes/qlog/qlog.cpp.i:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/qlog/qlog.cpp.i
+.PHONY : home/alumno/robocomp/classes/qlog/qlog.cpp.i
 
-home/gonzalo/robocomp/classes/qlog/qlog.s: home/gonzalo/robocomp/classes/qlog/qlog.cpp.s
-.PHONY : home/gonzalo/robocomp/classes/qlog/qlog.s
+home/alumno/robocomp/classes/qlog/qlog.s: home/alumno/robocomp/classes/qlog/qlog.cpp.s
+.PHONY : home/alumno/robocomp/classes/qlog/qlog.s
 
 # target to generate assembly for a file
-home/gonzalo/robocomp/classes/qlog/qlog.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/qlog/qlog.cpp.s
-.PHONY : home/gonzalo/robocomp/classes/qlog/qlog.cpp.s
+home/alumno/robocomp/classes/qlog/qlog.cpp.s:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/qlog/qlog.cpp.s
+.PHONY : home/alumno/robocomp/classes/qlog/qlog.cpp.s
 
-home/gonzalo/robocomp/classes/rapplication/rapplication.o: home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.o
-.PHONY : home/gonzalo/robocomp/classes/rapplication/rapplication.o
+home/alumno/robocomp/classes/rapplication/rapplication.o: home/alumno/robocomp/classes/rapplication/rapplication.cpp.o
+.PHONY : home/alumno/robocomp/classes/rapplication/rapplication.o
 
 # target to build an object file
-home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.o
-.PHONY : home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.o
+home/alumno/robocomp/classes/rapplication/rapplication.cpp.o:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/rapplication/rapplication.cpp.o
+.PHONY : home/alumno/robocomp/classes/rapplication/rapplication.cpp.o
 
-home/gonzalo/robocomp/classes/rapplication/rapplication.i: home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.i
-.PHONY : home/gonzalo/robocomp/classes/rapplication/rapplication.i
+home/alumno/robocomp/classes/rapplication/rapplication.i: home/alumno/robocomp/classes/rapplication/rapplication.cpp.i
+.PHONY : home/alumno/robocomp/classes/rapplication/rapplication.i
 
 # target to preprocess a source file
-home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.i
-.PHONY : home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.i
+home/alumno/robocomp/classes/rapplication/rapplication.cpp.i:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/rapplication/rapplication.cpp.i
+.PHONY : home/alumno/robocomp/classes/rapplication/rapplication.cpp.i
 
-home/gonzalo/robocomp/classes/rapplication/rapplication.s: home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.s
-.PHONY : home/gonzalo/robocomp/classes/rapplication/rapplication.s
+home/alumno/robocomp/classes/rapplication/rapplication.s: home/alumno/robocomp/classes/rapplication/rapplication.cpp.s
+.PHONY : home/alumno/robocomp/classes/rapplication/rapplication.s
 
 # target to generate assembly for a file
-home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.s
-.PHONY : home/gonzalo/robocomp/classes/rapplication/rapplication.cpp.s
+home/alumno/robocomp/classes/rapplication/rapplication.cpp.s:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/rapplication/rapplication.cpp.s
+.PHONY : home/alumno/robocomp/classes/rapplication/rapplication.cpp.s
 
-home/gonzalo/robocomp/classes/sigwatch/sigwatch.o: home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.o
-.PHONY : home/gonzalo/robocomp/classes/sigwatch/sigwatch.o
+home/alumno/robocomp/classes/sigwatch/sigwatch.o: home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.o
+.PHONY : home/alumno/robocomp/classes/sigwatch/sigwatch.o
 
 # target to build an object file
-home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.o
-.PHONY : home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.o
+home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.o:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.o
+.PHONY : home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.o
 
-home/gonzalo/robocomp/classes/sigwatch/sigwatch.i: home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.i
-.PHONY : home/gonzalo/robocomp/classes/sigwatch/sigwatch.i
+home/alumno/robocomp/classes/sigwatch/sigwatch.i: home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.i
+.PHONY : home/alumno/robocomp/classes/sigwatch/sigwatch.i
 
 # target to preprocess a source file
-home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.i
-.PHONY : home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.i
+home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.i:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.i
+.PHONY : home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.i
 
-home/gonzalo/robocomp/classes/sigwatch/sigwatch.s: home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.s
-.PHONY : home/gonzalo/robocomp/classes/sigwatch/sigwatch.s
+home/alumno/robocomp/classes/sigwatch/sigwatch.s: home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.s
+.PHONY : home/alumno/robocomp/classes/sigwatch/sigwatch.s
 
 # target to generate assembly for a file
-home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.s
-.PHONY : home/gonzalo/robocomp/classes/sigwatch/sigwatch.cpp.s
+home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.s:
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.s
+.PHONY : home/alumno/robocomp/classes/sigwatch/sigwatch.cpp.s
 
 joystickadapterI.o: joystickadapterI.cpp.o
 .PHONY : joystickadapterI.o
 
 # target to build an object file
 joystickadapterI.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/joystickadapterI.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/joystickadapterI.cpp.o
 .PHONY : joystickadapterI.cpp.o
 
 joystickadapterI.i: joystickadapterI.cpp.i
@@ -720,7 +720,7 @@ joystickadapterI.i: joystickadapterI.cpp.i
 
 # target to preprocess a source file
 joystickadapterI.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/joystickadapterI.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/joystickadapterI.cpp.i
 .PHONY : joystickadapterI.cpp.i
 
 joystickadapterI.s: joystickadapterI.cpp.s
@@ -728,7 +728,7 @@ joystickadapterI.s: joystickadapterI.cpp.s
 
 # target to generate assembly for a file
 joystickadapterI.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/joystickadapterI.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/joystickadapterI.cpp.s
 .PHONY : joystickadapterI.cpp.s
 
 main.o: main.cpp.o
@@ -736,7 +736,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/main.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -744,7 +744,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/main.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -752,7 +752,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/main.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 robot.o: robot.cpp.o
@@ -760,7 +760,7 @@ robot.o: robot.cpp.o
 
 # target to build an object file
 robot.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/robot.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/robot.cpp.o
 .PHONY : robot.cpp.o
 
 robot.i: robot.cpp.i
@@ -768,7 +768,7 @@ robot.i: robot.cpp.i
 
 # target to preprocess a source file
 robot.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/robot.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/robot.cpp.i
 .PHONY : robot.cpp.i
 
 robot.s: robot.cpp.s
@@ -776,7 +776,7 @@ robot.s: robot.cpp.s
 
 # target to generate assembly for a file
 robot.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/robot.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/robot.cpp.s
 .PHONY : robot.cpp.s
 
 specificmonitor.o: specificmonitor.cpp.o
@@ -784,7 +784,7 @@ specificmonitor.o: specificmonitor.cpp.o
 
 # target to build an object file
 specificmonitor.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificmonitor.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificmonitor.cpp.o
 .PHONY : specificmonitor.cpp.o
 
 specificmonitor.i: specificmonitor.cpp.i
@@ -792,7 +792,7 @@ specificmonitor.i: specificmonitor.cpp.i
 
 # target to preprocess a source file
 specificmonitor.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificmonitor.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificmonitor.cpp.i
 .PHONY : specificmonitor.cpp.i
 
 specificmonitor.s: specificmonitor.cpp.s
@@ -800,7 +800,7 @@ specificmonitor.s: specificmonitor.cpp.s
 
 # target to generate assembly for a file
 specificmonitor.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificmonitor.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificmonitor.cpp.s
 .PHONY : specificmonitor.cpp.s
 
 specificworker.o: specificworker.cpp.o
@@ -808,7 +808,7 @@ specificworker.o: specificworker.cpp.o
 
 # target to build an object file
 specificworker.cpp.o:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificworker.cpp.o
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificworker.cpp.o
 .PHONY : specificworker.cpp.o
 
 specificworker.i: specificworker.cpp.i
@@ -816,7 +816,7 @@ specificworker.i: specificworker.cpp.i
 
 # target to preprocess a source file
 specificworker.cpp.i:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificworker.cpp.i
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificworker.cpp.i
 .PHONY : specificworker.cpp.i
 
 specificworker.s: specificworker.cpp.s
@@ -824,7 +824,7 @@ specificworker.s: specificworker.cpp.s
 
 # target to generate assembly for a file
 specificworker.cpp.s:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificworker.cpp.s
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/forcefield.dir/build.make src/CMakeFiles/forcefield.dir/specificworker.cpp.s
 .PHONY : specificworker.cpp.s
 
 # Help Target
@@ -839,7 +839,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... ICES__home_gonzalo_robocomp_components_robotica_tarea4_forcefield_src"
+	@echo "... ICES__home_alumno_robocomp_components_robotica_tarea4_forcefield_src"
 	@echo "... forcefield_autogen"
 	@echo "... forcefield"
 	@echo "... CameraRGBDSimple.o"
@@ -893,18 +893,18 @@ help:
 	@echo "... genericworker.o"
 	@echo "... genericworker.i"
 	@echo "... genericworker.s"
-	@echo "... home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.o"
-	@echo "... home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.i"
-	@echo "... home/gonzalo/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.s"
-	@echo "... home/gonzalo/robocomp/classes/qlog/qlog.o"
-	@echo "... home/gonzalo/robocomp/classes/qlog/qlog.i"
-	@echo "... home/gonzalo/robocomp/classes/qlog/qlog.s"
-	@echo "... home/gonzalo/robocomp/classes/rapplication/rapplication.o"
-	@echo "... home/gonzalo/robocomp/classes/rapplication/rapplication.i"
-	@echo "... home/gonzalo/robocomp/classes/rapplication/rapplication.s"
-	@echo "... home/gonzalo/robocomp/classes/sigwatch/sigwatch.o"
-	@echo "... home/gonzalo/robocomp/classes/sigwatch/sigwatch.i"
-	@echo "... home/gonzalo/robocomp/classes/sigwatch/sigwatch.s"
+	@echo "... home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.o"
+	@echo "... home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.i"
+	@echo "... home/alumno/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.s"
+	@echo "... home/alumno/robocomp/classes/qlog/qlog.o"
+	@echo "... home/alumno/robocomp/classes/qlog/qlog.i"
+	@echo "... home/alumno/robocomp/classes/qlog/qlog.s"
+	@echo "... home/alumno/robocomp/classes/rapplication/rapplication.o"
+	@echo "... home/alumno/robocomp/classes/rapplication/rapplication.i"
+	@echo "... home/alumno/robocomp/classes/rapplication/rapplication.s"
+	@echo "... home/alumno/robocomp/classes/sigwatch/sigwatch.o"
+	@echo "... home/alumno/robocomp/classes/sigwatch/sigwatch.i"
+	@echo "... home/alumno/robocomp/classes/sigwatch/sigwatch.s"
 	@echo "... joystickadapterI.o"
 	@echo "... joystickadapterI.i"
 	@echo "... joystickadapterI.s"
@@ -931,6 +931,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/gonzalo/robocomp/components/robotica/tarea4/forcefield && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/alumno/robocomp/components/robotica/tarea4/forcefield && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
