@@ -82,7 +82,7 @@ void StateMachine::cross_state(rc::Robot &robot)
 
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<float,std::milli> duration = end - start;
-    if(duration.count() > 2000)
+    if(duration.count() > 1500)
     {
         qInfo()<< __FUNCTION__<<" -> Atraviesa la puerta";
         robot.set_recto(false);
