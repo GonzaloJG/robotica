@@ -70,6 +70,8 @@ void SpecificWorker::initialize(int period)
         this->resize(900,650);
         viewer->add_robot(robot.width, robot.length);
 
+        graph_viewer = new AbstractGraphicViewer(this->signals_frame,  QRectF(0, 0, 1000, 250));
+
         // initialize top_camera
         std::string top_camera_name = "/Shadow/camera_top";
         try{ top_camera.initialize(top_camera_name, camerargbdsimple_proxy); }
@@ -250,7 +252,7 @@ void SpecificWorker::compute()
 
     // TODO:: STATE MACHINE
     // state machine to activate basic behaviours. Returns a  target_coordinates vector
-    state_machine.state_machine(genericObjects, robot, graph);
+    state_machine.state_machine(genericObjects, robot, graph, graph_viewer);
     robot.goto_target(current_line, viewer);
 
     /// eye tracking: tracks  current selected object or  IOR if none

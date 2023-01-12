@@ -5,7 +5,7 @@
 #include "StateMachine.h"
 
 ///////////////////  State machine ////////////////////////////////////////////
-void StateMachine::state_machine(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot, Graph &graph)
+void StateMachine::state_machine(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot, Graph &graph, AbstractGraphicViewer *viewer)
 {
     switch(state)
     {
@@ -19,7 +19,7 @@ void StateMachine::state_machine(const std::vector<rc::GenericObject> genericObj
             approach_state(genericObjects, robot);
             break;
         case State::CROSS:
-            cross_state(robot, graph);
+            cross_state(robot, graph, viewer);
             break;
     }
 
@@ -50,7 +50,7 @@ void StateMachine::approach_state(const std::vector<rc::GenericObject> genericOb
 {
     robot.set_pure_rotation(0.f);
 
-    if (robot.get_distance_to_target() < 200)
+    if (robot.get_distance_to_target() < 500)
     {
         qInfo()<< __FUNCTION__<<" -> Pasamos al estado CROSS: " << robot.get_current_target().type;
         qInfo()<< __FUNCTION__<<" -> DISTANCIA AL TARGET INICIAL: " << robot.get_distance_to_target();
@@ -67,14 +67,10 @@ void StateMachine::approach_state(const std::vector<rc::GenericObject> genericOb
 
 }
 
-//HACE EL ROCORRIDO COMPLETO PERO LA CONSOLA SOLO MUESTRA EL ESTADO APPROACHING!!!!
 //EN EL DOOR DETECTOR COMPROBAR LAS CUATRO RODAJAS DEL LASER
 //EN EL INICIALIZAR PASAR LA LISTA DE OBJETOS YOLO, METERLA EN UN ATRIBUTO DE CLASE PARA TRATARLOS EN EL GRAFO
-//COMPROBAR SI LO REALIZADO HOY ES CORRECTO (SOLO REALIZAR LA TRANSFORMADA CON LOS OBJETOS YOLO) Y CAMBIO EN EL GO_TO_TARGET SIN FORZAR RECTO
-//CAMBIAR EN EL GRAFO LA LISTA DE GENERICOBJECT Y QUE SEAN STRING
-//SET PURE ROTATION VER SI CAMBIAR A NEGATIVO PARA QUE FUERZE A LA IZQUIERDA Y HAGA RECORRIDO COMPLETO
 
-void StateMachine::cross_state(rc::Robot &robot, Graph &graph)
+void StateMachine::cross_state(rc::Robot &robot, Graph &graph, AbstractGraphicViewer *viewer)
 {
     static std::chrono::time_point<std::chrono::system_clock> start;
     static bool primera_vez=true;
@@ -101,6 +97,7 @@ void StateMachine::cross_state(rc::Robot &robot, Graph &graph)
         id_nodo_actual = graph.add_node(id_nodo_actual+1);
 
         //graph.show_graph();
+        graph.draw(viewer);
     }
 }
 

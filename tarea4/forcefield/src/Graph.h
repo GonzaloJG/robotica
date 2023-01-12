@@ -17,7 +17,7 @@ public:
     {
         Node(int id_) : id(id_){};
         int id;
-        std::set<rc::GenericObject> objects;
+        std::set<std::string> objects;
         QPointF draw_pos{0.f, 0.f};
     };
     struct Edge

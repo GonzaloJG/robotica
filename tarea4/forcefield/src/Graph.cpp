@@ -1,4 +1,5 @@
 #include "Graph.h"
+#include <cppitertools/enumerate.hpp>
 
 int Graph::add_node()
 {
@@ -33,7 +34,23 @@ void Graph::add_tags(int id, const std::vector<rc::GenericObject> &objects_yolo)
 
 void Graph::draw(AbstractGraphicViewer *viewer)
 {
+    static std::vector<QGraphicsItem *> items;
+    for(const auto &item: items)
+        viewer->scene.removeItem(item);
+    items.clear();
 
+    auto width = viewer->scene.sceneRect().width();
+    for(const auto &[i, node] : nodes | iter::enumerate)
+    {
+        const auto &[key, value] = node;
+        auto item = viewer->scene.addEllipse(-50, -50, 100, 100, QPen(QColor("blue"), 10));
+        item->setPos(width/nodes.size(), 125);
+        items.push_back(item);
+    }
+    for(const auto &[i, edges] : nodes | iter::enumerate)
+    {
+
+    }
 }
 
 void Graph::show_graph(){
@@ -44,8 +61,8 @@ void Graph::show_graph(){
         for (const auto &entryy: edges) {
             if (entryy.first.first == id) {
                 qInfo() << " Enlaces: ";
-                qInfo() << "Origen: " << entryy.first.first;
-                qInfo() << "Destino: " << entryy.first.second;
+                qInfo() << "Nodo1: " << entryy.first.first;
+                qInfo() << "Nodo2: " << entryy.first.second;
             }
         }
     }

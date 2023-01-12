@@ -103,7 +103,7 @@ class SpecificWorker : public GenericWorker
     float current_servo_angle = 0.f;
     bool startup_check_flag;
 
-    AbstractGraphicViewer *viewer;
+    AbstractGraphicViewer *viewer, *graph_viewer;
 
     std::vector<std::vector<Eigen::Vector2f>> get_multi_level_3d_points_omni(const cv::Mat &depth_frame);
     Eigen::Vector2f compute_repulsion_forces(vector<Eigen::Vector2f> &floor_line);
