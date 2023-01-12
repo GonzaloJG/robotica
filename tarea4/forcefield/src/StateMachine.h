@@ -17,7 +17,7 @@ public:
     enum class State {IDLE, SEARCHING, APPROACHING, CROSS};
     State state = State::IDLE;
 
-    void search_state(const std::vector<rc::GenericObject> genericObjects,  rc::Robot &robot);
+    void search_state(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot);
     void approach_state(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot);
     void cross_state(rc::Robot &robot, Graph &graph, AbstractGraphicViewer *viewer);
     void idle_state(Graph &graph);

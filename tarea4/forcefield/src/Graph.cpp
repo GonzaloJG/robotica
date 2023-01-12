@@ -26,10 +26,8 @@ void Graph::add_edge(int n1, int n2)
 
 void Graph::add_tags(int id, const std::vector<rc::GenericObject> &objects_yolo)
 {
-//    for (auto &entry : nodes)
-//        if(entry.first==id)
-//            for(auto &object : objects_yolo)
-//                auto prueba = entry.second.objects.insert(object);
+//    for (const auto &[key, value]  : nodes)
+//        if (key == id)
 }
 
 void Graph::draw(AbstractGraphicViewer *viewer)
@@ -40,17 +38,27 @@ void Graph::draw(AbstractGraphicViewer *viewer)
     items.clear();
 
     auto width = viewer->scene.sceneRect().width();
+    int tamSeparacionElipse=width/6;
     for(const auto &[i, node] : nodes | iter::enumerate)
     {
-        const auto &[key, value] = node;
+        //const auto &[key, value] = node;
         auto item = viewer->scene.addEllipse(-50, -50, 100, 100, QPen(QColor("blue"), 10));
-        item->setPos(width/nodes.size(), 125);
+        item->setPos(i*tamSeparacionElipse, 125);
         items.push_back(item);
-    }
-    for(const auto &[i, edges] : nodes | iter::enumerate)
-    {
+
+//        std::string result = std::to_string(node.second.objects.size());
+//        auto text = viewer->scene.addText(result.c_str());
+//        text->setPos(i*tamSeparacionElipse, 125);
+//        items.push_back(text);
 
     }
+    for(const auto &[i, edges] : edges | iter::enumerate)
+    {
+        auto item = viewer->scene.addLine(50, 0, 116, 0, QPen(QColor("blue"), 10));
+        item->setPos(i*tamSeparacionElipse, 125);
+        items.push_back(item);
+    }
+
 }
 
 void Graph::show_graph(){

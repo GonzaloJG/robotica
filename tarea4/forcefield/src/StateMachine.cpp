@@ -28,6 +28,9 @@ void StateMachine::state_machine(const std::vector<rc::GenericObject> genericObj
 
 void StateMachine::search_state(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot)
 {
+
+    //graph.add_tags(id_nodo_actual, genericObjects);
+
     //Comprueba que el objeto que identifica es distinto del objeto que tenemos actualmente.
     //Una vez comprobado, si es distinto, cambia en el iterador a los atributos del nuevo objeto y cambia de estado.
     qInfo()<< __FUNCTION__<<" -> Buscando Target, target anterior:" << robot.get_current_target().type;
@@ -44,6 +47,8 @@ void StateMachine::search_state(const std::vector<rc::GenericObject> genericObje
         qInfo() << __FUNCTION__ << " -> Rotar para buscar Target";
         robot.set_pure_rotation(0.5);
     }
+
+
 }
 
 void StateMachine::approach_state(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot)
@@ -67,7 +72,6 @@ void StateMachine::approach_state(const std::vector<rc::GenericObject> genericOb
 
 }
 
-//EN EL DOOR DETECTOR COMPROBAR LAS CUATRO RODAJAS DEL LASER
 //EN EL INICIALIZAR PASAR LA LISTA DE OBJETOS YOLO, METERLA EN UN ATRIBUTO DE CLASE PARA TRATARLOS EN EL GRAFO
 
 void StateMachine::cross_state(rc::Robot &robot, Graph &graph, AbstractGraphicViewer *viewer)
@@ -96,7 +100,7 @@ void StateMachine::cross_state(rc::Robot &robot, Graph &graph, AbstractGraphicVi
 
         id_nodo_actual = graph.add_node(id_nodo_actual+1);
 
-        //graph.show_graph();
+        graph.show_graph();
         graph.draw(viewer);
     }
 }
