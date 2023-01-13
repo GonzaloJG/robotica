@@ -40,5 +40,4 @@ private:
 };
 
 
-
 #endif //FORCEFIELD_GRAPH_H

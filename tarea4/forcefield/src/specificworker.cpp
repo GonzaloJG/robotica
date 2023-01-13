@@ -70,7 +70,7 @@ void SpecificWorker::initialize(int period)
         this->resize(900,650);
         viewer->add_robot(robot.width, robot.length);
 
-        graph_viewer = new AbstractGraphicViewer(this->signals_frame,  QRectF(0, 0, 1000, 250));
+        graph_viewer = new AbstractGraphicViewer(this->signals_frame,  QRectF(0, 0, 1000, 500));
 
         // initialize top_camera
         std::string top_camera_name = "/Shadow/camera_top";
