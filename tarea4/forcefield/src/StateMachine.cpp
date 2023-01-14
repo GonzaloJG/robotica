@@ -52,8 +52,7 @@ void StateMachine::search_state(const std::vector<rc::GenericObject> genericObje
         qInfo() << __FUNCTION__ << " -> Rotar para buscar Target";
         robot.set_pure_rotation(0.5);
     }
-
-
+    
 }
 
 void StateMachine::approach_state(const std::vector<rc::GenericObject> genericObjects, rc::Robot &robot)
