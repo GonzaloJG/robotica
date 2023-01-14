@@ -238,17 +238,11 @@ void SpecificWorker::compute()
     ///Unir objetos yolo y doors en GenericObjects
     genericObjects.clear();
 
-    auto pyolo= rc::GenericObject::add_yolo(objects, robot.get_tf_cam_to_base());
+    auto pyolo= rc::GenericObject::add_yolo(objects, robot.get_tf_cam_to_base(), yolo_object_names);
     genericObjects.insert(genericObjects.end(), pyolo.begin(), pyolo.end());
 
     auto pdoor = rc::GenericObject::add_doors(doors);
     genericObjects.insert(genericObjects.end(), pdoor.begin(), pdoor.end());
-
-//Lo puso de ejemplo para ver como se unian dos listas
-//    auto l1 = rc::GenericObject::add_doors(doors);
-//    auto l2 = rc::GenericObject::add_yolo(objects);
-//    for(const auto &l : l1)
-//        l2.push_back(l);
 
     // TODO:: STATE MACHINE
     // state machine to activate basic behaviours. Returns a  target_coordinates vector

@@ -6,7 +6,6 @@
 #include <cppitertools/range.hpp>
 #include <cppitertools/enumerate.hpp>
 #include <cppitertools/filter.hpp>
-#include <cppitertools/chunked.hpp>
 #include <cppitertools/sliding_window.hpp>
 #include <cppitertools/combinations_with_replacement.hpp>
 

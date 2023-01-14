@@ -16,15 +16,15 @@ namespace rc
     public:
         GenericObject() = default;
         GenericObject(const Door_detector::Door &d);
-        GenericObject(const RoboCompYoloObjects::TBox &box, const  Eigen::Transform<float, 3, Eigen::Affine> &tf);
+        GenericObject(const RoboCompYoloObjects::TBox &box, const  Eigen::Transform<float, 3, Eigen::Affine> &tf, RoboCompYoloObjects::TObjectNames yolo_object_names);
         Eigen::Vector3f get_robot_coordinates() const;
         Eigen::Vector3f get_local_coordinates() const;
         void print() const;
         static std::vector<GenericObject> add_doors(const std::vector<Door_detector::Door>     &doors);
-        static std::vector<GenericObject> add_yolo(const std::vector<RoboCompYoloObjects::TBox> &boxes, const  Eigen::Transform<float, 3, Eigen::Affine> &tf);
-
+        static std::vector<GenericObject> add_yolo(const std::vector<RoboCompYoloObjects::TBox> &boxes, const  Eigen::Transform<float, 3, Eigen::Affine> &tf, RoboCompYoloObjects::TObjectNames yolo_object_names );
         int id = 0;
         int type = -1;      // 0:person     80:door
+        std::string label;
         int left;
         int top;
         int right;

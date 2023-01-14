@@ -144,24 +144,12 @@ namespace rc
         }
         else if (has_target_flag)
         {
-//            if(recto)
-//            {
-//                // DWA algorithm
-//                auto [adv1, rot1, side1] = dwa.update(get_robot_target_coordinates(), current_line,
-//                                                      get_current_advance_speed(), get_current_rot_speed(), viewer);
-//                side = side1;
-//                rot = 0;
-//                adv = 600;
-//            }
-//            else
-//            {
                 // DWA algorithm
                 auto [adv1, rot1, side1] = dwa.update(get_robot_target_coordinates(), current_line,
                                                       get_current_advance_speed(), get_current_rot_speed(), viewer);
                 side = side1;
                 rot = rot1;
                 adv = adv1;
-//            }
         }
         else
         {
@@ -192,16 +180,6 @@ namespace rc
         current_target.type = -1;
         has_target_flag = false;
     }
-
-//    void Robot::set_recto(bool bandera)
-//    {
-//        recto=bandera;
-//    }
-//
-//    bool Robot::get_recto()
-//    {
-//        return recto;
-//    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

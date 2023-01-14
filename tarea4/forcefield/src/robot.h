@@ -61,8 +61,6 @@ namespace rc
                 void stop();// detiene el robot y establece has_target en falso
                 void rotate(float vel_rotation);  // establece el robot en modo de rotación pura
                 void resetTarget();
-//                void set_recto(bool bandera);
-//                bool get_recto();
 
                 const float width = 450;
                 const float length = 450;
@@ -91,8 +89,6 @@ namespace rc
                 bool has_target_flag = false;
                 std::map<float, float> bumper;
                 Eigen::ArrayXf sector1, sector2, sector3,  sector4, sector5;
-
-                //bool recto=false;
 
                 // DWA
                 Dynamic_Window dwa;

@@ -6,7 +6,7 @@
 
 namespace rc
 {
-    GenericObject::GenericObject(const RoboCompYoloObjects::TBox &box, const  Eigen::Transform<float, 3, Eigen::Affine> &tf) :
+    GenericObject::GenericObject(const RoboCompYoloObjects::TBox &box, const  Eigen::Transform<float, 3, Eigen::Affine> &tf, RoboCompYoloObjects::TObjectNames yolo_object_names) :
             id(box.id), type(box.type), left(box.left), top(box.top),
             right(box.right), bot(box.bot), score(box.score), depth(box.depth),
             x(box.x), y(box.y), z(box.z)
@@ -15,6 +15,8 @@ namespace rc
         rx = rc.x();
         ry = rc.y();
         rz = rc.z();
+
+        label=yolo_object_names[type];
     }
     GenericObject::GenericObject(const Door_detector::Door &d)
     {
@@ -26,11 +28,11 @@ namespace rc
         y = d.p_center.y();
         z = 0.f;
     }
-    std::vector<GenericObject> GenericObject::add_yolo(const std::vector<RoboCompYoloObjects::TBox> &boxes, const  Eigen::Transform<float, 3, Eigen::Affine> &tf )
+    std::vector<GenericObject> GenericObject::add_yolo(const std::vector<RoboCompYoloObjects::TBox> &boxes, const  Eigen::Transform<float, 3, Eigen::Affine> &tf, RoboCompYoloObjects::TObjectNames yolo_object_names )
     {
         std::vector<GenericObject> bobjs;
         for(const auto &b: boxes)
-            bobjs.emplace_back(GenericObject(b, tf));
+            bobjs.emplace_back(GenericObject(b, tf, yolo_object_names));
         return bobjs;
     }
     std::vector<GenericObject> GenericObject::add_doors(const std::vector<Door_detector::Door> &doors)
