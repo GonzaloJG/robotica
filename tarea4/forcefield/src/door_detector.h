@@ -10,7 +10,6 @@
 #include <QGraphicsItem>
 #include <abstract_graphic_viewer/abstract_graphic_viewer.h>
 
-
 class Door_detector
 {
 public:
