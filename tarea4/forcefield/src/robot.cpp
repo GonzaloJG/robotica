@@ -259,6 +259,7 @@ namespace rc
         for(auto &&i : iter::range(sector5.rows()))
             bumper[sector5(i)] = fabs((semi_height+dynamic_offset)/cos(sector5(i)));
     }
+
 //    void Robot::add_camera(const std::string &name, const Eigen::Transform<float, 3, Eigen::Affine> &tf,
 //                           std::map<std::string, RoboCompJointMotorSimple::JointMotorSimplePrxPtr> axes)
     void Robot::add_camera(const Eigen::Transform<float, 3, Eigen::Affine> &tf_,

@@ -94,7 +94,6 @@ namespace rc
                 Dynamic_Window dwa;
 
                 void recompute_bumper(float dynamic_offset);
-
     };
 } // rc
 
