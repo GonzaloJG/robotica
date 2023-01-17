@@ -100,7 +100,6 @@ void StateMachine::cross_state(rc::Robot &robot, Graph &graph, AbstractGraphicVi
         robot.resetTarget();
         state = State::SEARCHING;
         primera_vez=true;
-
     }
 }
 
