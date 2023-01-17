@@ -23,7 +23,7 @@ public:
     void idle_state(Graph &graph);
 
     int id_nodo_actual=0;
-    
+
 };
 
 

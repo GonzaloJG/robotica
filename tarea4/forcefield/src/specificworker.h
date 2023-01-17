@@ -150,7 +150,6 @@ class SpecificWorker : public GenericWorker
 
     //Graph
     Graph graph;
-
 };
 
 #endif

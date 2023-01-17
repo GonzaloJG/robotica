@@ -263,6 +263,7 @@ void SpecificWorker::compute()
     //move_robot(force);
 
     //robot.print();
+
 }
 
 //////////////////// ELEMENTS OF CONTROL/////////////////////////////////////////////////
