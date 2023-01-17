@@ -36,7 +36,6 @@ private:
     int id_counter = 0;
     std::map<int, Node> nodes;
     std::map<std::pair<int, int>,  Edge> edges;
-
 };
 
 
